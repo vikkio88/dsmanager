@@ -72,7 +72,12 @@ namespace DsManager.Models
 
         }
 
-       
 
+
+
+        internal Player getPlayer(int i)
+        {
+            return players.ElementAt(i);
+        }
     }
 }

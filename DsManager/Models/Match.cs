@@ -38,7 +38,9 @@ namespace DsManager.Models
         public MatchResult Score()
         {
             this.Simulate();
-            return new MatchResult(this.goalHome, this.goalAway);
+            MatchResult res = new MatchResult(this.goalHome, this.goalAway);
+            res.Goals(homeTeam, awayTeam);
+            return res;
         }
 
         private void Simulate()
