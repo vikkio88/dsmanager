@@ -10,22 +10,29 @@ namespace DsManager.Models
     {
         private int goalHome;
         private int goalAway;
-        List<Player> scorer;
+        List<Player> scorerHome;
+        List<Player> scorerAway;
 
         public MatchResult(int p1, int p2)
         {
             this.goalHome = p1;
             this.goalAway = p2;
-            scorer = new List<Player>();
+            scorerHome = new List<Player>();
+            scorerAway = new List<Player>();
         }
         public override string ToString()
         {
             string res = string.Format("{0} - {1}",this.goalHome.ToString(),this.goalAway.ToString());
-            res += "\nMarcatori\n";
-            
-            foreach (Player player in scorer)
+            res += "\n*********\nMarcatori\n";
+            res += "*********\nSquadra Casa\n";
+            foreach (Player player in scorerHome)
             {
                 res += player.ToString()+"\n";
+            }
+            res += "*********\nSquadra Trasferta\n";
+            foreach (Player player in scorerAway)
+            {
+                res += player.ToString() + "\n";
             }
             return res;
         }
@@ -35,12 +42,12 @@ namespace DsManager.Models
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             for (int i = 0; i < goalHome; i++)
             {    
-                scorer.Add(homeTeam.getPlayer(rnd.getInt(11)));
+                scorerHome.Add(homeTeam.getPlayer(rnd.getInt(11)));
             }
 
             for (int i = 0; i < goalAway; i++)
             {
-                scorer.Add(awayTeam.getPlayer(rnd.getInt(11)));
+                scorerAway.Add(awayTeam.getPlayer(rnd.getInt(11)));
             }
         }
     }
