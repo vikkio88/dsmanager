@@ -52,14 +52,25 @@ namespace ModelsTest
         public void SimulazionePartita()
         {
             RandomFiller.RandomFiller rndfl = new RandomFiller.RandomFiller();
-            Team sq = new Team("Milan");
+            Team sq, sq1;
+            if (rndfl.getInt(100) > 50)
+            {
+                sq = new Team("Milan");
+                sq1 = new Team("Juventus");
+            }
+            else
+            {
+                sq1 = new Team("Milan");
+                sq = new Team("Juventus");
+            }
+           // Team sq = new Team("Milan");
             for (int i = 0; i < 11; i++)
             {
 
                 Player uno = new Player();
                 uno.PlayerName = rndfl.getName();
                 uno.PlayerSurname = rndfl.getSurname();
-                uno.SkillAvg = rndfl.getInt(40, 100);
+                uno.SkillAvg = rndfl.getInt(10, 100);
                 uno.Age = rndfl.getInt(15, 39);
 
                 sq.addPlayer(uno);
@@ -70,7 +81,7 @@ namespace ModelsTest
             Console.WriteLine(sq.ToString());
 
          //   RandomFiller.RandomFiller rndfl = new RandomFiller.RandomFiller();
-            Team sq1 = new Team("Juventus");
+         //   Team sq1 = new Team("Juventus");
             for (int i = 0; i < 11; i++)
             {
 
@@ -90,6 +101,61 @@ namespace ModelsTest
             Match partita = new Match(sq, sq1);
             Console.WriteLine(sq.TeamName+" - "+ sq1.TeamName+" "+ partita.Score().ToString());
             
+        }
+
+        [Test]
+        public void TestSuTantePartite()
+        {
+            RandomFiller.RandomFiller rndfl = new RandomFiller.RandomFiller();
+            Team sq, sq1;
+            for (int j = 0; j < 20; j++)
+            {
+                if (rndfl.getInt(100) > 50)
+                {
+                    sq = new Team("Milan");
+                    sq1 = new Team("Juventus");
+                }
+                else
+                {
+                    sq1 = new Team("Milan");
+                    sq = new Team("Juventus");
+                }
+                // Team sq = new Team("Milan");
+                for (int i = 0; i < 11; i++)
+                {
+
+                    Player uno = new Player();
+                    uno.PlayerName = rndfl.getName();
+                    uno.PlayerSurname = rndfl.getSurname();
+                    uno.SkillAvg = rndfl.getInt(40, 100);
+                    uno.Age = rndfl.getInt(15, 39);
+
+                    sq.addPlayer(uno);
+
+                }
+
+                for (int i = 0; i < 11; i++)
+                {
+
+                    Player uno = new Player();
+                    uno.PlayerName = rndfl.getName();
+                    uno.PlayerSurname = rndfl.getSurname();
+                    uno.SkillAvg = rndfl.getInt(40, 100);
+                    uno.Age = rndfl.getInt(15, 39);
+
+                    sq1.addPlayer(uno);
+
+                }
+
+
+
+
+                Match partita = new Match(sq, sq1);
+                Console.WriteLine("\n*********\n" + sq.getAvgTeam().ToString() + " : " + sq1.getAvgTeam().ToString());
+                Console.WriteLine(sq.TeamName + " - " + sq1.TeamName + " " + partita.Score().ToString());
+
+            }
+
         }
     }
 }
