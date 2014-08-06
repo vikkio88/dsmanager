@@ -43,7 +43,36 @@ namespace DsManager.Models
 
         private void Simulate()
         {
-            
+            int diff = (HomeTeam.getAvgTeam() - AwayTeam.getAvgTeam());
+            if (diff < 0)
+            {
+                goalAway = (AwayTeam.getAvgTeam() - HomeTeam.getAvgTeam()) % 6;
+                goalHome = 0;
+                goalHome += chance();
+                goalAway += chance();
+                goalHome += bonusHome();
+            }
+            else
+            {
+                goalHome = (HomeTeam.getAvgTeam() - AwayTeam.getAvgTeam()) % 6;
+                goalAway = 0;
+                goalAway += chance();
+                goalHome += bonusHome();
+            }
+
+        }
+
+        private int chance()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            return rnd.getInt(0, 2);
+        }
+
+        private int bonusHome()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            if (rnd.getInt(0, 100) > 60) return 1;
+            return 0;
         }
 
 

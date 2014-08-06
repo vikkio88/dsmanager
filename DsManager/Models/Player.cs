@@ -55,7 +55,7 @@ namespace DsManager.Models
             temp += rnd.getInt(1, 3);
             temp -= rnd.getInt(1, 3);
             
-            if (temp < 0) temp = 0.1;
+            if (temp <= 0) temp = 0.1;
             if (temp > 130) temp = 130;
 
 
@@ -77,7 +77,7 @@ namespace DsManager.Models
 
         private double onAgeModifier()
         {
-            if (Age > 35) return -0.5;
+            if (Age > 32) return -0.5;
             if (Age > 30) return -0.2;
             if (Age > 28) return -0.1;
             if (Age > 26) return 0.1;

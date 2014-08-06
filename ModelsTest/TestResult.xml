@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\Project1.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-08-06" time="16:16:33">
+<test-results name="C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\Project1.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-08-06" time="17:21:17">
   <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.6387" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.2\bin" machine-name="ASUSX550C" user="vikkio" user-domain="asusx550c" />
   <culture-info current-culture="it-IT" current-uiculture="it-IT" />
-  <test-suite type="Project" name="C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\Project1.nunit" executed="True" result="Success" success="True" time="0.002" asserts="0">
+  <test-suite type="Project" name="C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\Project1.nunit" executed="True" result="Success" success="True" time="0.003" asserts="0">
     <results>
       <test-suite type="Assembly" name="C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\bin\Debug\ModelsTest.dll" executed="True" result="Success" success="True" time="0.002" asserts="0">
         <results>
           <test-suite type="Namespace" name="ModelsTest" executed="True" result="Success" success="True" time="0.002" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="TestCtorVariRandom" executed="True" result="Success" success="True" time="0.001" asserts="0">
+              <test-suite type="TestFixture" name="TestCtorVariRandom" executed="True" result="Success" success="True" time="0.002" asserts="0">
                 <results>
-                  <test-case name="ModelsTest.TestCtorVariRandom.GiocatoriCasuali" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="ModelsTest.TestCtorVariRandom.SimulazionePartita" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
             </results>
