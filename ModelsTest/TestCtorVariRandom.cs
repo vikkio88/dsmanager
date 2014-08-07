@@ -108,8 +108,7 @@ namespace ModelsTest
         {
             RandomFiller.RandomFiller rndfl = new RandomFiller.RandomFiller();
             Team sq, sq1;
-            for (int j = 0; j < 20; j++)
-            {
+
                 if (rndfl.getInt(100) > 50)
                 {
                     sq = new Team("Milan");
@@ -151,9 +150,31 @@ namespace ModelsTest
 
 
                 Match partita = new Match(sq, sq1);
+           for (int j = 0; j < 20; j++)
+           {
                 Console.WriteLine("\n*********\n" + sq.getAvgTeam().ToString() + " : " + sq1.getAvgTeam().ToString());
                 Console.WriteLine(sq.TeamName + " - " + sq1.TeamName + " " + partita.Score().ToString());
+                System.Threading.Thread.Sleep(50);
 
+            }
+
+        }
+
+        [Test]
+        public void TestCTORPlayerConNazionalitaDiverse()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            Player pl = new Player(rnd.getName("Spain"), rnd.getSurname("Spain"),rnd.getAge(),rnd.getAvgSkill(),"Spain");
+            Console.WriteLine(pl.ToString());
+        }
+
+        [Test]
+        public void TestGameUtils()
+        {
+            List<Player> list = GameUtils.getRandomPlayersList(50);
+            foreach (Player pl in list)
+            {
+                Console.WriteLine(pl.ToString());
             }
 
         }

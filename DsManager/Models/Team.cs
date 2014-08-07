@@ -56,18 +56,20 @@ namespace DsManager.Models
                 tot += player.Val;
             }
 
-            return tot / players.Count;
+            return Math.Round(tot / players.Count, 2);
         }
 
         public override string ToString()
         {
-            string result = TeamName+" \n";
-            foreach (Player player in players)
+           // string result = TeamName+" \n";
+            string result = "";
+        /*    foreach (Player player in players)
             {
                 result += player.ToString() +"\n";
             }
-            result += "media: " + getAvgTeam().ToString()+"\n";
-            result += "media valore: " + getAvgVal().ToString() + "M €";
+         * */
+            result += "media: " + getAvgTeam().ToString();// +"\n";
+            result += " media valore: " + getAvgVal().ToString() + "M €";
             return result;
 
         }

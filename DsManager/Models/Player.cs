@@ -12,6 +12,7 @@ namespace DsManager.Models
         private string playerSurname;
         private int age;
         private int skillAvg;
+        private string nationality;
         private double val = 0;
 
         public int SkillAvg
@@ -31,7 +32,12 @@ namespace DsManager.Models
             get { return playerSurname; }
             set { playerSurname = value; }
         }
-        
+
+        public string Nationality
+        {
+            get { return nationality; }
+            set { nationality = value; }
+        }
 
         public string PlayerName
         {
@@ -46,20 +52,40 @@ namespace DsManager.Models
                 }
         }
 
+
+        #endregion
+
+        #region Ctor
+        public Player()
+        {
+
+        }
+
+        public Player(string n, string s, int a, int skill, string nation = "Italiano")
+        {
+            this.PlayerName = n;
+            this.PlayerSurname = s;
+            this.Age = a;
+            this.SkillAvg = skill;
+            this.Nationality = nation;
+        }
+        #endregion
+
+
         private double CalculateVal()
         {
-            double temp=0;
+            double temp = 0;
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             temp = priceOnSkill();
             temp = temp * (1 + onAgeModifier());
             temp += rnd.getInt(1, 3);
             temp -= rnd.getInt(1, 3);
-            
+
             if (temp <= 0) temp = 0.1;
             if (temp > 130) temp = 130;
 
 
-            return temp;
+            return Math.Round(temp,2);
         }
 
         private double priceOnSkill()
@@ -85,9 +111,6 @@ namespace DsManager.Models
             if (Age > 20) return 0.3;
             return 0.5;
         }
-        #endregion
-
-
         public override string ToString()
         {
             return string.Format("{0} {1}, etá {3} : media {2}% : prezzo {4}M €", PlayerName, PlayerSurname, SkillAvg.ToString(),Age.ToString(),Val.ToString());

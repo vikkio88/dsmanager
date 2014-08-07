@@ -37,17 +37,20 @@ namespace DsManager.Models
 
         public MatchResult Score()
         {
-            this.Simulate();
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            this.Simulate(rnd);
             MatchResult res = new MatchResult(this.goalHome, this.goalAway);
             res.Goals(homeTeam, awayTeam);
             return res;
         }
 
-        private void Simulate()
+        private void Simulate(RandomFiller.RandomFiller rnd)
         {
-            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-            if (rnd.getInt(100) > 30)
+            
+            int c = rnd.getInt(100);
+            if (c > 35)
             {
+                //Console.WriteLine("risultato normale");
                 int diff = (HomeTeam.getAvgTeam() - AwayTeam.getAvgTeam());
                 if (diff < 0)
                 {
@@ -67,6 +70,7 @@ namespace DsManager.Models
             }
             else
             {
+                //Console.WriteLine("risultato nel 30%");
                 goalHome = 0;
                 goalAway = 0;
                 goalHome += chance();
@@ -79,13 +83,17 @@ namespace DsManager.Models
         private int chance()
         {
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-            return rnd.getInt(0, 2);
+            return rnd.getInt(0, 3);
         }
 
         private int bonusHome()
         {
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-            if (rnd.getInt(0, 100) > 66) return 1;
+            if (rnd.getInt(0, 100) > 66)
+            {
+               // Console.WriteLine("Ottenuto Goal Home bonus");
+                return 1;
+            }
             return 0;
         }
 
