@@ -14,6 +14,7 @@ namespace DsManager.Models
         private int skillAvg;
         private string nationality;
         private double val = 0;
+        private string role;
 
         public int SkillAvg
         {
@@ -52,6 +53,12 @@ namespace DsManager.Models
                 }
         }
 
+        public string Role
+        {
+            set { this.role = value; }
+            get{return this.role;}
+        }
+
 
         #endregion
 
@@ -61,12 +68,13 @@ namespace DsManager.Models
 
         }
 
-        public Player(string n, string s, int a, int skill, string nation = "Italiano")
+        public Player(string n, string s, int a, int skill,string r, string nation = "Italiano")
         {
             this.PlayerName = n;
             this.PlayerSurname = s;
             this.Age = a;
             this.SkillAvg = skill;
+            this.Role = r;
             this.Nationality = nation;
         }
         #endregion
@@ -113,7 +121,7 @@ namespace DsManager.Models
         }
         public override string ToString()
         {
-            return string.Format("{0} {1}, etá {3} : media {2}% : prezzo {4}M €", PlayerName, PlayerSurname, SkillAvg.ToString(),Age.ToString(),Val.ToString());
+            return string.Format("{0} {1}, etá {3} : media {2}% : ruolo {5} : prezzo {4}M €", PlayerName, PlayerSurname, SkillAvg.ToString(),Age.ToString(),Val.ToString(),Role);
         }
         
     }

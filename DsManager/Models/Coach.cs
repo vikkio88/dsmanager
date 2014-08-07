@@ -10,6 +10,7 @@ namespace DsManager.Models
         private string coachName;
         private string coachSurname;
         private int skillAvg;
+        private Module favouriteModule;
 
         public int SkillAvg
         {

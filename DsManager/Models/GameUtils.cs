@@ -14,7 +14,7 @@ namespace DsManager.Models
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             for (int i = 0; i < n; i++)
             {
-                list.Add(new Player(rnd.getName(), rnd.getSurname(),rnd.getAge(),rnd.getAvgSkill()));
+                list.Add(new Player(rnd.getName(), rnd.getSurname(),rnd.getAge(),rnd.getAvgSkill(),rnd.getRole()));
                 System.Threading.Thread.Sleep(5);
             }
 

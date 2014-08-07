@@ -13,6 +13,7 @@ namespace DsManager
 {
     public partial class Form1 : Form
     {
+        Team a = new Team("Baracca");
         public Form1()
         {
             
@@ -29,7 +30,7 @@ namespace DsManager
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            List<Player> players = GameUtils.getRandomPlayersList(15);
+            List<Player> players = GameUtils.getRandomPlayersList(40);
             foreach (Player item in players)
             {
                 playerBindingSource.Add(item);
@@ -62,7 +63,7 @@ namespace DsManager
 
         private void RefreshTeam()
         {
-            Team a = new Team("Baracca");
+            
             foreach (Player item in playerBindingSource1)
             {
                 a.addPlayer(item);

@@ -16,11 +16,7 @@ namespace ModelsTest
         public void GiocatoriCasuali()
         {
             RandomFiller.RandomFiller rndfl = new RandomFiller.RandomFiller();
-            Player uno = new Player();
-            uno.PlayerName = rndfl.getName();
-            uno.PlayerSurname = rndfl.getSurname();
-            uno.SkillAvg = rndfl.getInt(30, 100);
-            uno.Age = rndfl.getInt(15, 39);
+            Player uno = new Player(rndfl.getName(),rndfl.getSurname(),rndfl.getAge(),rndfl.getAvgSkill(),rndfl.getRole());
             Console.WriteLine(uno.ToString());
 
         }
@@ -32,19 +28,15 @@ namespace ModelsTest
             Team sq = new Team("Banana UTD");
             for (int i = 0; i < 11; i++)
             {
-               
-                Player uno = new Player();
-                uno.PlayerName = rndfl.getName();
-                uno.PlayerSurname = rndfl.getSurname();
-                uno.SkillAvg = rndfl.getInt(40, 100);
-                uno.Age = rndfl.getInt(15, 39);
+
+                Player uno = new Player(rndfl.getName(), rndfl.getSurname(), rndfl.getAge(), rndfl.getAvgSkill(), rndfl.getRole());
 
                 sq.addPlayer(uno);
                 //Console.WriteLine(uno.ToString());
             }
 
 
-            Console.WriteLine(sq.ToString());
+            Console.WriteLine(sq.ToStringFull());
 
         }
 
@@ -177,6 +169,23 @@ namespace ModelsTest
                 Console.WriteLine(pl.ToString());
             }
 
+        }
+
+        [Test]
+        public void TestModuloEValidita()
+        {
+            Module m = new Module("4-4-2");
+            List<Player> players = GameUtils.getRandomPlayersList(20);
+            Team t = new Team("Ababa");
+            foreach (Player item in players)
+            {
+                t.addPlayer(item);
+            }
+            Console.WriteLine(t.ToStringFull());
+            if (m.check(t, m))
+                Console.WriteLine("OK");
+            else
+                Console.WriteLine("Nope");
         }
     }
 }

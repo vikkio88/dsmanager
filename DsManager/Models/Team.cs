@@ -81,5 +81,23 @@ namespace DsManager.Models
         {
             return players.ElementAt(i);
         }
+
+        public string ToStringFull()
+        {
+            string result = TeamName+" \n";
+            
+                foreach (Player player in players)
+                {
+                    result += player.ToString() +"\n";
+                }
+            result += "media: " + getAvgTeam().ToString();// +"\n";
+            result += " media valore: " + getAvgVal().ToString() + "M €";
+            return result;
+        }
+
+        internal List<Player> getPlayers()
+        {
+            return players;
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace RandomFiller
         private string[] surnamesIta = { "Rossi", "Ferrari", "Russo", "Bianchi", "Esposito", "Colombo", "Romano", "Ricci", "Gallo", "Greco", "Conti", "Marino", "De Luca", "Bruno", "Costa", "Giordano", "Mancini", "Lombardi", "Barbieri", "Moretti", "Fontana", "Rizzo", "Santoro", "Caruso", "Mariani", "Martini", "Ferrara", "Galli", "Rinaldi", "Leone", "Serra", "Conte", "Villa", "Marini", "Ferri", "Bianco", "Monti" };
         private string[] namesSpa = { "Luciano", "Esteban", "Mariano", "Carlos", "Fernando", "Jose", "Juan", "Luis", "Carlito", "Inacio","Diego","Antonio","Pablo","Juan","Andrés","Luis","Enrique","Emilio" };
         private string[] surnamesSpa = { "Lopez", "Almagro", "Barros", "Duque", "Fernandez", "Garzon", "Ibanez", "Lamas", "Montero", "García","González", "Rodríguez", "Fernández", "López", "Martínez", "Sánchez", "Pérez", "Gómez", "Martín", "Jiménez", "Ruiz", "Hernández", "Diáz", "Moreno" };
+        private string[] roles = { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD","AS","AC" };
         public RandomFiller()
         {
             rnd = new Random();
@@ -73,6 +74,11 @@ namespace RandomFiller
 
             return surnamesIta[rnd.Next(0, surnamesIta.Count())];
 
+        }
+
+        public string getRole()
+        {
+            return roles[rnd.Next(0, roles.Count())];
         }
     }
 }
