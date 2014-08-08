@@ -187,5 +187,28 @@ namespace ModelsTest
             else
                 Console.WriteLine("Nope");
         }
+
+        [Test]
+        public void TestGiocatoriPerOgniRuoloperSquadra()
+        {
+            List<Player> players = GameUtils.getRandomPlayersList(20);
+            Team t = new Team("Ababa");
+            foreach (Player item in players)
+            {
+                t.addPlayer(item);
+            }
+            Console.WriteLine(t.ToStringFull());
+            int[] plfr = Module.playersForRolesinTeam(t);
+            List<string> rol = Module.getRoles();
+            int length = plfr.Count();
+            for (int i = 0; i < length; i++)
+            {
+                if (plfr[i] > 0)
+                {
+                    Console.WriteLine(rol.ElementAt(i)+" : "+plfr[i].ToString());
+                }
+            }
+            
+        }
     }
 }

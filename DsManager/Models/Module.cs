@@ -11,12 +11,20 @@ namespace DsManager.Models
         public string[] modules = { "4-4-2","4-3-3","4-5-1","4-2-4","3-5-2","3-4-3","3-3-4","5-4-1","5-3-2"};
         private List<string> roles = new List<string>(){ "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
         private int[] nplayr = { 0,0,0,0,0,0,0,0,0,0};
-        private string p;
 
         public Module(string p)
         {
-            // TODO: Complete member initialization
-            this.selectedModule = p;
+            if (modules.ToList().IndexOf(p) >= 0)
+            {
+                this.selectedModule = p;
+            }else
+            {
+                throw new InvalidOperationException("This module doesnt exist");
+            }
+        }
+
+        public static string[] getModules(){
+            return new string[]{ "4-4-2","4-3-3","4-5-1","4-2-4","3-5-2","3-4-3","3-3-4","5-4-1","5-3-2"};
         }
         public string SelectedModule
         {
@@ -45,7 +53,24 @@ namespace DsManager.Models
             return true;
         }
 
-        private int[] playerForRolesForModule(string mod)
+        public static List<string> getRoles()
+        {
+            return new List<string>() { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
+        }
+
+        public static int[] playersForRolesinTeam(Team t)
+        {
+            int[] nplayr = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            List<string> roles = new List<string>() { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
+            foreach (Player pl in t.getPlayers())
+            {
+                int i = roles.IndexOf(pl.Role);
+                if (i >= 0) nplayr[i] += 1;
+            }
+            return nplayr;
+        }
+
+        public int[] playerForRolesForModule(string mod)
         {
             if (modules.Contains(mod))
             {

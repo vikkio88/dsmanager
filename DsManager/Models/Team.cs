@@ -59,6 +59,7 @@ namespace DsManager.Models
             return Math.Round(tot / players.Count, 2);
         }
 
+
         public override string ToString()
         {
            // string result = TeamName+" \n";
