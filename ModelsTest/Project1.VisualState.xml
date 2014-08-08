@@ -5,8 +5,8 @@
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\Project1.nunit" Expanded="true" />
-    <Node UniqueName="[0-1009]C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\bin\Debug\ModelsTest.dll" Expanded="true" />
-    <Node UniqueName="[0-1010]ModelsTest" Expanded="true" />
+    <Node UniqueName="[0-1010]C:\Users\vikkio\Documents\Visual Studio 2013\Projects\DsManager\ModelsTest\bin\Debug\ModelsTest.dll" Expanded="true" />
+    <Node UniqueName="[0-1011]ModelsTest" Expanded="true" />
     <Node UniqueName="[0-1001]ModelsTest.TestCtorVariRandom" Expanded="true" />
   </Nodes>
 </VisualState>

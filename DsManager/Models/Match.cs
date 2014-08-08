@@ -13,6 +13,7 @@ namespace DsManager.Models
         private Team awayTeam;
         private int goalHome;
         private int goalAway;
+        bool played = false;
 
         public Team HomeTeam
         {
@@ -37,24 +38,35 @@ namespace DsManager.Models
 
         public MatchResult Score()
         {
-            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-            this.Simulate(rnd);
-            MatchResult res = new MatchResult(this.goalHome, this.goalAway);
-            res.Goals(homeTeam, awayTeam);
-            return res;
+            if (!played) { 
+                RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+                this.Simulate(rnd);
+                MatchResult res = new MatchResult(this.goalHome, this.goalAway);
+                res.Goals(homeTeam, awayTeam);
+                played = true;
+                return res;
+            }
+            else
+            {
+                MatchResult res = new MatchResult(this.goalHome, this.goalAway);
+                res.Goals(homeTeam, awayTeam);
+                played = true;
+                return res;
+            }
         }
 
         private void Simulate(RandomFiller.RandomFiller rnd)
         {
-            
+            int homepoints = HomeTeam.getAvgTeam();
+            int awaypoints = AwayTeam.getAvgTeam();
             int c = rnd.getInt(100);
             if (c > 35)
             {
                 //Console.WriteLine("risultato normale");
-                int diff = (HomeTeam.getAvgTeam() - AwayTeam.getAvgTeam());
+                int diff = (homepoints - awaypoints);
                 if (diff < 0)
                 {
-                    goalAway = (AwayTeam.getAvgTeam() - HomeTeam.getAvgTeam()) % 6;
+                    goalAway = (awaypoints - homepoints) % 6;
                     goalHome = 0;
                     goalHome += chance();
                     goalAway += chance();
@@ -62,7 +74,7 @@ namespace DsManager.Models
                 }
                 else
                 {
-                    goalHome = (HomeTeam.getAvgTeam() - AwayTeam.getAvgTeam()) % 6;
+                    goalHome = (homepoints - awaypoints) % 6;
                     goalAway = 0;
                     goalAway += chance();
                     goalHome += bonusHome();
@@ -95,6 +107,18 @@ namespace DsManager.Models
                 return 1;
             }
             return 0;
+        }
+
+        public override string ToString()
+        {
+            if (played)
+            {
+                return string.Format(HomeTeam.TeamName + " " + goalHome + " - " + goalAway + " " + AwayTeam.TeamName);
+            }
+            else
+            {
+                return HomeTeam.TeamName+" - "+AwayTeam.TeamName+" Match not played yet";
+            }
         }
 
 

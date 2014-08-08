@@ -10,8 +10,8 @@ namespace DsManager.Models
     {
         private string teamName;
         private List<Player> players;
-        private Coach coach;
-
+        private Coach coach = null;
+        private int avg;
 
 
         public string TeamName
@@ -24,7 +24,6 @@ namespace DsManager.Models
         {
             teamName = t;
             players = new List<Player>();
-            coach = new Coach();
         }
 
 
@@ -37,6 +36,29 @@ namespace DsManager.Models
             players.Add(p);
         }
 
+        public void addPlayers(List<Player> lp)
+        {
+            this.players = lp;
+        }
+
+        public int Avg
+        {
+            get
+            {
+                int tot = 0;
+                foreach (Player item in players)
+                {
+                    tot += item.SkillAvg;
+                }
+                tot = (tot / players.Count);
+                return tot;
+            }
+            /*set
+            {
+                avg = value;
+            }*/
+        }
+
         public int getAvgTeam()
         {
             int tot = 0;
@@ -44,8 +66,31 @@ namespace DsManager.Models
             {
                 tot += player.SkillAvg;
             }
+            
+            tot = tot / players.Count; //fino a qui media giocatori
 
-            return tot / players.Count;
+            //influenza dell'allenatore
+            if (coach != null)
+            {
+                if (coach.SkillAvg > tot)
+                {
+                    Console.WriteLine("Bonus allenatore: +" + ((coach.SkillAvg - tot) / 2).ToString() );
+                    tot += ((coach.SkillAvg - tot) / 2);
+                }
+                Module current = coach.FavouriteModule;
+                if (current.check(this)) 
+                {
+                    Console.WriteLine("Bonus modulo: +5");
+                    tot += 5;
+                }
+                else
+                {
+                    Console.WriteLine("Malus modulo: -5");
+                    tot -= 5;
+                }
+            }
+
+            return tot;
         }
 
         public double getAvgVal()
@@ -59,6 +104,17 @@ namespace DsManager.Models
             return Math.Round(tot / players.Count, 2);
         }
 
+        public int[] getPlayersPerRoles()
+        {
+            if (coach != null)
+            {
+                Module m = coach.FavouriteModule;
+                int[] plfr =Module.playersForRolesinTeam(this);
+                return plfr;
+            }
+            throw new InvalidOperationException("There is no Coach");
+        }
+
 
         public override string ToString()
         {
@@ -69,7 +125,7 @@ namespace DsManager.Models
                 result += player.ToString() +"\n";
             }
          * */
-            result += "media: " + getAvgTeam().ToString();// +"\n";
+            result += "media: " + Avg.ToString();// +"\n";
             result += " media valore: " + getAvgVal().ToString() + "M €";
             return result;
 
@@ -86,12 +142,13 @@ namespace DsManager.Models
         public string ToStringFull()
         {
             string result = TeamName+" \n";
+            if (coach != null) result += "all: " + coach.ToString()+"\n";
             
                 foreach (Player player in players)
                 {
                     result += player.ToString() +"\n";
                 }
-            result += "media: " + getAvgTeam().ToString();// +"\n";
+            result += "media: " + Avg.ToString();// +"\n";
             result += " media valore: " + getAvgVal().ToString() + "M €";
             return result;
         }

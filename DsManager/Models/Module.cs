@@ -7,6 +7,7 @@ namespace DsManager.Models
 {
     public class Module
     {
+        #region Fields&Props&Ctor
         private string selectedModule;
         public string[] modules = { "4-4-2","4-3-3","4-5-1","4-2-4","3-5-2","3-4-3","3-3-4","5-4-1","5-3-2"};
         private List<string> roles = new List<string>(){ "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
@@ -22,18 +23,40 @@ namespace DsManager.Models
                 throw new InvalidOperationException("This module doesnt exist");
             }
         }
+        public string SelectedModule
+        {
+            set { selectedModule = value; }
+            get { return selectedModule; }
+        }
 
+        #endregion
+
+        #region staticMethods
         public static string[] getModules(){
             return new string[]{ "4-4-2","4-3-3","4-5-1","4-2-4","3-5-2","3-4-3","3-3-4","5-4-1","5-3-2"};
         }
-        public string SelectedModule
+ 
+        public static List<string> getRoles()
         {
-            set { selectedModule = value;}
-            get { return selectedModule;}
+            return new List<string>() { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
         }
 
-        //fare in modo che per ogni modulo ci siano degli interi che descrivono quanti giocatori servono per
-        //ciascun ruolo
+        public static int[] playersForRolesinTeam(Team t)
+        {
+            int[] nplayr = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            List<string> roles = new List<string>() { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
+            foreach (Player pl in t.getPlayers())
+            {
+                int i = roles.IndexOf(pl.Role);
+                if (i >= 0) nplayr[i] += 1;
+            }
+            return nplayr;
+        }
+
+
+        #endregion
+
+        #region methods
 
         public bool check(Team t, Module m)
         {
@@ -52,23 +75,11 @@ namespace DsManager.Models
 
             return true;
         }
-
-        public static List<string> getRoles()
+        public bool check(Team t)
         {
-            return new List<string>() { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
+            return check(t, this);
         }
 
-        public static int[] playersForRolesinTeam(Team t)
-        {
-            int[] nplayr = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            List<string> roles = new List<string>() { "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
-            foreach (Player pl in t.getPlayers())
-            {
-                int i = roles.IndexOf(pl.Role);
-                if (i >= 0) nplayr[i] += 1;
-            }
-            return nplayr;
-        }
 
         public int[] playerForRolesForModule(string mod)
         {
@@ -108,5 +119,12 @@ namespace DsManager.Models
                 throw new InvalidOperationException("Modulo non esistente");
             }
         }
+
+        public override string ToString()
+        {
+            return this.SelectedModule;
+        }
+
+        #endregion
     }
 }

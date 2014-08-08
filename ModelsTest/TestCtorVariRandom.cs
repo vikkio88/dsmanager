@@ -192,7 +192,7 @@ namespace ModelsTest
         public void TestGiocatoriPerOgniRuoloperSquadra()
         {
             List<Player> players = GameUtils.getRandomPlayersList(20);
-            Team t = new Team("Ababa");
+            Team t = new Team("Juventus");
             foreach (Player item in players)
             {
                 t.addPlayer(item);
@@ -210,5 +210,62 @@ namespace ModelsTest
             }
             
         }
+
+
+        [Test]
+        public void TestCoach()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+
+            Coach erminio = new Coach(rnd.getName(), rnd.getSurname(), rnd.getAvgSkill(),rnd.getModules());
+            Console.WriteLine(erminio.ToString());
+        }
+        [Test]
+        public void TestRandomTeamName()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+
+            for (int i = 0; i < 20; i++)
+            {
+                Console.WriteLine(rnd.getTeamName());
+                GameUtils.wait(20);
+            }
+        }
+
+        [Test]
+        public void TestSquadraConAllenatore()
+        {
+            Team a = GameUtils.getRandomTeamsList().First();
+
+            Console.WriteLine(a.ToStringFull());
+            string[] r = Module.getRoles().ToArray();
+            
+            int[] plfr = a.getPlayersPerRoles();
+            int length = plfr.Count();
+
+            for (int i = 0; i < length; i++)
+            {
+                Console.WriteLine(r[i]+" : "+plfr[i]);    
+            }
+        }
+        
+        [Test]
+        public void testSimulazionePartitaCasuale()
+        {
+            List<Team> list = GameUtils.getRandomTeamsList(2);
+            Team a = list.ElementAt(0);
+            Team b = list.ElementAt(1);
+
+            Match m = new Match(a, b);
+            Console.WriteLine(a.ToStringFull());
+            Console.WriteLine(b.ToStringFull());
+            Console.WriteLine("\n*********\n" + a.Avg + " : " + b.Avg);
+            Console.WriteLine(a.TeamName + " - " + b.TeamName + " " + m.Score().ToString());
+
+            
+        }
+
+
+
     }
 }
