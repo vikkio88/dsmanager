@@ -46,7 +46,7 @@ namespace DsManager.Models
             set { playerName = value; }
         }
         public double Val{
-            set{this.val = this.CalculateVal();}
+           // set{this.val = this.CalculateVal();}
             get{
                 if(this.val==0) return this.CalculateVal();
                 return this.val;
@@ -89,11 +89,51 @@ namespace DsManager.Models
             temp += rnd.getInt(1, 3);
             temp -= rnd.getInt(1, 3);
 
+            //Modificatori prezzo sul Ruolo
+            if (Role != null)
+            {
+                if (this.Role == "AC")
+                {
+                    temp += rnd.getInt(0, 4);
+
+                }
+                else if (this.Role == "AS")
+                {
+                    temp += rnd.getInt(0, 2);
+                }
+                else if (this.Role == "AD")
+                {
+                    temp += rnd.getInt(0, 2);
+                }
+                else if (this.Role == "CC")
+                {
+                    temp += rnd.getInt(0, 3);
+                }
+                else if (this.Role == "DC")
+                {
+                    temp += rnd.getInt(0, 2);
+                }
+            }
+            //
+
+            //Modificatori spiccioli
+            if (rnd.getInt(100) > 50)
+            {
+                temp += (rnd.getInt(1, 5) / 10.0);
+            }
+            else
+            {
+                temp -= (rnd.getInt(1, 5) / 10.0);
+            }
+            //
+
             if (temp <= 0) temp = 0.1;
             if (temp > 130) temp = 130;
 
+            temp = Math.Round(temp,2);
+            this.val = temp;
 
-            return Math.Round(temp,2);
+            return temp;
         }
 
         private double priceOnSkill()

@@ -49,6 +49,30 @@ namespace DsManager.Models
            
             return list;
         }
+        public static List<Player> getRandomPlayersForModule(Module m)
+        {
+            List<Player> list = new List<Player>();
+
+            string[] roles = Module.getRoles().ToArray();
+
+            int[] plfr = m.playerForRolesForModule();
+            int length = plfr.Count();
+
+            for (int i = 0; i < length; i++)
+            {
+                if (plfr[i] > 0)
+                {
+                    List<Player> temp = getRandomPlayersPerRole(roles[i], plfr[i]);
+                    foreach (Player item in temp)
+                    {
+                        list.Add(item);
+                    }
+                }
+            }
+
+
+            return list;
+        }
 
         public static List<Team> getRandomTeamsList(int n=1){
             List<Team> list = new List<Team>();

@@ -282,8 +282,98 @@ namespace ModelsTest
         {
             Player giocatore = new Player("Paul", "Pogba", 21, 79, "CC", "Francese");
             Console.WriteLine(giocatore.ToString());
-            giocatore = new Player("Arturo", "Vidal", 28, 84, "CC", "Cileno");
+            giocatore = new Player("Arturo", "Vidal", 28, 85, "CC", "Cileno");
             Console.WriteLine(giocatore.ToString());
+            giocatore = new Player("Lionel", "Messi", 27, 95, "AS", "Argentino");
+            Console.WriteLine(giocatore.ToString());
+            giocatore = new Player("Robin", "VanPersie", 31, 89, "AC", "Olandese");
+            Console.WriteLine(giocatore.ToString());
+            giocatore = new Player("Alvaro", "Morata", 22, 76, "AC", "Spagnolo");
+            Console.WriteLine(giocatore.ToString());
+        }
+
+        [Test]
+        public void TestGiocatoriCasualiPerModulo()
+        {
+            List<Player> giocatori = GameUtils.getRandomPlayersForModule(new Module("4-4-2"));
+
+            foreach (Player item in giocatori)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+
+        [Test]
+        public void TestPartitaConSquadreConModuloAdatto()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            Team a = new Team(rnd.getTeamName());
+            GameUtils.wait();
+            Team b = new Team(rnd.getTeamName());
+            List<Coach> coachl = GameUtils.getRandomCoachList(2);
+
+            a.setCoach(coachl.ElementAt(0));
+            b.setCoach(coachl.ElementAt(1));
+
+            a.addPlayers(GameUtils.getRandomPlayersForModule(coachl.ElementAt(0).FavouriteModule));
+            b.addPlayers(GameUtils.getRandomPlayersForModule(coachl.ElementAt(1).FavouriteModule));
+
+            Match m = new Match(a, b);
+            Console.WriteLine(a.ToStringFull());
+            Console.WriteLine(b.ToStringFull());
+            Console.WriteLine("\n*********\n" + a.Avg + " : " + b.Avg);
+            Console.WriteLine(a.TeamName + " - " + b.TeamName + " " + m.Score().ToString());
+
+        }
+
+        [Test]
+        public void TestPartitaConGiocatoriVeri()
+        {
+            Team juve = new Team("Juventus FC");
+            Coach all = new Coach("Massimiliano", "Allegri", 80, "4-3-3");
+            juve.setCoach(all);
+
+            List<Player> juvteam = new List<Player>(){
+                                                        new Player("Gigi","Buffon",36,87,"PT"),
+                                                        new Player("Leonardo","Bonucci",27,80,"DC"),
+                                                        new Player("Giorgio","Chiellini",30,86,"DC"),
+                                                        new Player("Andrea","Barzagli",33,84,"DC"),
+                                                        new Player("Paul", "Pogba", 21, 80, "CC", "Francese"),
+                                                        new Player("Andrea", "Pirlo", 35, 87, "CC"),
+                                                        new Player("Arturo", "Vidal", 28, 85, "CC", "Cileno"),
+                                                        new Player("Kwadwo", "Asamoah", 26, 80, "CS", "Ghanese"),
+                                                        new Player("Stephen", "Lichsteiner", 30, 80, "CD", "Svizzero"),
+                                                        new Player("Carlitos", "Tevez", 30, 88, "AC", "Argentino"),
+                                                        new Player("Fernando", "Llorente", 29, 82, "AC", "Spagnolo")
+                                                        };
+            juve.addPlayers(juvteam);
+
+            Team milan = new Team("AC Milan");
+            Coach all1 = new Coach("Filippo", "Inzaghi", 70, "4-4-2");
+            milan.setCoach(all1);
+            List<Player> milteam = new List<Player>(){
+                                                        new Player("Christian","Abbiati",37,80,"PT"),
+                                                        new Player("Kevin","Constant",27,78,"DD"),
+                                                        new Player("Mattia","De Sciglio",22,78,"DS"),
+                                                        new Player("Daniele","Bonera",33,77,"DC"),
+                                                        new Player("Amil", "Rami", 29, 82, "DC", "Francese"),
+                                                        new Player("Riccardo", "Montolivo", 29, 84, "CC"),
+                                                        new Player("Keisuke", "Honda", 28, 81, "CC", "Giapponese"),
+                                                        new Player("Neigel", "De Jong", 30, 79, "CC", "Olandese"),
+                                                        new Player("Michael", "Essien", 32, 81, "CC", "Ghanese"),
+                                                        new Player("Stephan", "El Shaarawy", 22, 81, "AC"),
+                                                        new Player("Mario", "Balotelli", 24, 84, "AC")
+                                                        };
+            milan.addPlayers(milteam);
+
+
+            //Partita
+            Match m = new Match(juve, milan);
+            Console.WriteLine(juve.ToStringFull());
+            Console.WriteLine(milan.ToStringFull());
+            Console.WriteLine("\n*********\n" + juve.Avg + " : " + milan.Avg);
+            Console.WriteLine(juve.TeamName + " - " + milan.TeamName + " " + m.Score().ToString());
+
         }
 
 

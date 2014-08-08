@@ -126,5 +126,10 @@ namespace DsManager.Models
         }
 
         #endregion
+
+        public int[] playerForRolesForModule()
+        {
+            return playerForRolesForModule(this.selectedModule);
+        }
     }
 }

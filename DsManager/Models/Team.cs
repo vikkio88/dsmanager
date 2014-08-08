@@ -13,12 +13,23 @@ namespace DsManager.Models
         private Coach coach = null;
         private int avg;
         private Module defaultModule = new Module("4-4-2");
+        private int numbofPlayers = 0;
 
 
         public string TeamName
         {
             get { return teamName; }
             set { teamName = value; }
+        }
+
+        public int NumbOfPlayers
+        {
+            //set { }
+            
+            get 
+            { 
+                return players.Count;
+            }
         }
 
         public Team(string t)
@@ -74,9 +85,14 @@ namespace DsManager.Models
             //influenza dell'allenatore
             if (coach != null)
             {
-                if (coach.SkillAvg > tot)
+                if (coach.SkillAvg >= tot)
                 {
                     Console.WriteLine("Bonus allenatore: +" + ((coach.SkillAvg - tot) / 2).ToString() );
+                    tot += ((coach.SkillAvg - tot) / 2);
+                }
+                else
+                {
+                    Console.WriteLine("Malus allenatore: " + ((coach.SkillAvg - tot) / 2).ToString());
                     tot += ((coach.SkillAvg - tot) / 2);
                 }
                 Module current = coach.FavouriteModule;
@@ -148,7 +164,18 @@ namespace DsManager.Models
         }
 
 
+        public Player getScorer()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
 
+            while (true)
+            {
+                Player scorer = players.ElementAt(rnd.getInt(NumbOfPlayers));
+                if (scorer.Role != "PT")
+                    return scorer;
+            }
+
+        }
 
         internal Player getPlayer(int i)
         {

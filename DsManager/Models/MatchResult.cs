@@ -51,12 +51,14 @@ namespace DsManager.Models
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             for (int i = 0; i < goalHome; i++)
             {    
-                scorerHome.Add(homeTeam.getPlayer(rnd.getInt(11)));
+                scorerHome.Add(homeTeam.getScorer());
+                GameUtils.wait(30);
             }
 
             for (int i = 0; i < goalAway; i++)
             {
-                scorerAway.Add(awayTeam.getPlayer(rnd.getInt(11)));
+                scorerAway.Add(awayTeam.getScorer());
+                GameUtils.wait(30);
             }
         }
     }
