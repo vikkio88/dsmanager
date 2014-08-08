@@ -54,6 +54,49 @@ namespace DsManager.Models
                 return res;
             }
         }
+        public Team Winner()
+        {
+            if (played)
+            {
+                if (goalHome > goalAway)
+                {
+                    return HomeTeam;
+                }
+                return AwayTeam;
+            }
+            else
+            {
+                throw new InvalidOperationException("Partita non ancora giocata");
+            }
+        }
+        public Team Loser()
+        {
+            if (played)
+            {
+                if (goalHome < goalAway)
+                {
+                    return HomeTeam;
+                }
+                return AwayTeam;
+            }
+            else
+            {
+                throw new InvalidOperationException("Partita non ancora giocata");
+            }
+        }
+
+        public bool Draw()
+        {
+            if (played)
+            {
+                if (goalAway == goalHome) return true;
+                return false;
+            }
+            else
+            {
+                throw new InvalidOperationException("Partita non ancora giocata");
+            }
+        }
 
         private void Simulate(RandomFiller.RandomFiller rnd)
         {

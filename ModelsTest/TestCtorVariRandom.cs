@@ -400,6 +400,23 @@ namespace ModelsTest
             }
         }
 
+        [Test]
+        public void TestOrdinamentoTeam()
+        {
+            List<Team> lt = GameUtils.getRandomTeamsList(5);
+            foreach (Team item in lt)
+            {
+                Console.WriteLine(item.TeamName+" "+item.Avg);
+            }
+            
+            lt.Sort();
+            Console.WriteLine("************");
+            foreach (Team item in lt)
+            {
+                Console.WriteLine(item.TeamName + " " + item.Avg);
+            }
+        }
+
 
     }
 }

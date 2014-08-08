@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DsManager.Models
 {
-    public class Team
+    public class Team: IComparable
     {
         private string teamName;
         private List<Player> players;
@@ -200,5 +200,20 @@ namespace DsManager.Models
         {
             return players;
         }
-    }
+
+
+    
+        public int CompareTo(object obj)
+        {
+            Team other = (Team) obj;
+            if (this.Avg >+ other.Avg)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+}
 }
