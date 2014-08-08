@@ -376,6 +376,29 @@ namespace ModelsTest
 
         }
 
+        [Test]
+        public void TestSimulazioniTantePartiteCasuali()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+
+
+                List<Team> list = GameUtils.getRandomTeamsList(2);
+                Team a = list.ElementAt(0);
+                Team b = list.ElementAt(1);
+
+                /*
+                Team b = new Team("Juventus FC");
+                b.addPlayers(GameUtils.getRandomPlayersList(20));
+                */
+
+                Match m = new Match(a, b);
+                //  Console.WriteLine(a.ToStringFull());
+                //   Console.WriteLine(b.ToStringFull());
+                Console.WriteLine("\n*********\n" + a.Avg + " : " + b.Avg);
+                Console.WriteLine(a.TeamName + " - " + b.TeamName + " " + m.Score().ToStringTiny());
+            }
+        }
 
 
     }

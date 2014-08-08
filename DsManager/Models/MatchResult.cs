@@ -46,6 +46,11 @@ namespace DsManager.Models
             return res;
         }
 
+        public string ToStringTiny()
+        {
+            return string.Format("{0} - {1}",this.goalHome.ToString(),this.goalAway.ToString());
+        }
+
         public void Goals(Team homeTeam, Team awayTeam)
         {
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
@@ -61,5 +66,7 @@ namespace DsManager.Models
                 GameUtils.wait(30);
             }
         }
+
+
     }
 }
