@@ -12,6 +12,7 @@ namespace DsManager.Models
         private List<Player> players;
         private Coach coach = null;
         private int avg;
+        private Module defaultModule = new Module("4-4-2");
 
 
         public string TeamName
@@ -51,6 +52,7 @@ namespace DsManager.Models
                     tot += item.SkillAvg;
                 }
                 tot = (tot / players.Count);
+                avg = tot;
                 return tot;
             }
             /*set
@@ -87,6 +89,20 @@ namespace DsManager.Models
                 {
                     Console.WriteLine("Malus modulo: -5");
                     tot -= 5;
+                }
+            }
+            else
+            {
+                Module current = defaultModule;
+                if (current.check(this))
+                {
+                    Console.WriteLine("Bonus modulo: +2");
+                    tot += 2;
+                }
+                else
+                {
+                    Console.WriteLine("Malus modulo: -6");
+                    tot -= 6;
                 }
             }
 

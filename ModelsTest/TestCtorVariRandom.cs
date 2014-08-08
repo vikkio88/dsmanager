@@ -255,6 +255,11 @@ namespace ModelsTest
             List<Team> list = GameUtils.getRandomTeamsList(2);
             Team a = list.ElementAt(0);
             Team b = list.ElementAt(1);
+          
+            /*
+            Team b = new Team("Juventus FC");
+            b.addPlayers(GameUtils.getRandomPlayersList(20));
+            */
 
             Match m = new Match(a, b);
             Console.WriteLine(a.ToStringFull());
@@ -263,6 +268,22 @@ namespace ModelsTest
             Console.WriteLine(a.TeamName + " - " + b.TeamName + " " + m.Score().ToString());
 
             
+        }
+        
+        [Test]
+        public void testGetGiocatorePerRuolo()
+        {
+            Player giocatore = GameUtils.getRandomPlayersPerRole("AC").First();
+            Console.WriteLine(giocatore.ToString());
+        }
+
+        [Test]
+        public void TestValoreGiocatoriReali()
+        {
+            Player giocatore = new Player("Paul", "Pogba", 21, 79, "CC", "Francese");
+            Console.WriteLine(giocatore.ToString());
+            giocatore = new Player("Arturo", "Vidal", 28, 84, "CC", "Cileno");
+            Console.WriteLine(giocatore.ToString());
         }
 
 
