@@ -98,6 +98,23 @@ namespace DsManager.Models
             }
         }
 
+        public void Penalties()
+        {
+            if (Draw())
+            {
+                
+                RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+                if (rnd.getInt(100) > 50)
+                {
+                    goalHome += 1;
+                }
+                else
+                {
+                    goalAway += 1;
+                }
+            }
+        }
+
         private void Simulate(RandomFiller.RandomFiller rnd)
         {
             int homepoints = HomeTeam.getAvgTeam();

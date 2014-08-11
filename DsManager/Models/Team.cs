@@ -166,18 +166,10 @@ namespace DsManager.Models
 
         public Player getScorer()
         {
-            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-
-            while (true)
-            {
-                Player scorer = players.ElementAt(rnd.getInt(NumbOfPlayers));
-                if (scorer.Role != "PT")
-                    return scorer;
-            }
-
+            return GameUtils.getScorer(this);
         }
 
-        internal Player getPlayer(int i)
+        public Player getPlayer(int i)
         {
             return players.ElementAt(i);
         }
@@ -196,9 +188,28 @@ namespace DsManager.Models
             return result;
         }
 
-        internal List<Player> getPlayers()
+        public List<Player> getPlayers()
         {
             return players;
+        }
+
+        public Player getPlayerForRole(string role)
+        {
+            List<string> roles = new List<string>(){ "PT", "DC", "DD", "DS", "CC", "CD", "CS", "AD", "AS", "AC" };
+            if (roles.IndexOf(role)<0)
+            {
+                throw new InvalidOperationException("Not a valid Role");
+            }
+
+            foreach (Player pl in players)
+            {
+                if (pl.Role == role)
+                {
+                    return pl;
+                }
+            }
+
+            throw new Exception("No Player for this Role");
         }
 
 
@@ -215,5 +226,7 @@ namespace DsManager.Models
                 return -1;
             }
         }
-}
+
+
+    }
 }

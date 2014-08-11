@@ -295,7 +295,7 @@ namespace ModelsTest
         [Test]
         public void TestGiocatoriCasualiPerModulo()
         {
-            List<Player> giocatori = GameUtils.getRandomPlayersForModule(new Module("4-4-2"));
+            List<Player> giocatori = GameUtils.getRandomPlayersForModule(new Module("4-2-4"));
 
             foreach (Player item in giocatori)
             {
@@ -335,18 +335,22 @@ namespace ModelsTest
 
             List<Player> juvteam = new List<Player>(){
                                                         new Player("Gigi","Buffon",36,87,"PT"),
-                                                        new Player("Leonardo","Bonucci",27,80,"DC"),
+                                                        new Player("Patrice","Evrá",33,82,"DS"),
                                                         new Player("Giorgio","Chiellini",30,86,"DC"),
                                                         new Player("Andrea","Barzagli",33,84,"DC"),
                                                         new Player("Paul", "Pogba", 21, 80, "CC", "Francese"),
                                                         new Player("Andrea", "Pirlo", 35, 87, "CC"),
                                                         new Player("Arturo", "Vidal", 28, 85, "CC", "Cileno"),
-                                                        new Player("Kwadwo", "Asamoah", 26, 80, "CS", "Ghanese"),
-                                                        new Player("Stephen", "Lichsteiner", 30, 80, "CD", "Svizzero"),
-                                                        new Player("Carlitos", "Tevez", 30, 88, "AC", "Argentino"),
+                                                        new Player("Kwadwo", "Asamoah", 26, 80, "AS", "Ghanese"),
+                                                        new Player("Stephen", "Lichsteiner", 30, 80, "DD", "Svizzero"),
+                                                        new Player("Carlitos", "Tevez", 30, 88, "AD", "Argentino"),
                                                         new Player("Fernando", "Llorente", 29, 82, "AC", "Spagnolo")
                                                         };
             juve.addPlayers(juvteam);
+
+          /*  Module mod = all.FavouriteModule;
+
+            Console.WriteLine("Modulo: " + mod.check(juve).ToString());*/
 
             Team milan = new Team("AC Milan");
             Coach all1 = new Coach("Filippo", "Inzaghi", 70, "4-4-2");
@@ -415,6 +419,46 @@ namespace ModelsTest
             {
                 Console.WriteLine(item.TeamName + " " + item.Avg);
             }
+        }
+
+        
+        [Test]
+        public void TestPartitaConRigori()
+        {
+            Team a = GameUtils.getRandomTeamsList().First();
+            Team b = GameUtils.getRandomTeamsList().First();
+
+            Match m = new Match(a, b);
+            Console.WriteLine(a.TeamName+" - "+b.TeamName+" "+m.Score().ToString());
+
+            if (m.Draw())
+            {
+                Console.WriteLine("Pareggio, ai rigori");
+                m.Penalties();
+                Console.WriteLine("dopo i rigori vince:");
+                Console.WriteLine(m.Winner().TeamName);
+            }
+         
+            
+        }
+
+        [Test]
+        public void TestPlayerForRoleFromRandomTeam()
+        {
+            Team a = GameUtils.getRandomTeamsList().First();
+            Player p;
+            try
+            {
+                p = a.getPlayerForRole("PT");
+                Console.WriteLine(p.ToString());
+               
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Nessun portiere in squadra: "+ e.Message);
+                
+            }
+            
         }
 
 

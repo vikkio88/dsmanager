@@ -68,6 +68,7 @@ namespace DsManager.Models
                         list.Add(item);
                     }
                 }
+                wait(13);
             }
 
 
@@ -86,6 +87,50 @@ namespace DsManager.Models
             }
 
             return list;
+        }
+
+        public static Player getScorer(Team a)
+        {
+            List<Player> list = a.getPlayers();
+            Shuffle<Player>(list);
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            List<Player> scorers = new List<Player>();
+            for (int i = 0; i < a.NumbOfPlayers-4; i++)
+            {
+                Player scorer = list.ElementAt(rnd.getInt(a.NumbOfPlayers));
+                while (scorer.Role=="PT")
+                {
+                    scorer = list.ElementAt(rnd.getInt(a.NumbOfPlayers));
+                }
+                scorers.Add(scorer);
+                
+            }
+
+            foreach (Player item in scorers)
+            {
+                if (item.Role == "AC") return item;
+                if (item.Role == "AS") return item;
+                if (item.Role == "AD") return item;
+            }
+
+            return scorers.First();
+
+
+
+        }
+
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            Random rng = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
 
         public static void wait(int millisec= 5)

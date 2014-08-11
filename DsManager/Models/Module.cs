@@ -95,7 +95,7 @@ namespace DsManager.Models
                     case "4-5-1":
                         return new List<int>() { 1, 2, 1, 1, 3, 1, 1, 0, 0, 1 }.ToArray();
                     case "4-2-4":
-                        return new List<int>() { 1, 2, 1, 1, 0, 1, 1, 1, 1, 2 }.ToArray();
+                        return new List<int>() { 1, 2, 1, 1, 2, 0, 0, 1, 1, 2 }.ToArray();
                    case "3-5-2":
                         return new List<int>() { 1, 3, 0, 0, 3, 1, 1, 0, 0, 2 }.ToArray();
                     case "3-4-3":
