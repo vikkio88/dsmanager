@@ -461,6 +461,13 @@ namespace ModelsTest
             
         }
 
+        [Test]
+        public void PrimoTestLeague()
+        {
+            League l = new League(GameUtils.getRandomTeamsList(4));
+            Console.WriteLine(l.getTableString());
+        }
+
 
     }
 }

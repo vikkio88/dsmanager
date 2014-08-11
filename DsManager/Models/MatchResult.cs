@@ -10,8 +10,8 @@ namespace DsManager.Models
     {
         private int goalHome;
         private int goalAway;
-        List<Player> scorerHome;
-        List<Player> scorerAway;
+        public List<Player> scorerHome;
+        public List<Player> scorerAway;
 
         public MatchResult(int p1, int p2)
         {

@@ -14,6 +14,7 @@ namespace DsManager.Models
         private int goalHome;
         private int goalAway;
         bool played = false;
+        MatchResult result;
 
         public Team HomeTeam
         {
@@ -24,6 +25,21 @@ namespace DsManager.Models
         {
             get { return this.awayTeam; }
           //  set { this.awayTeam = value; }
+        }
+
+        public MatchResult Result
+        {
+            get
+            {
+                if (!played)
+                {
+                    return Score();
+                }
+                else
+                {
+                    return result;
+                }
+            }
         }
 
         #endregion
@@ -41,18 +57,18 @@ namespace DsManager.Models
             if (!played) { 
                 RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
                 this.Simulate(rnd);
-                MatchResult res = new MatchResult(this.goalHome, this.goalAway);
-                res.Goals(homeTeam, awayTeam);
+               
                 played = true;
-                return res;
             }
-            else
-            {
-                MatchResult res = new MatchResult(this.goalHome, this.goalAway);
-                res.Goals(homeTeam, awayTeam);
-                played = true;
-                return res;
-            }
+    
+
+            MatchResult res = new MatchResult(this.goalHome, this.goalAway);
+            res.Goals(homeTeam, awayTeam);
+            
+            result = res;
+
+            return res;
+
         }
         public Team Winner()
         {

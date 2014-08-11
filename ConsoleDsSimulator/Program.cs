@@ -147,7 +147,7 @@ namespace ConsoleDsSimulator
                 
                 if (fav.TeamName == W.TeamName)
                 {
-                    Console.WriteLine("Hai vinto "+quote[c-1]+" Euro");
+                    Console.WriteLine("Hai vinto " + scommessa * quote[c - 1] + " Euro");
                     euro += scommessa * quote[c - 1];
                 }
                 else

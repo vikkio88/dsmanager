@@ -84,6 +84,7 @@ namespace DsManager.Models
                 tempTeam.addPlayers(getRandomPlayersList(15));
                 tempTeam.setCoach(getRandomCoachList().First());
                 list.Add(tempTeam);
+                wait();
             }
 
             return list;
