@@ -44,15 +44,23 @@ namespace DsManager.Models
 
         public void simulateRound()
         {
-            List<Match> results = new List<Match>();
-
-            foreach (Match m in results)
+            if (currentround <= roundsnumber)
             {
-                m.Score();
-            }
+                List<Match> results = fixture.ElementAt(currentround).matches;
 
-            refreshTable(results);
-           // refreshScorers(results);
+                foreach (Match m in results)
+                {
+                    m.Score();
+                }
+
+                refreshTable(results);
+                // refreshScorers(results);
+                currentround += 1;
+            }
+            else
+            {
+                Console.WriteLine("Campionato finito");
+            }
         }
 
         public string getTableString()
@@ -116,6 +124,12 @@ namespace DsManager.Models
                     table[m.AwayTeam] += 1;
                 }
             }
+
+            table = table.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+
+
+
         }
 
         public void ListMatches()
@@ -187,6 +201,14 @@ namespace DsManager.Models
                 {
                     Console.WriteLine(m.ToString());
                 }
+            }
+        }
+
+        public void printFixtureAt(int n)
+        {
+            foreach (Match item in fixture.ElementAt(n).matches)
+            {
+                Console.WriteLine(item.ToString());
             }
         }
 
