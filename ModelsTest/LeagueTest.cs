@@ -16,18 +16,12 @@ namespace ModelsTest
         {
             League a = new League(GameUtils.getRandomTeamsList(10));
             a.ListMatches();
-            Console.WriteLine("*******************\n\n\n");
-            a.printFixtureAt(0);
-            Console.WriteLine("*******************\n\n\n");
-            a.simulateRound();
-            a.printFixtureAt(0);
-            Console.WriteLine("*******************\nCLASSIFICA\n\n" + a.getTableString());
-            a.simulateRound();
-            a.printFixtureAt(1);
-            Console.WriteLine("*******************\nCLASSIFICA\n\n" + a.getTableString());
-            a.simulateRound();
-            a.printFixtureAt(2);
-            Console.WriteLine("*******************\nCLASSIFICA\n\n" + a.getTableString());
+            for (int i = 0; i < 9; i++)
+            {
+                a.simulateRound();
+                a.printFixtureAt(i);
+                Console.WriteLine("***********\n"+a.getTableString());
+            }
             //a.printFixture();
             
         }

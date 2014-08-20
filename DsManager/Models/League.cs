@@ -51,6 +51,7 @@ namespace DsManager.Models
                 foreach (Match m in results)
                 {
                     m.Score();
+                    GameUtils.wait();
                 }
 
                 refreshTable(results);
