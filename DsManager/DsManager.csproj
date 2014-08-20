@@ -63,6 +63,7 @@
     <Compile Include="Models\MatchResult.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Round.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

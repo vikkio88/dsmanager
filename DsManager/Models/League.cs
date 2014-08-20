@@ -13,6 +13,7 @@ namespace DsManager.Models
         public List<Team> leagueTeams;
         public Dictionary<Team, int> table;
         public MyDictionary scorers;
+        List<Round> fixture;
         int roundsnumber = 0;
         int currentround = 0;
 
@@ -31,6 +32,8 @@ namespace DsManager.Models
             }
 
             roundsnumber = leagueTeams.Count - 1;
+
+            fixture = new List<Round>();
 
         }
 
@@ -115,6 +118,11 @@ namespace DsManager.Models
             }
         }
 
+        public void ListMatches()
+        {
+            ListMatches(leagueTeams);
+        }
+
         public void ListMatches(List<Team> ListTeam1)
         {
             List<string> ListTeam = new List<string>();
@@ -137,17 +145,47 @@ namespace DsManager.Models
 
             for (int day = 0; day < numDays; day++)
             {
+                
                 Console.WriteLine("Day {0}", (day + 1));
-
+                Round temp = new Round("Day" + (day + 1));
                 int teamIdx = day % teamsSize;
 
                 Console.WriteLine("{0} vs {1}", teams[teamIdx], ListTeam[0]);
+                // Si deve fare in modo che si selezioni la Team con il nome preciso
+                Team a = selectTeamFromTeamListByName(teams[teamIdx]);
+                Team b = selectTeamFromTeamListByName(ListTeam[0]);
+                temp.matches.Add(new Match(a, b));
+                
 
                 for (int idx = 1; idx < halfSize; idx++)
                 {
                     int firstTeam = (day + idx) % teamsSize;
                     int secondTeam = (day + teamsSize - idx) % teamsSize;
                     Console.WriteLine("{0} vs {1}", teams[firstTeam], teams[secondTeam]);
+                    temp.matches.Add(new Match(selectTeamFromTeamListByName(teams[firstTeam]), selectTeamFromTeamListByName(teams[secondTeam])));
+                }
+                
+                fixture.Add(temp);
+            }
+        }
+
+        private Team selectTeamFromTeamListByName(string p)
+        {
+            foreach (Team item in this.leagueTeams)
+            {
+                if (item.TeamName == p) return item;
+            }
+            throw new InvalidOperationException("Team not found!");
+        }
+
+        public void printFixture()
+        {
+            foreach (Round item in fixture)
+            {
+                Console.WriteLine(item.Description);
+                foreach (Match m in item.matches)
+                {
+                    Console.WriteLine(m.ToString());
                 }
             }
         }

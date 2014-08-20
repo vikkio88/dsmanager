@@ -14,8 +14,11 @@ namespace ModelsTest
         [Test]
         public void testAlgoritmoCampionato()
         {
-            League a = new League(GameUtils.getRandomTeamsList(10));
-            a.ListMatches(a.leagueTeams);
+            League a = new League(GameUtils.getRandomTeamsList(6));
+            a.ListMatches();
+            Console.WriteLine("*******************\n\n\n");
+            a.printFixture();
+            
         }
     }
 }
