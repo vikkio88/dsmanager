@@ -15,13 +15,15 @@ namespace ModelsTest
         public void testAlgoritmoCampionato()
         {
             League a = new League(GameUtils.getRandomTeamsList(10));
-            a.ListMatches();
+            //a.ListMatches();
             for (int i = 0; i < 9; i++)
             {
                 a.simulateRound();
-                a.printFixtureAt(i);
+               // a.printFixtureAt(i);
                 Console.WriteLine("***********\n"+a.getTableString());
             }
+
+            a.simulateRound();
             //a.printFixture();
             
         }

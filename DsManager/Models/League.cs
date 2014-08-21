@@ -17,6 +17,7 @@ namespace DsManager.Models
         int roundsnumber = 0;
         int currentround = 0;
 
+        public int CurrentRound { get { return currentround; } }
         public League(List<Team> Teamlist)
         {
             if ((Teamlist.Count % 2) != 0)
@@ -39,12 +40,17 @@ namespace DsManager.Models
 
         public void generateFixture()
         {
-
+            ListMatches();
         }
 
         public void simulateRound()
         {
-            if (currentround <= roundsnumber)
+            if (fixture.Count == 0)
+            {
+                generateFixture();
+            }
+
+            if (currentround < roundsnumber)
             {
                 List<Match> results = fixture.ElementAt(currentround).matches;
 
@@ -60,7 +66,7 @@ namespace DsManager.Models
             }
             else
             {
-                Console.WriteLine("Campionato finito");
+                Console.WriteLine("Campionato finito\nCLASSIFICA FINALE\n"+getTableString());
             }
         }
 
@@ -161,11 +167,11 @@ namespace DsManager.Models
             for (int day = 0; day < numDays; day++)
             {
                 
-                Console.WriteLine("Day {0}", (day + 1));
+               // Console.WriteLine("Day {0}", (day + 1));
                 Round temp = new Round("Day" + (day + 1));
                 int teamIdx = day % teamsSize;
 
-                Console.WriteLine("{0} vs {1}", teams[teamIdx], ListTeam[0]);
+              //  Console.WriteLine("{0} vs {1}", teams[teamIdx], ListTeam[0]);
                 // Si deve fare in modo che si selezioni la Team con il nome preciso
                 Team a = selectTeamFromTeamListByName(teams[teamIdx]);
                 Team b = selectTeamFromTeamListByName(ListTeam[0]);
@@ -176,7 +182,7 @@ namespace DsManager.Models
                 {
                     int firstTeam = (day + idx) % teamsSize;
                     int secondTeam = (day + teamsSize - idx) % teamsSize;
-                    Console.WriteLine("{0} vs {1}", teams[firstTeam], teams[secondTeam]);
+                //    Console.WriteLine("{0} vs {1}", teams[firstTeam], teams[secondTeam]);
                     temp.matches.Add(new Match(selectTeamFromTeamListByName(teams[firstTeam]), selectTeamFromTeamListByName(teams[secondTeam])));
                 }
                 
