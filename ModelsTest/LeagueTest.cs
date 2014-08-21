@@ -27,5 +27,16 @@ namespace ModelsTest
             //a.printFixture();
             
         }
+
+        [Test]
+        public void TestPlayerFromLine()
+        {
+            List<Player> list = GameUtils.generatePlayersFromFile();
+            foreach (Player item in list)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+        }
     }
 }

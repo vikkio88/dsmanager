@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DsManager.Models
 {
@@ -68,6 +69,34 @@ namespace DsManager.Models
 
         }
 
+        public Player(string line) //string must have this sintax Name:Surname:Age:Skill:Role:Nation
+        {
+            System.Text.RegularExpressions.Match m = Regex.Match(line,@"^(.+?):(.+?):(.+?):(.+?):(.+?):(.+?)\b");
+
+            if(m.Success){
+                //Console.WriteLine(m.Value);
+                int c = 0;
+                foreach (System.Text.RegularExpressions.Group s in m.Groups)
+                {
+                    if (c != 0) 
+                    {
+                        if (c == 1) this.playerName = s.Value;
+                        if (c == 2) this.playerSurname = s.Value;
+                        if (c == 3) this.age = int.Parse(s.Value);
+                        if (c == 4) this.SkillAvg = int.Parse(s.Value);
+                        if (c == 5) this.role = s.Value;
+                        if (c == 6) this.nationality = s.Value;
+                    }
+                    
+                    c++;
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Not a valid String to build a Player");
+            }
+
+        }
         public Player(string n, string s, int a, int skill,string r, string nation = "Italiano")
         {
             this.PlayerName = n;

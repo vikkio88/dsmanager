@@ -90,6 +90,24 @@ namespace DsManager.Models
             return list;
         }
 
+        public static List<Player> generatePlayersFromFile(string Path="players.txt")
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(Path);
+            List<Player> list = new List<Player>();
+            string line;
+            int counter=0;
+            while ((line = file.ReadLine()) != null)
+            {
+                Player p = new Player(line);
+                list.Add(p);
+                counter++;
+            }
+
+            file.Close();
+
+            return list;
+        }
+
         public static Player getScorer(Team a)
         {
             List<Player> list = a.getPlayers();
