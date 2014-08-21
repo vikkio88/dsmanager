@@ -54,9 +54,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="chievo.txt" />
+    <Content Include="fiorentina.txt" />
     <Content Include="inter.txt" />
     <Content Include="juventus.txt" />
     <Content Include="milan.txt" />
+    <Content Include="napoli.txt" />
+    <Content Include="parma.txt" />
     <Content Include="roma.txt" />
     <Content Include="teams.txt" />
   </ItemGroup>

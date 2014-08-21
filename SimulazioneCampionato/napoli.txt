@@ -1,0 +1,10 @@
+Gonzalo:Higuain:27:84:AC:Argentino
+Dries:Mertens:27:80:AS:Belga
+Lorenzo:Insigne:23:76:AD:Italiano
+Marek:Hamsik:27:84:CC:Slovacco
+Gokhan:Inler:30:80:CC:Svizzero
+Jose:Callejon:27:75:CD:Spagnolo
+Raul:Albiol:29:80:DC:Spagnolo
+Miguel Angel:Britos:29:77:DC:Uruguaiano
+Federico:Fernandez:25:74:DC:Argentino
+Jose:Reina:32:83:PT:Spagnolo

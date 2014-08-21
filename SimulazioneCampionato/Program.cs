@@ -118,6 +118,15 @@ namespace SimulazioneCampionato
                 Team a = l.getTeamByTablePosition(n);
                 Console.WriteLine(a.ToStringFull());
             }
+            else if (cmd == "4")
+            {
+                Console.Clear();
+                if (l.CurrentRound > 0)
+                {
+                    Console.WriteLine(l.getScorerTable());
+                }
+
+            }
             else if (cmd == "")
             {
                 Console.Clear();
@@ -127,7 +136,7 @@ namespace SimulazioneCampionato
         private static void printMenu()
         {
             Console.WriteLine("****************\n      Main Menu\n****************");
-            Console.WriteLine("1. Print Table\n2. Simulate Round\n3. Get Info About Team\n\n\t q to quit");
+            Console.WriteLine(" 1. Print Table\n 2. Simulate Round\n 3. Get Info About Team\n 4. Print Scorers\n\n\t q to quit");
         }
 
        private static string UppercaseFirst(string s)

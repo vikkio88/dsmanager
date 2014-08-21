@@ -14,9 +14,9 @@ namespace ModelsTest
         [Test]
         public void testAlgoritmoCampionato()
         {
-            League a = new League(GameUtils.getRandomTeamsList(10));
+            League a = new League(GameUtils.getRandomTeamsList(4));
             //a.ListMatches();
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 4; i++)
             {
                 a.simulateRound();
                // a.printFixtureAt(i);
@@ -24,6 +24,7 @@ namespace ModelsTest
             }
 
             a.simulateRound();
+            Console.WriteLine(a.getScorerTable());
             //a.printFixture();
             
         }

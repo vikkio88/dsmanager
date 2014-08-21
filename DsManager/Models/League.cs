@@ -12,7 +12,7 @@ namespace DsManager.Models
 
         public List<Team> leagueTeams;
         public Dictionary<Team, int> table;
-        public MyDictionary scorers;
+        public Dictionary<Player,TeamGoals> scorers;
         List<Round> fixture;
         int roundsnumber = 0;
         int currentround = 0;
@@ -36,6 +36,7 @@ namespace DsManager.Models
             roundsnumber = leagueTeams.Count - 1;
 
             fixture = new List<Round>();
+            scorers = new Dictionary<Player, TeamGoals>();
 
         }
 
@@ -62,7 +63,7 @@ namespace DsManager.Models
                 }
 
                 refreshTable(results);
-                // refreshScorers(results);
+                refreshScorers(results);
                 currentround += 1;
             }
             else
@@ -99,7 +100,11 @@ namespace DsManager.Models
                     addToScorer(pl, m.AwayTeam);
                 }
             }
+
+            scorers = scorers.OrderByDescending(x => x.Value.goals).ToDictionary(x => x.Key, x => x.Value);
         }
+
+
 
         private void addToScorer(Player pl, Team team)
         {
@@ -108,7 +113,12 @@ namespace DsManager.Models
 
             if (!scorers.ContainsKey(pl))
             {
-                scorers.Add(pl, team.TeamName, 1);
+                TeamGoals tg;
+                tg.TeamName = team.TeamName;
+                tg.goals = 1;
+
+                scorers.Add(pl, tg);
+                //scorers.Add(pl, team.TeamName, 1);
             }
             else
             {
@@ -116,6 +126,19 @@ namespace DsManager.Models
                 temp.goals += 1;
                 scorers[pl] = temp;
             }
+        }
+
+        public string getScorerTable()
+        {
+            string scorersstring = "";
+            int c = 1;
+            foreach (KeyValuePair<Player, TeamGoals> pair in scorers)
+            {
+                scorersstring += c + ". " + pair.Key.PlayerName + " " + pair.Key.PlayerSurname + " - " + pair.Value.TeamName + " - " + pair.Value.goals+"\n";
+                c++;
+            }
+
+            return scorersstring;
         }
 
         private void refreshTable(List<Match> results)
@@ -235,17 +258,6 @@ namespace DsManager.Models
         public int goals;
     }
 
-    public class MyDictionary : Dictionary<Player, TeamGoals>
-    {
-        public void Add(Player pl, string tname, int goals)
-        {
-            TeamGoals tg;
-            tg.TeamName = tname;
-            tg.goals = goals;
-            this.Add(pl, tg);
-
-        }
-    }
 
   
 }
