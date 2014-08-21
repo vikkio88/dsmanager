@@ -18,6 +18,7 @@ namespace DsManager.Models
         int currentround = 0;
 
         public int CurrentRound { get { return currentround; } }
+        public int NumbOfTeam { get { return leagueTeams.Count; } }
         public League(List<Team> Teamlist)
         {
             if ((Teamlist.Count % 2) != 0)
@@ -219,6 +220,12 @@ namespace DsManager.Models
             }
         }
 
+        public Team getTeamByTablePosition(int n = 1)
+        {
+            n -= 1;
+            return table.ElementAt(n).Key;
+        }
+
 
 
     }
@@ -239,4 +246,6 @@ namespace DsManager.Models
 
         }
     }
+
+  
 }

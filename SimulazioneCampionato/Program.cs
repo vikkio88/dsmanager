@@ -44,15 +44,42 @@ namespace SimulazioneCampionato
             else if (cmd == "2")
             {
                 Console.Clear();
+                Console.Write("simulating round "+((l.CurrentRound)+1)+" ...");
                 l.simulateRound();
+                Console.WriteLine("done");
                 GameUtils.wait();
                 l.printFixtureAt(l.CurrentRound - 1);
+            }
+            else if(cmd=="3")
+            {
+                Console.Clear();
+                Console.WriteLine(l.getTableString()+"\nSelect Team by Position");
+                int n;
+                try
+                {
+                    n = int.Parse(Console.ReadLine());
+                    if (n > l.NumbOfTeam)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+                catch
+                {
+                    n = 1;
+                }
+                Console.Clear();
+                Team a = l.getTeamByTablePosition(n);
+                Console.WriteLine(a.ToStringFull());
+            }
+            else if (cmd == "")
+            {
+                Console.Clear();
             }
         }
 
         private static void printMenu()
         {
-            Console.WriteLine("1. Print Table\n2. Simulate Round\n\n\t q to quit");
+            Console.WriteLine("1. Print Table\n2. Simulate Round\n3. Get Info About Team\n\n\t q to quit");
         }
     }
 }
