@@ -1,0 +1,11 @@
+Christian:Abbiati:37:80:PT:Italiano
+Kevin:Constant:27:78:DD:Ghanese
+Mattia:De Sciglio:22:78:DS:Italiano
+Daniele:Bonera:33:77:DC:Italiano
+Amil:Rami:29:82:DC:Francese
+Riccardo:Montolivo:29:84:CC:Italiano
+Keisuke:Honda:28:81:CC:Giapponese
+Neigel:De Jong:30:79:CC:Olandese
+Michael:Essien:32:81:CC:Ghanese
+Stephan:El Shaarawy:22:81:AC:Italiano
+Mario:Balotelli:24:84:AC:Italiano
