@@ -68,7 +68,8 @@ namespace DsManager.Models
             }
             else
             {
-                Console.WriteLine("Campionato finito\nCLASSIFICA FINALE\n"+getTableString());
+               // Console.WriteLine("Campionato finito\nCLASSIFICA FINALE\n"+getTableString());
+                throw new Exception("No more Rounds left");
             }
         }
 

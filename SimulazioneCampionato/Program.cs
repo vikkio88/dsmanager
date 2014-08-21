@@ -44,6 +44,7 @@ namespace SimulazioneCampionato
                     GameUtils.wait();
                 }
                 l = new League(teamList);
+                l.generateFixture();
                 Console.WriteLine("done!");
             }
 
@@ -92,10 +93,20 @@ namespace SimulazioneCampionato
             {
                 Console.Clear();
                 Console.Write("simulating round "+((l.CurrentRound)+1)+" ...");
-                l.simulateRound();
-                Console.WriteLine("done");
+                try
+                {
+                    l.simulateRound();
+                    Console.WriteLine("done");
+                    l.printFixtureAt(l.CurrentRound - 1);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("No more match to play! League Ended");
+                }
+                
+                
                 GameUtils.wait();
-                l.printFixtureAt(l.CurrentRound - 1);
+                
             }
             else if(cmd=="3")
             {
@@ -127,6 +138,26 @@ namespace SimulazioneCampionato
                 }
 
             }
+            else if (cmd == "5")
+            {
+                Console.Clear();
+                Console.WriteLine("Select Round[1/"+(l.NumbOfTeam-1)+"]");
+                int n;
+                try
+                {
+                    n = int.Parse(Console.ReadLine());
+                    if (n > l.NumbOfTeam)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+                catch
+                {
+                    n = 1;
+                }
+                Console.Clear();
+                l.printFixtureAt(n-1);
+            }
             else if (cmd == "")
             {
                 Console.Clear();
@@ -136,7 +167,7 @@ namespace SimulazioneCampionato
         private static void printMenu()
         {
             Console.WriteLine("****************\n      Main Menu\n****************");
-            Console.WriteLine(" 1. Print Table\n 2. Simulate Round\n 3. Get Info About Team\n 4. Print Scorers\n\n\t q to quit");
+            Console.WriteLine(" 1. Print Table\n 2. Simulate Round\n 3. Get Info About Team\n 4. Print Scorers\n 5. Print Fixture at Round x\n\n\t q to quit");
         }
 
        private static string UppercaseFirst(string s)
