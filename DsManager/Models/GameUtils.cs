@@ -45,10 +45,18 @@ namespace DsManager.Models
             {
                 Coach rndCoach = new Coach(rnd.getName(), rnd.getSurname(), rnd.getAvgSkill(), rnd.getModules());
                 list.Add(rndCoach);
+                wait();
             }
            
             return list;
         }
+
+        public static Coach getRandomCoach()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            return new Coach(rnd.getName(), rnd.getSurname(), rnd.getAvgSkill(), rnd.getModules());
+        }
+
         public static List<Player> getRandomPlayersForModule(Module m)
         {
             List<Player> list = new List<Player>();
@@ -156,5 +164,7 @@ namespace DsManager.Models
         {
             System.Threading.Thread.Sleep(millisec);
         }
+
+
     }
 }
