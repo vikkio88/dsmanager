@@ -258,5 +258,10 @@ namespace DsManager.Models
         {
             players.Remove(pl);
         }
+
+        internal Coach getCoach()
+        {
+            return this.coach;
+        }
     }
 }

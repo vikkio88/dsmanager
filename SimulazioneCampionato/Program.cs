@@ -214,6 +214,9 @@ namespace SimulazioneCampionato
                 
                 saveHistory();
                 GameUtils.AgePlayers(l);
+                EnterToContinue();
+                GameUtils.CheckCoachWork(l);
+                EnterToContinue();
                 l.reset();
                 GameUtils.CalciomercatoRandom(l);
                 Console.WriteLine("\n\nhit enter to start a new Season");
@@ -227,6 +230,13 @@ namespace SimulazioneCampionato
                 Environment.Exit(0);
             }
 
+        }
+
+        private static void EnterToContinue()
+        {
+            Console.Write("hit enter to continue...");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         private static void printAlbo()

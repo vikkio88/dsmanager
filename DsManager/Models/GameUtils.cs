@@ -281,5 +281,27 @@ namespace DsManager.Models
                 }
             }
         }
+
+        public static void CheckCoachWork(League l)
+        {
+            Team last = l.getTeamByTablePosition(l.NumbOfTeam);
+            Team secondLast = l.getTeamByTablePosition(l.NumbOfTeam-1);
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            if (rnd.getInt(100) > 20)
+            {
+                Console.WriteLine(last.TeamName+" fired the coach "+last.getCoach().ToStringShort());
+                Coach temp = getRandomCoach();
+                last.setCoach(temp);
+                Console.WriteLine("\tThey hired "+temp.ToStringShort());
+            }
+            wait();
+            if (rnd.getInt(100) > 60)
+            {
+                Console.WriteLine(secondLast.TeamName + " fired the coach " + secondLast.getCoach().ToStringShort());
+                Coach temp = getRandomCoach();
+                secondLast.setCoach(temp);
+                Console.WriteLine("\tThey hired " + temp.ToStringShort());
+            }
+        }
     }
 }
