@@ -13,8 +13,11 @@ namespace SimulazioneCampionato
         static League l;
         static List<string> albo = new List<string>();
         static int anno = 2014;
+        static string playername;
+        static Team playerteam;
         static void Main(string[] args)
         {
+            inizializePlayer();
             string A = "1";
             Console.WriteLine("Generate a random League(1) or Use a File(2)?[1/2]");
             A = Console.ReadLine();
@@ -81,12 +84,68 @@ namespace SimulazioneCampionato
             Console.ReadLine();
             Console.Clear();
 
+            chooseTeam();
+
+
+
             string cmd = "";
             while (cmd != "q")
             {
                 command(ref cmd);
             }
 
+        }
+
+        private static void chooseTeam()
+        {
+            Console.WriteLine("So, "+playername+", now choose the Team you want to be DS of:");
+            int c = 1;
+            foreach (Team t in l.table.Keys)
+            {
+                Console.WriteLine(c+". "+t.TeamName);
+                c++;
+            }
+            Console.Write("[1/"+c+"]> ");
+            c = int.Parse(Console.ReadLine());
+            showTeam(c);
+        }
+
+        private static void showTeam(int c)
+        {
+            try
+            {
+                
+                if (c > l.NumbOfTeam)
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+            catch
+            {
+                c = 1;
+            }
+            Console.Clear();
+            Team a = l.getTeamByTablePosition(c);
+            Console.WriteLine(a.ToStringFull());
+            Console.Write("\tDo you want to choose this one? [y/n]> ");
+            string ans = Console.ReadLine();
+            if (ans == "y")
+            {
+                playerteam = l.getTeamByTablePosition(c);
+                Console.Clear();
+            }
+            else
+            {
+                Console.Clear();
+                chooseTeam();
+            }
+        }
+
+        private static void inizializePlayer()
+        {
+            Console.WriteLine("**************************\n*     DS Simulator 2014   *\n**************************\n");
+            Console.WriteLine("\n\nHello, welcome to DS Simulator 2014, insert your name to start this adventure: ");
+            playername = Console.ReadLine();
         }
 
         private static List<string> ReadTeamNameFromFile()
