@@ -172,7 +172,7 @@ namespace DsManager.Models
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             List<Team> tlist = l.leagueTeams;
             List<Player> onmarket = new List<Player>();
-            
+            Console.WriteLine("Finestra di Calciomercato\n\n");
             //put some random player on a list
             foreach (Team t in tlist)
             {
@@ -208,13 +208,15 @@ namespace DsManager.Models
                 int missingpl = avg - t.NumbOfPlayers;
                 if (missingpl > 0)
                 {
+                    List<Player> rndpl = new List<Player>();
                     Console.WriteLine(t.TeamName+" got new players");
-                    List<Player> rndpl = getRandomPlayersList(missingpl);
+                     rndpl = getRandomPlayersList(missingpl);
                     foreach (Player pl in rndpl)
                     {
                         Console.WriteLine("\t"+pl.ToStringShort());
                         t.addPlayer(pl);
                     }
+                    wait(7);
                 }
             }
         }

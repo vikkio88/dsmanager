@@ -11,7 +11,7 @@ namespace SimulazioneCampionato
     class Program
     {
         static League l;
-        static Dictionary<string, int> albo = new Dictionary<string, int>();
+        static List<string> albo = new List<string>();
         static int anno = 2014;
         static void Main(string[] args)
         {
@@ -220,6 +220,7 @@ namespace SimulazioneCampionato
             }
             else
             {
+                saveHistory();
                 printAlbo();
                 Environment.Exit(0);
             }
@@ -228,17 +229,17 @@ namespace SimulazioneCampionato
 
         private static void printAlbo()
         {
-            Console.WriteLine("Albo d'Oro del tuo Campionato");
-            foreach (KeyValuePair<string,int> entry in albo)
+            Console.WriteLine("Albo d'Oro del tuo Campionato\n");
+            foreach (string entry in albo)
             {
-                Console.WriteLine(entry.Key+" "+entry.Value);
+                Console.WriteLine(entry);
             }
             Console.ReadLine();
         }
 
         private static void saveHistory()
         {
-            albo.Add(l.getTeamByTablePosition(1).TeamName, anno);
+            albo.Add(anno + " " + l.getTeamByTablePosition(1).TeamName + "\n\tVincitore Marcatori: " + l.getStringScorerByScorerPosition(1));
             anno += 1;
         }
 
