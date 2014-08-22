@@ -14,7 +14,8 @@ namespace SimulazioneCampionato
         static List<string> albo = new List<string>();
         static int anno = 2014;
         static string playername;
-        static Team playerteam;
+        static double money = GameUtils.getRandomMoney();
+       // static Team playerteam;
         static void Main(string[] args)
         {
             inizializePlayer();
@@ -105,7 +106,7 @@ namespace SimulazioneCampionato
                 Console.WriteLine(c+". "+t.TeamName);
                 c++;
             }
-            Console.Write("[1/"+c+"]> ");
+            Console.Write("[1/"+(c-1)+"]> ");
             c = int.Parse(Console.ReadLine());
             showTeam(c);
         }
@@ -131,8 +132,10 @@ namespace SimulazioneCampionato
             string ans = Console.ReadLine();
             if (ans == "y")
             {
-                playerteam = l.getTeamByTablePosition(c);
-                Console.Clear();
+                l.getTeamByTablePosition(c).isplayers = true;
+                Console.WriteLine("\t" + l.getTeamByTablePosition(c).TeamName+" choosen, your budget is "+ money + " M euros");
+                EnterToContinue();
+               // Console.Clear();
             }
             else
             {
@@ -195,6 +198,9 @@ namespace SimulazioneCampionato
                     Console.WriteLine("No more match to play! League Ended");
                     Console.WriteLine(anno+" League Winner: "+l.getTeamByTablePosition(1).TeamName);
                     Console.WriteLine("Scorers table winner: "+ l.getStringScorerByScorerPosition(1));
+                    
+                    playerReport();
+                    
                     askforcontinue();
                 }
                 
@@ -262,6 +268,11 @@ namespace SimulazioneCampionato
             }
         }
 
+        private static void playerReport()
+        {
+           // throw new NotImplementedException();
+        }
+
         private static void askforcontinue()
         {
             Console.WriteLine("Do you want to start another League? [y/n]");
@@ -275,9 +286,15 @@ namespace SimulazioneCampionato
                 GameUtils.AgePlayers(l);
                 EnterToContinue();
                 GameUtils.CheckCoachWork(l);
+
+                //LICENZIA ALLENATORE GIOCATORE
+
                 EnterToContinue();
                 l.reset();
                 GameUtils.CalciomercatoRandom(l);
+
+                //CALCIOMERCATO GIOCATORE
+
                 Console.WriteLine("\n\nhit enter to start a new Season");
                 Console.ReadLine();
                 Console.Clear();

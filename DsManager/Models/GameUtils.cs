@@ -8,6 +8,13 @@ namespace DsManager.Models
 {
     public static class GameUtils
     {
+
+        public static double getRandomMoney()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            double ret = rnd.getInt(3, 80);
+            return Math.Round(ret, 2);
+        }
         public static List<Player> getRandomPlayersPerRole(string role,int n = 1)
         {
             List<Player> list = new List<Player>();
@@ -217,6 +224,7 @@ namespace DsManager.Models
             //put some random player on a list
             foreach (Team t in tlist)
             {
+                if (t.isplayers) continue;
                 int howmany = rnd.getInt(0,3);
                 for (int i = 0; i < howmany ; i++)
                 {
@@ -231,6 +239,11 @@ namespace DsManager.Models
             {
                 int n = rnd.getInt(1, l.NumbOfTeam);
                 Team temp = l.getTeamByTablePosition(n);
+                while(temp.isplayers){
+                    n = rnd.getInt(1, l.NumbOfTeam);
+                    temp = l.getTeamByTablePosition(n);
+                    wait();
+                }
                 Console.WriteLine(temp.TeamName+" bought "+pl.ToStringShort());
                 temp.addPlayer(pl);
             }
@@ -287,20 +300,30 @@ namespace DsManager.Models
             Team last = l.getTeamByTablePosition(l.NumbOfTeam);
             Team secondLast = l.getTeamByTablePosition(l.NumbOfTeam-1);
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-            if (rnd.getInt(100) > 20)
+           
+            //if is not a player team
+            if (last.isplayers == false)
             {
-                Console.WriteLine(last.TeamName+" fired the coach "+last.getCoach().ToStringShort());
-                Coach temp = getRandomCoach();
-                last.setCoach(temp);
-                Console.WriteLine("\tThey hired "+temp.ToStringShort());
+                if (rnd.getInt(100) > 20)
+                {
+                    Console.WriteLine(last.TeamName + " fired the coach " + last.getCoach().ToStringShort());
+                    Coach temp = getRandomCoach();
+                    last.setCoach(temp);
+                    Console.WriteLine("\tThey hired " + temp.ToStringShort());
+                }
             }
+
             wait();
-            if (rnd.getInt(100) > 60)
+
+            if (secondLast.isplayers == false)
             {
-                Console.WriteLine(secondLast.TeamName + " fired the coach " + secondLast.getCoach().ToStringShort());
-                Coach temp = getRandomCoach();
-                secondLast.setCoach(temp);
-                Console.WriteLine("\tThey hired " + temp.ToStringShort());
+                if (rnd.getInt(100) > 60)
+                {
+                    Console.WriteLine(secondLast.TeamName + " fired the coach " + secondLast.getCoach().ToStringShort());
+                    Coach temp = getRandomCoach();
+                    secondLast.setCoach(temp);
+                    Console.WriteLine("\tThey hired " + temp.ToStringShort());
+                }
             }
         }
     }

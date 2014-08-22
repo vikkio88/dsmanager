@@ -15,6 +15,11 @@ namespace DsManager.Models
         private Module defaultModule = new Module("4-4-2");
         private int numbofPlayers = 0;
 
+        //for gaming porpouse
+        public bool isplayers = false;
+        //
+
+
 
         public string TeamName
         {
