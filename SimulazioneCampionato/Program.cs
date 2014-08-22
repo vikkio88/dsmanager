@@ -92,16 +92,21 @@ namespace SimulazioneCampionato
             else if (cmd == "2")
             {
                 Console.Clear();
-                Console.Write("simulating round "+((l.CurrentRound)+1)+" ...");
+                
                 try
                 {
+
                     l.simulateRound();
+                    Console.Write("simulating round " + ((l.CurrentRound) + 1) + " ...");
+                    GameUtils.wait(500);
                     Console.WriteLine("done");
                     l.printFixtureAt(l.CurrentRound - 1);
                 }
                 catch(Exception e)
                 {
                     Console.WriteLine("No more match to play! League Ended");
+                    Console.WriteLine("League Winner: "+l.getTeamByTablePosition(1).TeamName);
+                    Console.WriteLine("Scorers table winner: "+ l.getStringScorerByScorerPosition(1));
                 }
                 
                 

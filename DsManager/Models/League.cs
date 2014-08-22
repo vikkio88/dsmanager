@@ -250,6 +250,18 @@ namespace DsManager.Models
             return table.ElementAt(n).Key;
         }
 
+        public Player getPlayerByScorerPosition(int n = 1)
+        {
+            n -= 1;
+            return scorers.ElementAt(n).Key;
+        }
+
+        public string getStringScorerByScorerPosition(int n = 1)
+        {
+            n -= 1;
+            return scorers.ElementAt(n).Key.PlayerName + " " + scorers.ElementAt(n).Key.PlayerSurname + " - " + scorers.ElementAt(n).Value.TeamName + " - " + scorers.ElementAt(n).Value.goals;
+        }
+
 
 
     }

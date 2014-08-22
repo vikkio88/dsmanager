@@ -136,6 +136,19 @@ namespace DsManager.Models
             return Math.Round(tot / players.Count, 2);
         }
 
+        public double getAvgAge()
+        {
+            double tot = 0;
+      
+            foreach (Player player in players)
+            {
+                tot += player.Age;
+              
+            }
+
+            return Math.Round((tot / players.Count), 2);
+        }
+
         public int[] getPlayersPerRoles()
         {
             if (coach != null)

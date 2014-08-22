@@ -55,8 +55,8 @@ namespace DsManager.Models
         public MatchResult Score()
         {
             if (!played) { 
-                RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
-                this.Simulate(rnd);
+               
+                this.Simulate();
                
                 played = true;
             }
@@ -131,12 +131,13 @@ namespace DsManager.Models
             }
         }
 
-        private void Simulate(RandomFiller.RandomFiller rnd)
+        private void Simulate()
         {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             int homepoints = HomeTeam.getAvgTeam();
             int awaypoints = AwayTeam.getAvgTeam();
             int c = rnd.getInt(100);
-            if (c > 35)
+            if (c > 25)
             {
                 //Console.WriteLine("risultato normale");
                 int diff = (homepoints - awaypoints);
