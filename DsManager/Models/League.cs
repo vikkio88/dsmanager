@@ -42,6 +42,7 @@ namespace DsManager.Models
 
         public void generateFixture()
         {
+            GameUtils.Shuffle<Team>(leagueTeams);
             ListMatches();
         }
 
