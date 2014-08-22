@@ -174,6 +174,7 @@ namespace DsManager.Models
                 foreach (Player pl in t.players)
                 {
                     pl.Age += 1;
+
                     if (pl.Age > 34)
                     {
                         if (rnd.getInt(100) > 50)
@@ -186,6 +187,11 @@ namespace DsManager.Models
                         if (pl.Age > 31)
                         {
                             pl.SkillAvg -= rnd.getInt(0, 3);
+                        }
+                        else
+                        {
+                            pl.SkillAvg += rnd.getInt(0, 3);
+                            if (pl.Age < 19) pl.SkillAvg += rnd.getInt(1, 3);
                         }
                     }
                 }
