@@ -166,5 +166,57 @@ namespace DsManager.Models
         }
 
 
+
+        public static void CalciomercatoRandom(League l)
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            List<Team> tlist = l.leagueTeams;
+            List<Player> onmarket = new List<Player>();
+            
+            //put some random player on a list
+            foreach (Team t in tlist)
+            {
+                int howmany = rnd.getInt(0,3);
+                for (int i = 0; i < howmany ; i++)
+                {
+                    Player temp = t.popPlayerAt(rnd.getInt(t.NumbOfPlayers));
+                    Console.WriteLine(t.TeamName+" put "+temp.ToStringShort()+" on the transfer list");
+                    onmarket.Add(temp);
+                }
+            }
+            Console.WriteLine("\n******************\n");
+            //assign those players to a new team randomly
+            foreach (Player pl in onmarket)
+            {
+                int n = rnd.getInt(1, l.NumbOfTeam);
+                Team temp = l.getTeamByTablePosition(n);
+                Console.WriteLine(temp.TeamName+" bought "+pl.ToStringShort());
+                temp.addPlayer(pl);
+            }
+
+            //Balancing Team with Random Players
+            int tot = 0;
+            foreach (Team t in tlist)
+            {
+                tot += t.NumbOfPlayers;
+            }
+            int avg = tot / l.NumbOfTeam;
+
+            Console.WriteLine("\n******************\n");
+            foreach (Team t in tlist)
+            {
+                int missingpl = avg - t.NumbOfPlayers;
+                if (missingpl > 0)
+                {
+                    Console.WriteLine(t.TeamName+" got new players");
+                    List<Player> rndpl = getRandomPlayersList(missingpl);
+                    foreach (Player pl in rndpl)
+                    {
+                        Console.WriteLine("\t"+pl.ToStringShort());
+                        t.addPlayer(pl);
+                    }
+                }
+            }
+        }
     }
 }

@@ -11,17 +11,46 @@ namespace SimulazioneCampionato
     class Program
     {
         static League l;
+        static Dictionary<string, int> albo = new Dictionary<string, int>();
+        static int anno = 2014;
         static void Main(string[] args)
         {
             string A = "1";
             Console.WriteLine("Generate a random League(1) or Use a File(2)?[1/2]");
             A = Console.ReadLine();
             if (A == "1")
-            { 
+            {
+                Console.WriteLine("How many Teams do you want in your League?");
+                int a;
+                try
+                {
+                    a = int.Parse(Console.ReadLine());
+                    if (a > 18)
+                    {
+                        throw new Exception("Too Many Teams");
+                    }
+
+                    if (a % 2 != 0)
+                    {
+                        //throw new Exception("Must be a pair number of Teams");
+                        a -= 1;
+                    }
+
+                    if (a <= 0)
+                    {
+                        throw new Exception("Not enough teams");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: " + e.Message + "\n team number choose by default 8");
+                        a=8;
+                }
+
                 Console.WriteLine("Hit enter to generate a random League");
                 Console.ReadKey();
                 Console.Write("generating...");
-                l = new League(GameUtils.getRandomTeamsList(10));
+                l = new League(GameUtils.getRandomTeamsList(a));
                 Console.WriteLine("done!");
             }
             else
@@ -97,8 +126,8 @@ namespace SimulazioneCampionato
                 {
 
                     l.simulateRound();
-                    Console.Write("simulating round " + ((l.CurrentRound) + 1) + " ...");
-                    GameUtils.wait(500);
+                    Console.Write("simulating round " + ((l.CurrentRound)) + " ...");
+                    GameUtils.wait(50);
                     Console.WriteLine("done");
                     l.printFixtureAt(l.CurrentRound - 1);
                 }
@@ -107,6 +136,7 @@ namespace SimulazioneCampionato
                     Console.WriteLine("No more match to play! League Ended");
                     Console.WriteLine("League Winner: "+l.getTeamByTablePosition(1).TeamName);
                     Console.WriteLine("Scorers table winner: "+ l.getStringScorerByScorerPosition(1));
+                    askforcontinue();
                 }
                 
                 
@@ -167,6 +197,49 @@ namespace SimulazioneCampionato
             {
                 Console.Clear();
             }
+            else
+            {
+                Console.Clear();
+            }
+        }
+
+        private static void askforcontinue()
+        {
+            Console.WriteLine("Do you want to start another League? [y/n]");
+            string yn = "";
+            yn = Console.ReadLine();
+
+            if (yn == "y") 
+            {
+                saveHistory();
+                l.reset();
+                GameUtils.CalciomercatoRandom(l);
+                Console.WriteLine("\n\nhit enter to start a new Season");
+                Console.ReadLine();
+                Console.Clear();
+            }
+            else
+            {
+                printAlbo();
+                Environment.Exit(0);
+            }
+
+        }
+
+        private static void printAlbo()
+        {
+            Console.WriteLine("Albo d'Oro del tuo Campionato");
+            foreach (KeyValuePair<string,int> entry in albo)
+            {
+                Console.WriteLine(entry.Key+" "+entry.Value);
+            }
+            Console.ReadLine();
+        }
+
+        private static void saveHistory()
+        {
+            albo.Add(l.getTeamByTablePosition(1).TeamName, anno);
+            anno += 1;
         }
 
         private static void printMenu()

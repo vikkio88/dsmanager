@@ -259,11 +259,32 @@ namespace DsManager.Models
         public string getStringScorerByScorerPosition(int n = 1)
         {
             n -= 1;
-            return scorers.ElementAt(n).Key.PlayerName + " " + scorers.ElementAt(n).Key.PlayerSurname + " - " + scorers.ElementAt(n).Value.TeamName + " - " + scorers.ElementAt(n).Value.goals;
+            if (scorers.Count != 0)
+            {
+                return scorers.ElementAt(n).Key.PlayerName + " " + scorers.ElementAt(n).Key.PlayerSurname + " - " + scorers.ElementAt(n).Value.TeamName + " - " + scorers.ElementAt(n).Value.goals;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
 
 
+
+        public void reset()
+        {
+            this.currentround = 0;
+
+            fixture = new List<Round>();
+            scorers = new Dictionary<Player, TeamGoals>();
+            table = new Dictionary<Team, int>();
+            foreach (Team t in this.leagueTeams)
+            {
+                table.Add(t, 0);
+            }
+            generateFixture();
+        }
     }
     public struct TeamGoals
     {

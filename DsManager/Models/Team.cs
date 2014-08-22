@@ -241,5 +241,17 @@ namespace DsManager.Models
         }
 
 
+
+        internal void rmPlayer(int i)
+        {
+            players.RemoveAt(i);
+        }
+
+        internal Player popPlayerAt(int i)
+        {
+            Player temp = getPlayer(i);
+            rmPlayer(i);
+            return temp;
+        }
     }
 }
