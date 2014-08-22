@@ -10,7 +10,7 @@ namespace DsManager.Models
     {
         private string teamName;
         public List<Player> players;
-        private Coach coach = null;
+        public Coach coach = null;
         private int avg;
         private Module defaultModule = new Module("4-4-2");
         private int numbofPlayers = 0;

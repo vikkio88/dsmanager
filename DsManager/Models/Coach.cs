@@ -63,7 +63,7 @@ namespace DsManager.Models
         #endregion
 
 
-        internal string ToStringShort()
+        public string ToStringShort()
         {
             return string.Format("{0} {1}", coachName, coachSurname);
         }

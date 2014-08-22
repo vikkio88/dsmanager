@@ -288,12 +288,14 @@ namespace SimulazioneCampionato
                 GameUtils.CheckCoachWork(l);
 
                 //LICENZIA ALLENATORE GIOCATORE
+                FireCoach();
 
                 EnterToContinue();
                 l.reset();
                 GameUtils.CalciomercatoRandom(l);
 
                 //CALCIOMERCATO GIOCATORE
+                MarketPlace();
 
                 Console.WriteLine("\n\nhit enter to start a new Season");
                 Console.ReadLine();
@@ -305,6 +307,34 @@ namespace SimulazioneCampionato
                 printAlbo();
                 Environment.Exit(0);
             }
+
+        }
+
+        private static void MarketPlace()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void FireCoach()
+        {
+           // throw new NotImplementedException();
+            Team playersteam = new Team("bla");
+            foreach (Team t in l.leagueTeams)
+            {
+                if (t.isplayers) playersteam = t;
+            }
+
+            if (l.getTeamByTablePosition(l.NumbOfTeam).TeamName != playersteam.TeamName)
+            {
+                Console.WriteLine("Your Coach, " + playersteam.coach.ToStringShort() + " want a raise of "+GameUtils.getWage(1,3));
+                Console.Write("\t do you want give it to him or you want to search for another coach? [y/n]> ");
+                //SONO QUAAAAAAA
+            }
+            else
+            {
+                Console.WriteLine("You finished last this year, want to fire your coach " + playersteam.coach.ToStringShort() + "? ");
+            }
+
 
         }
 
