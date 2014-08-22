@@ -255,7 +255,7 @@ namespace DsManager.Models
                     Player tmp = GameUtils.getRandomPlayersPerRole("PT").ElementAt(0);
                     t.addPlayer(tmp);
                     Console.WriteLine("\t" + tmp.ToStringShort());
-                    t.addPlayer(tmp);
+                   
                     
                 }
                 //
