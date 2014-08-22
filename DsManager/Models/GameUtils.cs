@@ -165,6 +165,41 @@ namespace DsManager.Models
             System.Threading.Thread.Sleep(millisec);
         }
 
+        public static void AgePlayers(League l)
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            foreach (Team t in l.leagueTeams)
+            {
+                List<Player> toremove = new List<Player>();
+                foreach (Player pl in t.players)
+                {
+                    pl.Age += 1;
+                    if (pl.Age > 34)
+                    {
+                        if (rnd.getInt(100) > 50)
+                        {
+                            toremove.Add(pl);
+                        }
+                    }
+                    else
+                    {
+                        if (pl.Age > 31)
+                        {
+                            pl.SkillAvg -= rnd.getInt(0, 3);
+                        }
+                    }
+                }
+
+                //rimuovi giocatori
+                foreach (Player torm in toremove)
+                {
+                    Console.WriteLine(torm.ToStringShort()+" from team "+t.TeamName+" retired");
+                    t.rmPlayer(torm);
+                }
+                
+            }
+        }
+
 
 
         public static void CalciomercatoRandom(League l)
@@ -195,16 +230,36 @@ namespace DsManager.Models
             }
 
             //Balancing Team with Random Players
-            int tot = 0;
+           /* int tot = 0;
             foreach (Team t in tlist)
             {
                 tot += t.NumbOfPlayers;
             }
             int avg = tot / l.NumbOfTeam;
+            */
+            //balancing on 15 players per team
+            int avg = 13;
 
             Console.WriteLine("\n******************\n");
             foreach (Team t in tlist)
             {
+                //Give a Random Goalkeeper if team does not have one
+                try
+                {
+                    t.getPlayerForRole("PT");
+                }
+                catch (Exception e)
+                {
+                    //if there is not a PT
+                    Console.WriteLine(t.TeamName + " got new goalkeeper");
+                    Player tmp = GameUtils.getRandomPlayersPerRole("PT").ElementAt(0);
+                    t.addPlayer(tmp);
+                    Console.WriteLine("\t" + tmp.ToStringShort());
+                    t.addPlayer(tmp);
+                    
+                }
+                //
+
                 int missingpl = avg - t.NumbOfPlayers;
                 if (missingpl > 0)
                 {

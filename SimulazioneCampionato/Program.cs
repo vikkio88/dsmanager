@@ -134,7 +134,7 @@ namespace SimulazioneCampionato
                 catch(Exception e)
                 {
                     Console.WriteLine("No more match to play! League Ended");
-                    Console.WriteLine("League Winner: "+l.getTeamByTablePosition(1).TeamName);
+                    Console.WriteLine(anno+" League Winner: "+l.getTeamByTablePosition(1).TeamName);
                     Console.WriteLine("Scorers table winner: "+ l.getStringScorerByScorerPosition(1));
                     askforcontinue();
                 }
@@ -211,7 +211,9 @@ namespace SimulazioneCampionato
 
             if (yn == "y") 
             {
+                
                 saveHistory();
+                GameUtils.AgePlayers(l);
                 l.reset();
                 GameUtils.CalciomercatoRandom(l);
                 Console.WriteLine("\n\nhit enter to start a new Season");

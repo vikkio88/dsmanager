@@ -9,7 +9,7 @@ namespace DsManager.Models
     public class Team: IComparable
     {
         private string teamName;
-        private List<Player> players;
+        public List<Player> players;
         private Coach coach = null;
         private int avg;
         private Module defaultModule = new Module("4-4-2");
@@ -252,6 +252,11 @@ namespace DsManager.Models
             Player temp = getPlayer(i);
             rmPlayer(i);
             return temp;
+        }
+
+        internal void rmPlayer(Player pl)
+        {
+            players.Remove(pl);
         }
     }
 }
