@@ -293,7 +293,7 @@ namespace SimulazioneCampionato
                 EnterToContinue();
                 l.reset();
                 GameUtils.CalciomercatoRandom(l);
-
+                EnterToContinue();
                 //CALCIOMERCATO GIOCATORE
                 MarketPlace();
 
@@ -312,7 +312,7 @@ namespace SimulazioneCampionato
 
         private static void MarketPlace()
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         private static void FireCoach()
