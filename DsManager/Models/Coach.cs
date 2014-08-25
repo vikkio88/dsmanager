@@ -36,6 +36,7 @@ namespace DsManager.Models
         public Module FavouriteModule
         {
             get { return favouriteModule; }
+            set { favouriteModule = value; }
         }
 
         public string FavouriteModuleString

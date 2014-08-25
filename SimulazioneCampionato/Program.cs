@@ -101,6 +101,7 @@ namespace SimulazioneCampionato
             {
                 command(ref cmd);
             }
+            quit();
 
         }
 
@@ -305,17 +306,17 @@ namespace SimulazioneCampionato
                 double price = GameUtils.getWage(5, 15);
                 Console.WriteLine("Your Team won the League this year!\nthe price is "+price+" M Euro");
                 money += price;
-                alboplayer.Add(anno + " league champion" + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+                alboplayer.Add(anno + " league champion - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else if (pos == l.NumbOfTeam) 
             {
                 Console.WriteLine("Your Team was last this year...");
-                alboplayer.Add(anno + " "+l.NumbOfTeam+" position");
+                alboplayer.Add(anno + " " + l.NumbOfTeam + " position - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else
             {
                 Console.WriteLine("Your Team arrived " + pos + " / "+l.NumbOfTeam);
-                alboplayer.Add(anno + " " + pos + " position");
+                alboplayer.Add(anno + " " + pos + " position - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
         }
 
@@ -352,12 +353,17 @@ namespace SimulazioneCampionato
             }
             else
             {
-                saveHistory();
-                printAlbo();
-                printAlboPlayer();
-                Environment.Exit(0);
+                quit();
             }
 
+        }
+
+        private static void quit()
+        {
+            saveHistory();
+            printAlbo();
+            printAlboPlayer();
+            Environment.Exit(0);
         }
 
         private static void checkgoalkeeper()
@@ -409,7 +415,7 @@ namespace SimulazioneCampionato
             {
                 double off =GameUtils.getWage(1,3);
                 Console.WriteLine("Your Coach, " + playersteam.coach.ToStringShort() + " want a raise of "+off);
-                Console.Write("\t do you want give it to him or you want to search for another coach? [y/n]> ");
+                Console.Write("\t do you want to? [y/n]> ");
 
                 string s = Console.ReadLine();
                 if (s == "y")
@@ -443,6 +449,8 @@ namespace SimulazioneCampionato
                 }
             }
 
+            playersteam.coach.FavouriteModule = GameUtils.getRandomCoach().FavouriteModule;
+            Console.WriteLine("\t"+playersteam.coach.ToStringShort() + " module for the next year: " + playersteam.coach.FavouriteModule);
 
         }
 

@@ -71,9 +71,10 @@ namespace SimulazioneCampionato.Utils
                printTeams();
                Console.Write("Choose the team > ");
                Team cteam = chooseTeam();
-               printPlayers(cteam);
-               Console.Write("Choose the player > ");
-               Player cpl = choosePlayer(cteam);
+
+
+               Player cpl = printPlayers(cteam);
+
                trytobuy(cpl,cteam);
 
                RandomOffer();
@@ -209,24 +210,31 @@ namespace SimulazioneCampionato.Utils
            // throw new NotImplementedException();
             Console.WriteLine("Incoming offer...");
             Random rnd = new Random();
-            Team t = otherst.ElementAt(rnd.Next(otherst.Count));
-            Player pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
-            double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
-            Console.WriteLine("\t "+t.TeamName+" offer "+off+" M euro for ");
-            Console.WriteLine("\t"+pl.ToString());
-            Console.Write("Do you accept? [y/n] > ");
-            string ans = Console.ReadLine();
-            if (ans == "y")
+            if (rnd.Next(100) > 20)
             {
-                Player tmp = plt.popPlayer(pl);
-                t.addPlayer(tmp);
-                money += off;
-                Console.WriteLine("\t"+tmp.ToStringShort()+" sold to "+t.TeamName);
-                report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName);
+                Team t = otherst.ElementAt(rnd.Next(otherst.Count));
+                Player pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
+                double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
+                Console.WriteLine("\t " + t.TeamName + " offer " + off + " M euro for ");
+                Console.WriteLine("\t" + pl.ToString());
+                Console.Write("Do you accept? [y/n] > ");
+                string ans = Console.ReadLine();
+                if (ans == "y")
+                {
+                    Player tmp = plt.popPlayer(pl);
+                    t.addPlayer(tmp);
+                    money += off;
+                    Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
+                    report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName);
+                }
+                else
+                {
+                    Console.WriteLine("Offer refused...");
+                }
             }
             else
             {
-                Console.WriteLine("Offer refused...");
+                Console.WriteLine("No offers today");
             }
 
             EnterToContinue();
@@ -323,7 +331,7 @@ namespace SimulazioneCampionato.Utils
             return cteam.getPlayer(n - 1);
         }
 
-        private void printPlayers(Team cteam)
+        private Player printPlayers(Team cteam)
         {
             int c = 1;
             foreach (Player pl in cteam.players)
@@ -331,6 +339,27 @@ namespace SimulazioneCampionato.Utils
                 Console.WriteLine(c+". "+pl.ToString());
                 c++;
             }
+            int n;
+            Console.Write("Choose the player > ");
+            try
+            {
+                n = int.Parse(Console.ReadLine());
+                if (n > otherst.Count)
+                {
+                    throw new Exception();
+                }
+
+                if (n < 1)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception e)
+            {
+                n = 1;
+            }
+
+            return cteam.getPlayer(n - 1);
         }
 
         private Team chooseTeam()
@@ -376,17 +405,23 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("day "+currentround+" / "+rounds);
             Console.WriteLine("\n 1. Search for Player in your League \n 2. View Free Player \n 3. Train your Team\n\t q to exit MarketPlace");
             Console.WriteLine(plt.ToStringFull());
-           
-   
-                Console.WriteLine("***Your coach want to play with: "+plt.coach.FavouriteModule.ToString()+"\n you need those players: ");
+            string[] m = Module.getRoles().ToArray();
+            Console.WriteLine("Players in Team per role");
+            int[] n1 = Module.playersForRolesinTeam(plt);
+            int length = n1.Count();
+            for (int i = 0; i < length; i++)
+            {
+               Console.Write(m[i] + " " + n1[i].ToString() + " ; ");
+            }
+                Console.WriteLine("\n***Your coach want to play with: "+plt.coach.FavouriteModule.ToString()+"\n you need those players: ");
                 int[] n = plt.coach.FavouriteModule.playerForRolesForModule();
-                string[] m = Module.getRoles().ToArray();
-                int length = n.Count();
-                for (int i = 0; i < length; i++)
+                
+                int length1 = n.Count();
+                for (int i = 0; i < length1; i++)
                 {
                     if (n[i] != 0)
                     {
-                        Console.Write(m[i] + " " + n[i].ToString()+ "  ;  ");
+                        Console.Write(m[i] + " " + n[i].ToString()+ " ;  ");
                     }
                 }
                 Console.WriteLine();
