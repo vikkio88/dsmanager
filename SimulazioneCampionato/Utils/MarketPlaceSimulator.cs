@@ -12,6 +12,7 @@ namespace SimulazioneCampionato.Utils
         League l;
         Team plt;
         List<Team> otherst;
+        List<string> history;
         double money;
         int currentround = 1;
         int rounds = 15;
@@ -21,6 +22,7 @@ namespace SimulazioneCampionato.Utils
             this.l = le;
             this.money = m;
             this.otherst = new List<Team>();
+            this.history = new List<string>();
             foreach (Team t in this.l.leagueTeams)
             {
                 if (t.isplayers)
@@ -65,9 +67,12 @@ namespace SimulazioneCampionato.Utils
         {
             if (cmd == "1")
             {
+               Console.Clear();
                printTeams();
+               Console.Write("Choose the team > ");
                Team cteam = chooseTeam();
                printPlayers(cteam);
+               Console.Write("Choose the player > ");
                Player cpl = choosePlayer(cteam);
                trytobuy(cpl,cteam);
 
@@ -124,12 +129,13 @@ namespace SimulazioneCampionato.Utils
                 Random rnd = new Random();
                 if (off >= req)
                 {
-                    if (rnd.Next(100) > 20)
+                    if (rnd.Next(100) > 10)
                     {
                         Console.WriteLine("I accept your offer...");
                         //Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
+                        report("+ "+cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList");
                         money -= off;
                     }
                     else
@@ -145,6 +151,7 @@ namespace SimulazioneCampionato.Utils
                        // Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
+                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList");
                         money -= off;
                     }
                     else
@@ -165,19 +172,24 @@ namespace SimulazioneCampionato.Utils
             EnterToContinue();
         }
 
+        private void report(string p)
+        {
+            history.Add(p);
+        }
+
         private Player printandChooseRandomPlayers()
         {
             Console.Clear();
             Console.WriteLine("Free Players List");
             int c = 1;
-            List<Player> collection = GameUtils.getRandomPlayersList(10);
+            List<Player> collection = GameUtils.getRandomPlayersList(15);
             foreach (Player pl in collection)
             {
                 Console.WriteLine(c+". "+pl.ToString());
                 c++;
             }
 
-            Console.Write("[1/10]> ");
+            Console.Write("[1/15]> ");
             try
             {
                 int n = int.Parse(Console.ReadLine());
@@ -210,6 +222,7 @@ namespace SimulazioneCampionato.Utils
                 t.addPlayer(tmp);
                 money += off;
                 Console.WriteLine("\t"+tmp.ToStringShort()+" sold to "+t.TeamName);
+                report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName);
             }
             else
             {
@@ -241,6 +254,7 @@ namespace SimulazioneCampionato.Utils
                     Player tmp = cteam.popPlayer(cpl);
                     plt.addPlayer(tmp);
                     Console.WriteLine("\t you hired " + tmp.ToString() + " ");
+                    report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from "+cteam.TeamName);
                     money -= off;
                 }
                 else if (off >= req)
@@ -251,6 +265,7 @@ namespace SimulazioneCampionato.Utils
                         Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(tmp);
                         Console.WriteLine("\t you hired "+tmp.ToString()+" ");
+                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName);
                         money -= off;
                     }
                     else
@@ -266,6 +281,7 @@ namespace SimulazioneCampionato.Utils
                         Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(tmp);
                         Console.WriteLine("\t you hired " + tmp.ToString() + " ");
+                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName);
                         money -= off;
                     }
                     else
@@ -359,7 +375,22 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("\t" + plt.TeamName + " balance: " + money + " M Euro");
             Console.WriteLine("day "+currentround+" / "+rounds);
             Console.WriteLine("\n 1. Search for Player in your League \n 2. View Free Player \n 3. Train your Team\n\t q to exit MarketPlace");
-            Console.WriteLine(plt.ToString());
+            Console.WriteLine(plt.ToStringFull());
+           
+   
+                Console.WriteLine("***Your coach want to play with: "+plt.coach.FavouriteModule.ToString()+"\n you need those players: ");
+                int[] n = plt.coach.FavouriteModule.playerForRolesForModule();
+                string[] m = Module.getRoles().ToArray();
+                int length = n.Count();
+                for (int i = 0; i < length; i++)
+                {
+                    if (n[i] != 0)
+                    {
+                        Console.Write(m[i] + " " + n[i].ToString()+ "  ;  ");
+                    }
+                }
+                Console.WriteLine();
+            
         }
 
         private static void EnterToContinue()
@@ -367,6 +398,15 @@ namespace SimulazioneCampionato.Utils
             Console.Write("hit enter to continue...");
             Console.ReadLine();
             Console.Clear();
+        }
+
+        public void printReport()
+        {
+            Console.WriteLine("Report Market");
+            foreach (string item in history)
+            {
+                Console.WriteLine(item);
+            }
         }
 
     }

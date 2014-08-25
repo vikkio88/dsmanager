@@ -90,7 +90,7 @@ namespace DsManager.Models
             //influenza dell'allenatore
             if (coach != null)
             {
-                if (coach.SkillAvg >= tot)
+                if (coach.SkillAvg >= tot )
                 {
         //            Console.WriteLine("Bonus allenatore: +" + ((coach.SkillAvg - tot) / 2).ToString() );
                     tot += ((coach.SkillAvg - tot) / 2);
@@ -191,6 +191,8 @@ namespace DsManager.Models
         {
             return players.ElementAt(i);
         }
+
+        
 
         public string ToStringFull()
         {

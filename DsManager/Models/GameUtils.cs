@@ -313,7 +313,7 @@ namespace DsManager.Models
                 }
             }
 
-            wait();
+            wait(50);
 
             if (secondLast.isplayers == false)
             {

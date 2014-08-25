@@ -297,6 +297,20 @@ namespace DsManager.Models
             }
             generateFixture();
         }
+
+        public string getScorerTable(int p)
+        {
+            string scorersstring = "";
+            int c = 1;
+            foreach (KeyValuePair<Player, TeamGoals> pair in scorers)
+            {
+                scorersstring += c + ". " + pair.Key.PlayerName + " " + pair.Key.PlayerSurname + " - " + pair.Value.TeamName + " - " + pair.Value.goals + "\n";
+                c++;
+                if (c > p) break;
+            }
+
+            return scorersstring;
+        }
     }
     public struct TeamGoals
     {

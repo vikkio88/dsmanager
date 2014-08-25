@@ -182,12 +182,13 @@ namespace SimulazioneCampionato
 
         private static void execCmd(string cmd)
         {
-            if (cmd == "1")
+            //  1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x
+            if (cmd == "2")
             {
                 Console.Clear();
                 Console.WriteLine(l.getTableString());
             }
-            else if (cmd == "2")
+            else if (cmd == "1")
             {
                 Console.Clear();
                 
@@ -215,7 +216,7 @@ namespace SimulazioneCampionato
                 GameUtils.wait();
                 
             }
-            else if(cmd=="3")
+            else if(cmd=="5")
             {
                 Console.Clear();
                 Console.WriteLine(l.getTableString()+"\nSelect Team by Position");
@@ -236,16 +237,16 @@ namespace SimulazioneCampionato
                 Team a = l.getTeamByTablePosition(n);
                 Console.WriteLine(a.ToStringFull());
             }
-            else if (cmd == "4")
+            else if (cmd == "3")
             {
                 Console.Clear();
                 if (l.CurrentRound > 0)
                 {
-                    Console.WriteLine(l.getScorerTable());
+                    Console.WriteLine(l.getScorerTable(25));
                 }
 
             }
-            else if (cmd == "5")
+            else if (cmd == "6")
             {
                 Console.Clear();
                 Console.WriteLine("Select Round[1/"+(l.NumbOfTeam-1)+"]");
@@ -265,6 +266,27 @@ namespace SimulazioneCampionato
                 Console.Clear();
                 l.printFixtureAt(n-1);
             }
+            else if (cmd == "4")
+            {
+                Console.Clear();
+                Team a = l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam));
+                Console.WriteLine("Team scorers");
+                foreach (Player pl in a.players)
+                {
+                    int goals;
+                    if (l.scorers.ContainsKey(pl))
+                    {
+                        goals = l.scorers[pl].goals;
+                    }
+                    else
+                    {
+                        goals = 0;
+                    }
+                    Console.WriteLine(pl.ToStringShort()+" ---- goals: "+goals);
+                }
+
+
+            }
             else if (cmd == "")
             {
                 Console.Clear();
@@ -283,7 +305,7 @@ namespace SimulazioneCampionato
                 double price = GameUtils.getWage(5, 15);
                 Console.WriteLine("Your Team won the League this year!\nthe price is "+price+" M Euro");
                 money += price;
-                alboplayer.Add(anno + " league champion");
+                alboplayer.Add(anno + " league champion" + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else if (pos == l.NumbOfTeam) 
             {
@@ -310,7 +332,7 @@ namespace SimulazioneCampionato
                 GameUtils.AgePlayers(l);
                 EnterToContinue();
                 GameUtils.CheckCoachWork(l);
-
+                Console.WriteLine("\n*****************\n");
                 //LICENZIA ALLENATORE GIOCATORE
                 FireCoach();
 
@@ -320,6 +342,9 @@ namespace SimulazioneCampionato
                 EnterToContinue();
                 //CALCIOMERCATO GIOCATORE
                 MarketPlace();
+
+                checkgoalkeeper();
+
 
                 Console.WriteLine("\n\nhit enter to start a new Season");
                 Console.ReadLine();
@@ -331,6 +356,23 @@ namespace SimulazioneCampionato
                 printAlbo();
                 printAlboPlayer();
                 Environment.Exit(0);
+            }
+
+        }
+
+        private static void checkgoalkeeper()
+        {
+            Team a = l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam));
+            try
+            {
+                a.getPlayerForRole("PT");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Your team doesnt have a goalKeeper\nproviding one from the free list");
+                Player tmp = GameUtils.getRandomPlayersPerRole("PT").ElementAt(0);
+                Console.WriteLine("hired: "+tmp.ToString());
+                a.addPlayer(tmp);
             }
 
         }
@@ -351,6 +393,7 @@ namespace SimulazioneCampionato
             MarketPlaceSimulator mrk = new MarketPlaceSimulator(l, money);
             mrk.init();
             money = mrk.callbackMoney();
+            mrk.printReport();
         }
 
         private static void FireCoach()
@@ -429,11 +472,12 @@ namespace SimulazioneCampionato
         private static void printMenu()
         {
             Console.WriteLine("****************\n      Main Menu\n****************");
+            Console.WriteLine("Season "+(anno-1)+"/"+anno);
             Console.WriteLine("\t "+playername+" ds of: "+playerteam);
             Console.WriteLine("\t balance: "+money+" M Euro");
             Console.WriteLine("\t Team position: "+l.getPositionbyTeamName(playerteam)+" / "+l.NumbOfTeam);
             Console.WriteLine("\t Round: "+l.CurrentRound+" / "+l.NumbOfTeam);
-            Console.WriteLine(" 1. Print Table\n 2. Simulate Round\n 3. Get Info About Team\n 4. Print Scorers\n 5. Print Fixture at Round x\n\n\t q to quit");
+            Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
         }
 
        private static string UppercaseFirst(string s)
