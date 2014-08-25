@@ -333,5 +333,7 @@ namespace DsManager.Models
             double temp = rnd.getInt(min, max) + (rnd.getInt(1, 9) / 10.0);
             return Math.Round(temp, 2);
         }
+
+       
     }
 }

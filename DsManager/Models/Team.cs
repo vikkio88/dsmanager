@@ -176,7 +176,7 @@ namespace DsManager.Models
             }
          * */
             result += "media: " + Avg.ToString();// +"\n";
-            result += " media valore: " + getAvgVal().ToString() + "M €";
+            result += " media valore: " + getAvgVal().ToString() + "M Euro";
             return result;
 
         }
@@ -247,24 +247,29 @@ namespace DsManager.Models
 
 
 
-        internal void rmPlayer(int i)
+        public void rmPlayer(int i)
         {
             players.RemoveAt(i);
         }
 
-        internal Player popPlayerAt(int i)
+        public Player popPlayerAt(int i)
         {
             Player temp = getPlayer(i);
             rmPlayer(i);
             return temp;
         }
 
-        internal void rmPlayer(Player pl)
+        public Player popPlayer(Player pl)
+        {
+            return popPlayerAt(players.IndexOf(pl));
+        }
+
+        public void rmPlayer(Player pl)
         {
             players.Remove(pl);
         }
 
-        internal Coach getCoach()
+        public Coach getCoach()
         {
             return this.coach;
         }

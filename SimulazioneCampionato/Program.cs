@@ -1,4 +1,5 @@
 ﻿using DsManager.Models;
+using SimulazioneCampionato.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,12 @@ namespace SimulazioneCampionato
     {
         static League l;
         static List<string> albo = new List<string>();
+        static List<string> alboplayer = new List<string>();
+
         static int anno = 2014;
         static string playername;
         static double money = GameUtils.getRandomMoney();
+        static string playerteam;
        // static Team playerteam;
         static void Main(string[] args)
         {
@@ -87,7 +91,10 @@ namespace SimulazioneCampionato
 
             chooseTeam();
 
-
+            foreach (Team item in l.leagueTeams)
+            {
+                if (item.isplayers) playerteam = item.TeamName;
+            }
 
             string cmd = "";
             while (cmd != "q")
@@ -270,7 +277,24 @@ namespace SimulazioneCampionato
 
         private static void playerReport()
         {
-           // throw new NotImplementedException();
+            int pos = l.getPositionbyTeamName(playerteam);
+            if (pos == 1)
+            {
+                double price = GameUtils.getWage(5, 15);
+                Console.WriteLine("Your Team won the League this year!\nthe price is "+price+" M Euro");
+                money += price;
+                alboplayer.Add(anno + " league champion");
+            }
+            else if (pos == l.NumbOfTeam) 
+            {
+                Console.WriteLine("Your Team was last this year...");
+                alboplayer.Add(anno + " "+l.NumbOfTeam+" position");
+            }
+            else
+            {
+                Console.WriteLine("Your Team arrived " + pos + " / "+l.NumbOfTeam);
+                alboplayer.Add(anno + " " + pos + " position");
+            }
         }
 
         private static void askforcontinue()
@@ -305,14 +329,28 @@ namespace SimulazioneCampionato
             {
                 saveHistory();
                 printAlbo();
+                printAlboPlayer();
                 Environment.Exit(0);
             }
 
         }
 
+        private static void printAlboPlayer()
+        {
+            Console.WriteLine("Albo d'Oro della tua Squadra\n");
+            foreach (string entry in alboplayer)
+            {
+                Console.WriteLine(entry);
+            }
+            Console.ReadLine();
+        }
+
         private static void MarketPlace()
         {
            // throw new NotImplementedException();
+            MarketPlaceSimulator mrk = new MarketPlaceSimulator(l, money);
+            mrk.init();
+            money = mrk.callbackMoney();
         }
 
         private static void FireCoach()
@@ -326,13 +364,40 @@ namespace SimulazioneCampionato
 
             if (l.getTeamByTablePosition(l.NumbOfTeam).TeamName != playersteam.TeamName)
             {
-                Console.WriteLine("Your Coach, " + playersteam.coach.ToStringShort() + " want a raise of "+GameUtils.getWage(1,3));
+                double off =GameUtils.getWage(1,3);
+                Console.WriteLine("Your Coach, " + playersteam.coach.ToStringShort() + " want a raise of "+off);
                 Console.Write("\t do you want give it to him or you want to search for another coach? [y/n]> ");
-                //SONO QUAAAAAAA
+
+                string s = Console.ReadLine();
+                if (s == "y")
+                {
+                    Console.WriteLine("\t you paid "+off+" M Euro, to keep your Coach");
+                    money -= off;
+                }
+                else
+                {
+                    Coach c = GameUtils.getRandomCoach();
+                    Console.WriteLine("The president choose to hire \n"+ c.ToString()+"\n as new coach");
+                    playersteam.setCoach(c);
+                }
             }
             else
             {
                 Console.WriteLine("You finished last this year, want to fire your coach " + playersteam.coach.ToStringShort() + "? ");
+                Console.Write("\t[y/n]> ");
+
+                string s = Console.ReadLine();
+                if (s == "y")
+                {
+                    Coach c = GameUtils.getRandomCoach();
+                    Console.WriteLine("The president choose to hire \n" + c.ToString() + "\n as new coach");
+                    playersteam.setCoach(c);
+                }
+                else
+                {
+                    Console.WriteLine("\t you must love your Coach...");
+
+                }
             }
 
 
@@ -364,6 +429,10 @@ namespace SimulazioneCampionato
         private static void printMenu()
         {
             Console.WriteLine("****************\n      Main Menu\n****************");
+            Console.WriteLine("\t "+playername+" ds of: "+playerteam);
+            Console.WriteLine("\t balance: "+money+" M Euro");
+            Console.WriteLine("\t Team position: "+l.getPositionbyTeamName(playerteam)+" / "+l.NumbOfTeam);
+            Console.WriteLine("\t Round: "+l.CurrentRound+" / "+l.NumbOfTeam);
             Console.WriteLine(" 1. Print Table\n 2. Simulate Round\n 3. Get Info About Team\n 4. Print Scorers\n 5. Print Fixture at Round x\n\n\t q to quit");
         }
 

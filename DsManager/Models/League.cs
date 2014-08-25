@@ -270,7 +270,18 @@ namespace DsManager.Models
             }
         }
 
+        public int getPositionbyTeamName(string tname)
+        {
+            int c = 1;
+            
+            foreach (KeyValuePair<Team,int> pair in table)
+            {
+                if (pair.Key.TeamName == tname) return c;
+                c++;
+            }
 
+            return 0;
+        }
 
 
         public void reset()
