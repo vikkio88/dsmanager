@@ -1,0 +1,14 @@
+Etrit:Berisha:27:71:PT:Macedone
+Michael:Ciani:28:65:DD:Francese
+Stefan:De Vrij:25:73:DS:Olandese
+Cristian:Ledesma:32:69:CC:Italiano
+Stefan:Radu:29:63:DC:Romeno
+Loris:Cana:28:72:CC:Macedone
+Luis Pedro:Cavanda:24:75:DS:Belga
+Antonio:Candreva:29:83:AD:Italiano
+Miroslav:Klose:34:82:AC:Tedesco
+Abdoulay:Konko:25:68:DC:Francese
+Lucas:Biglia:29:80:CC:Argentino
+Ogenyi:Onazi:27:73:CS:Nigeriano
+Giuseppe:Sculli:32:73:AC:Italiano
+Senad:Lulic:24:79:CS:Bosniaco

@@ -38,7 +38,14 @@ namespace DsManager.Models
             RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
             for (int i = 0; i < n; i++)
             {
-                list.Add(new Player(rnd.getName(), rnd.getSurname(),rnd.getAge(),rnd.getAvgSkill(),rnd.getRole()));
+                if (rnd.getInt(100) > 20)
+                {
+                    list.Add(new Player(rnd.getName(), rnd.getSurname(), rnd.getAge(), rnd.getAvgSkill(), rnd.getRole()));
+                }
+                else
+                {
+                    list.Add(new Player(rnd.getName("Spain"), rnd.getSurname("Spain"), rnd.getAge(), rnd.getAvgSkill(), rnd.getRole(), "Spagnolo"));
+                }
                 System.Threading.Thread.Sleep(5);
             }
 
@@ -334,6 +341,45 @@ namespace DsManager.Models
             return Math.Round(temp, 2);
         }
 
-       
+
+
+        public static Dictionary<Player, Team> getPlayersPerRoleInLeague(League l, string role)
+        {
+           // throw new NotImplementedException();
+            Dictionary<Player, Team> ret = new Dictionary<Player, Team>();
+
+            foreach (Team t in l.leagueTeams)
+            {
+                foreach (Player pl in t.players)
+                {
+                    if (pl.Role == role)
+                    {
+                        ret.Add(pl, t);
+                    }
+                }
+                
+            }
+
+            return ret;
+        }
+
+        public static Dictionary<Player, Team> getPlayersPerRoleInLeague(List<Team> l, string role)
+        {
+            Dictionary<Player, Team> ret = new Dictionary<Player, Team>();
+
+            foreach (Team t in l)
+            {
+                foreach (Player pl in t.players)
+                {
+                    if (pl.Role == role)
+                    {
+                        ret.Add(pl, t);
+                    }
+                }
+
+            }
+
+            return ret;
+        }
     }
 }

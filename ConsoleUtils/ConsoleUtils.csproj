@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE4EC77F-DC59-4F5B-83CD-8BA46133BF85}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{153B3156-CBA9-4E0A-BD34-18DFA41FD197}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimulazioneCampionato</RootNamespace>
-    <AssemblyName>SimulazioneCampionato</AssemblyName>
+    <RootNamespace>ConsoleUtils</RootNamespace>
+    <AssemblyName>ConsoleUtils</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,35 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="MyConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\MarketPlaceSimulator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConsoleUtils\ConsoleUtils.csproj">
-      <Project>{153b3156-cba9-4e0a-bd34-18dfa41fd197}</Project>
-      <Name>ConsoleUtils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DsManager\DsManager.csproj">
-      <Project>{039417dd-78a0-4dc8-bee3-6535f51c8851}</Project>
-      <Name>DsManager</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="chievo.txt" />
-    <Content Include="empoli.txt" />
-    <Content Include="fiorentina.txt" />
-    <Content Include="inter.txt" />
-    <Content Include="juventus.txt" />
-    <Content Include="lazio.txt" />
-    <Content Include="milan.txt" />
-    <Content Include="napoli.txt" />
-    <Content Include="parma.txt" />
-    <Content Include="roma.txt" />
-    <Content Include="teams.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

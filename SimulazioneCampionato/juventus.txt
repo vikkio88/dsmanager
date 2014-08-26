@@ -1,0 +1,13 @@
+Paul:Pogba:21:80:CC:Francese
+Arturo:Vidal:28:85:CC:Cileno
+Claudio:Marchisio:28:84:CC:Italiano
+Alvaro:Morata:22:76:AC:Spagnolo
+Gigi:Buffon:36:87:PT:Italiano
+Patrice:Evra:33:82:DS:Francese
+Giorgio:Chiellini:30:86:DC:Italiano
+Andrea:Barzagli:33:84:DC:Italiano
+Andrea:Pirlo:35:87:CC:Italiano
+Kwadwo:Asamoah:26:80:AS:Ghanese
+Stephen:Lichsteiner:30:80:DD:Svizzero
+Carlitos:Tevez:30:88:AD:Argentino
+Fernando:Llorente:29:82:AC:Spagnolo

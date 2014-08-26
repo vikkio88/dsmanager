@@ -6,3 +6,5 @@ napoli
 fiorentina
 parma
 chievo
+lazio
+empoli

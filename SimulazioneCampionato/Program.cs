@@ -484,8 +484,15 @@ namespace SimulazioneCampionato
             Console.WriteLine("\t "+playername+" ds of: "+playerteam);
             Console.WriteLine("\t balance: "+money+" M Euro");
             Console.WriteLine("\t Team position: "+l.getPositionbyTeamName(playerteam)+" / "+l.NumbOfTeam);
-            Console.WriteLine("\t Round: "+l.CurrentRound+" / "+l.NumbOfTeam);
-            Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+            Console.WriteLine("\t Round: "+l.CurrentRound+" / "+(l.NumbOfTeam-1));
+            if (l.CurrentRound != (l.NumbOfTeam - 1))
+            {
+                Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+            }
+            else
+            {
+                Console.WriteLine(" 1. Season Report\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+            }
         }
 
        private static string UppercaseFirst(string s)

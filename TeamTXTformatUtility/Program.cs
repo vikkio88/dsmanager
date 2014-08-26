@@ -10,6 +10,7 @@ namespace TeamTXTformatUtility
     {
         static void Main(string[] args)
         {
+            int count = 0;
             string input;
             Console.Write("TeamName: ");
             input = Console.ReadLine();
@@ -17,6 +18,8 @@ namespace TeamTXTformatUtility
             string c = "s";
             while (c == "s")
             {
+                Console.Clear();
+                Console.WriteLine("Giocatori Inseriti: "+count);
                 string tmp;
                 input = "";
                 //string must have this sintax Name:Surname:Age:Skill:Role:Nation
@@ -52,7 +55,8 @@ namespace TeamTXTformatUtility
                 {
                     writer.WriteLine(input);
                 }
-
+                
+                count++;
                 Console.WriteLine("Altro giocatore? [s/n]");
                 c = Console.ReadLine();
             }

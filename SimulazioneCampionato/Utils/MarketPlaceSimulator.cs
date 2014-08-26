@@ -1,4 +1,5 @@
-﻿using DsManager.Models;
+﻿using ConsoleUtils;
+using DsManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace SimulazioneCampionato.Utils
         double money;
         int currentround = 1;
         int rounds = 15;
+        string teamplayerperrole = string.Empty;
+        string moduleplayerperrole = string.Empty;
+        bool reportstringready = false;
         
         public MarketPlaceSimulator(League le, double m)
         {
@@ -86,12 +90,64 @@ namespace SimulazioneCampionato.Utils
                 trytobuy(tmp);
 
                 RandomOffer();
+            }else if(cmd == "3"){
+                //SEARCHFORROLE
+                SearchForRole();
             }
-            else if(cmd == "3")
+            else if(cmd == "4")
             {
                 trainTeam();
                 RandomOffer();
             }
+            else
+            {
+                printMenu();
+            }
+        }
+
+        private void SearchForRole()
+        {
+            string role = printChooseRole();
+            Console.Clear();
+                Console.WriteLine("Players with Role: "+role);
+            //Dictionary<Player,Team> plperroleLeague = GameUtils.getPlayersPerRoleInLeague(l,role);
+            Dictionary<Player, Team> plperroleLeague = GameUtils.getPlayersPerRoleInLeague(otherst, role);
+            int c = 1;
+            foreach (KeyValuePair<Player,Team> item in plperroleLeague)
+            {
+                Console.WriteLine(c+". "+item.Key.ToStringShort()+" avg: "+item.Key.SkillAvg+" val: "+item.Key.Val+" M euro - "+item.Value.TeamName);
+                c++;
+            }
+            c = MyConsole.AskForInt(c);
+            KeyValuePair<Player,Team> tmp = plperroleLeague.ElementAt(c - 1);
+            Console.Clear();
+            trytobuy(tmp.Key, tmp.Value);
+
+
+        }
+
+        private string printChooseRole()
+        {
+            Console.Clear();
+            Console.WriteLine("What Role?");
+            string[] roles = Module.getRoles().ToArray();
+            int c = 1;
+            foreach (string item in roles)
+            {
+                if (c < 10) 
+                {
+                    Console.WriteLine(c + ". " + item);
+                }
+                else
+                {
+                    Console.WriteLine(c + "." + item);
+                }
+
+                c++;
+            }
+            Console.Write("> ");
+            c = MyConsole.AskForInt(c);
+            return roles[c - 1];
         }
 
         private void trainTeam()
@@ -117,7 +173,7 @@ namespace SimulazioneCampionato.Utils
         {
             Console.Clear();
             Console.WriteLine("Trying to buy " + cpl.ToString() + " from  FreePlayers List");
-            double req = Math.Round((cpl.Val + (GameUtils.getWage(0, 5))), 2);
+            double req = Math.Round((cpl.Val * 0.3 + (GameUtils.getWage(0, 5))), 2);
             Console.WriteLine("\t He asked: " + req + " M Euro\n your offer [money owned: " + money + " M euro] > ");
             double off = double.Parse(Console.ReadLine());
             if (off < money)
@@ -130,7 +186,7 @@ namespace SimulazioneCampionato.Utils
                 Random rnd = new Random();
                 if (off >= req)
                 {
-                    if (rnd.Next(100) > 10)
+                    if (rnd.Next(100) > 5)
                     {
                         Console.WriteLine("I accept your offer...");
                         //Player tmp = cteam.popPlayer(cpl);
@@ -183,14 +239,14 @@ namespace SimulazioneCampionato.Utils
             Console.Clear();
             Console.WriteLine("Free Players List");
             int c = 1;
-            List<Player> collection = GameUtils.getRandomPlayersList(15);
+            List<Player> collection = GameUtils.getRandomPlayersList(20);
             foreach (Player pl in collection)
             {
                 Console.WriteLine(c+". "+pl.ToString());
                 c++;
             }
 
-            Console.Write("[1/15]> ");
+            Console.Write("[1/20]> ");
             try
             {
                 int n = int.Parse(Console.ReadLine());
@@ -202,6 +258,12 @@ namespace SimulazioneCampionato.Utils
                 int n = 1;
                 return collection.ElementAt(n - 1);
             }
+        }
+
+        private bool ElavuateOffer(Player p,double off)
+        {
+
+            return false;
         }
 
         private void RandomOffer()
@@ -217,6 +279,7 @@ namespace SimulazioneCampionato.Utils
                 double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
                 Console.WriteLine("\t " + t.TeamName + " offer " + off + " M euro for ");
                 Console.WriteLine("\t" + pl.ToString());
+                Console.WriteLine("\n*******\nTeam: "+teamplayerperrole+"\nModule: "+moduleplayerperrole);
                 Console.Write("Do you accept? [y/n] > ");
                 string ans = Console.ReadLine();
                 if (ans == "y")
@@ -403,7 +466,7 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("\n********MarketPlace*****\n");
             Console.WriteLine("\t" + plt.TeamName + " balance: " + money + " M Euro");
             Console.WriteLine("day "+currentround+" / "+rounds);
-            Console.WriteLine("\n 1. Search for Player in your League \n 2. View Free Player \n 3. Train your Team\n\t q to exit MarketPlace");
+            Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team\n\t q to exit MarketPlace");
             Console.WriteLine(plt.ToStringFull());
             string[] m = Module.getRoles().ToArray();
             Console.WriteLine("Players in Team per role");
@@ -411,7 +474,11 @@ namespace SimulazioneCampionato.Utils
             int length = n1.Count();
             for (int i = 0; i < length; i++)
             {
-               Console.Write(m[i] + " " + n1[i].ToString() + " ; ");
+               Console.Write(m[i] + ": " + n1[i].ToString() + " ");
+               if (!reportstringready)
+               {
+                   teamplayerperrole += m[i] + ": " + n1[i].ToString() + " ";
+               }
             }
                 Console.WriteLine("\n***Your coach want to play with: "+plt.coach.FavouriteModule.ToString()+"\n you need those players: ");
                 int[] n = plt.coach.FavouriteModule.playerForRolesForModule();
@@ -421,9 +488,15 @@ namespace SimulazioneCampionato.Utils
                 {
                     if (n[i] != 0)
                     {
-                        Console.Write(m[i] + " " + n[i].ToString()+ " ;  ");
+                        Console.Write(m[i] + ": " + n[i].ToString()+ " ");
+                        if (!reportstringready)
+                        {
+                            moduleplayerperrole += m[i] + ": " + n[i].ToString() + " ";
+                        }
                     }
                 }
+
+                reportstringready = true;
                 Console.WriteLine();
             
         }
