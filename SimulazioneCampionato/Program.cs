@@ -15,6 +15,8 @@ namespace SimulazioneCampionato
         static League l;
         static List<string> albo = new List<string>();
         static List<string> alboplayer = new List<string>();
+        static List<string> boughtplayershistory = new List<string>();
+        static List<string> soldplayershistory = new List<string>();
 
         static int anno = 2014;
         static string playername;
@@ -333,8 +335,9 @@ namespace SimulazioneCampionato
                 saveHistory();
                 GameUtils.AgePlayers(l);
                 EnterToContinue();
+                Console.WriteLine("Other teams's Coach valutation...");
                 GameUtils.CheckCoachWork(l);
-                Console.WriteLine("\n*****************\n");
+                Console.WriteLine("\n\n*****************\n\n");
                 //LICENZIA ALLENATORE GIOCATORE
                 FireCoach();
 
@@ -364,7 +367,26 @@ namespace SimulazioneCampionato
             saveHistory();
             printAlbo();
             printAlboPlayer();
+            printMarketHistory();
             Environment.Exit(0);
+        }
+
+        private static void printMarketHistory()
+        {
+            Console.Clear();
+            Console.WriteLine("Market History\n");
+            Console.WriteLine("\n **Bought Player\n");
+            foreach (string entry in boughtplayershistory)
+            {
+                Console.WriteLine(entry);
+            }
+            Console.WriteLine("\n\n **Sold Player");
+            foreach (string entry in soldplayershistory)
+            {
+                Console.WriteLine(entry);
+            }
+
+            Console.ReadLine();
         }
 
         private static void checkgoalkeeper()
@@ -396,13 +418,34 @@ namespace SimulazioneCampionato
 
         private static void MarketPlace()
         {
-           // throw new NotImplementedException();
+           
             MarketPlaceSimulator mrk = new MarketPlaceSimulator(l, money);
             mrk.init();
             money = mrk.callbackMoney();
+            addMarketHistory(mrk.callbackbought(), mrk.callbacksold());
+           
             mrk.printReport();
+
         }
 
+        private static void addMarketHistory(List<string> bought, List<string> sold)
+        {
+            boughtplayershistory.Add(anno.ToString());
+           
+            foreach (string item in bought)
+            {
+                boughtplayershistory.Add(item);
+            }
+
+            soldplayershistory.Add(anno.ToString());
+            foreach (string item in sold)
+            {
+                soldplayershistory.Add(item);
+            }
+            
+        }
+
+ 
         private static void FireCoach()
         {
            // throw new NotImplementedException();
@@ -488,11 +531,11 @@ namespace SimulazioneCampionato
             Console.WriteLine("\t Round: "+l.CurrentRound+" / "+(l.NumbOfTeam-1));
             if (l.CurrentRound != (l.NumbOfTeam - 1))
             {
-                Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+                Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
             }
             else
             {
-                Console.WriteLine(" 1. Season Report\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+                Console.WriteLine(" 1. Season Report\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
             }
         }
 

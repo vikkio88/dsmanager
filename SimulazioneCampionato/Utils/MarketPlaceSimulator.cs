@@ -13,7 +13,9 @@ namespace SimulazioneCampionato.Utils
         League l;
         Team plt;
         List<Team> otherst;
-        List<string> history;
+        //List<string> history;
+        List<string> bought;
+        List<string> sold;
         double money;
         int currentround = 1;
         int rounds = 15;
@@ -26,7 +28,8 @@ namespace SimulazioneCampionato.Utils
             this.l = le;
             this.money = m;
             this.otherst = new List<Team>();
-            this.history = new List<string>();
+            this.bought = new List<string>();
+            this.sold = new List<string>();
             foreach (Team t in this.l.leagueTeams)
             {
                 if (t.isplayers)
@@ -43,6 +46,16 @@ namespace SimulazioneCampionato.Utils
         public double callbackMoney()
         {
             return Math.Round(this.money,2);
+        }
+
+        public List<string> callbackbought()
+        {
+            return bought;
+        }
+
+        public List<string> callbacksold()
+        {
+            return sold;
         }
 
 
@@ -199,7 +212,7 @@ namespace SimulazioneCampionato.Utils
                         //Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
-                        report("+ "+cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList");
+                        report("+ "+cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList",bought);
                         money -= off;
                     }
                     else
@@ -215,7 +228,7 @@ namespace SimulazioneCampionato.Utils
                        // Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
-                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList");
+                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList",bought);
                         money -= off;
                     }
                     else
@@ -236,9 +249,9 @@ namespace SimulazioneCampionato.Utils
             EnterToContinue();
         }
 
-        private void report(string p)
+        private void report(string p,List<string> list)
         {
-            history.Add(p);
+            list.Add(p);
         }
 
         private Player printandChooseRandomPlayers()
@@ -295,7 +308,7 @@ namespace SimulazioneCampionato.Utils
                     t.addPlayer(tmp);
                     money += off;
                     Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
-                    report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName);
+                    report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName,sold);
                 }
                 else
                 {
@@ -332,7 +345,7 @@ namespace SimulazioneCampionato.Utils
                     Player tmp = cteam.popPlayer(cpl);
                     plt.addPlayer(tmp);
                     Console.WriteLine("\t you hired " + tmp.ToString() + " ");
-                    report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from "+cteam.TeamName);
+                    report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from "+cteam.TeamName,bought);
                     money -= off;
                 }
                 else if (off >= req)
@@ -343,7 +356,7 @@ namespace SimulazioneCampionato.Utils
                         Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(tmp);
                         Console.WriteLine("\t you hired "+tmp.ToString()+" ");
-                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName);
+                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName,bought);
                         money -= off;
                     }
                     else
@@ -359,7 +372,7 @@ namespace SimulazioneCampionato.Utils
                         Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(tmp);
                         Console.WriteLine("\t you hired " + tmp.ToString() + " ");
-                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName);
+                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName,bought);
                         money -= off;
                     }
                     else
@@ -517,10 +530,19 @@ namespace SimulazioneCampionato.Utils
 
         public void printReport()
         {
-            Console.WriteLine("Report Market");
-            foreach (string item in history)
-            {
-                Console.WriteLine(item);
+            if (bought.Count > 0 || sold.Count > 0) 
+            { 
+                Console.WriteLine("\nMarket Final Report");
+                Console.WriteLine(" ***Incoming Players");
+                foreach (string item in bought)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("\n ***Sold Players");
+                foreach (string item in sold)
+                {
+                    Console.WriteLine(item);
+                }
             }
         }
 
