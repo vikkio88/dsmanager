@@ -13,6 +13,7 @@ namespace SimulazioneCampionato.Utils
         League l;
         Team plt;
         List<Team> otherst;
+        List<Player> youthclub;
         //List<string> history;
         List<string> bought;
         List<string> sold;
@@ -30,6 +31,7 @@ namespace SimulazioneCampionato.Utils
             this.otherst = new List<Team>();
             this.bought = new List<string>();
             this.sold = new List<string>();
+            this.youthclub = new List<Player>();
             foreach (Team t in this.l.leagueTeams)
             {
                 if (t.isplayers)
@@ -124,12 +126,52 @@ namespace SimulazioneCampionato.Utils
                 EnterToContinue();
 
             }
+            else if (cmd == "6")
+            {
+                Player tmp = printandChooseRandomPlayersYOUTH();
+                trytobuy(tmp);
+
+                RandomOffer();
+                currentround++;
+            }
             else
             {
                 printMenu();
             }
 
         
+        }
+
+        private Player printandChooseRandomPlayersYOUTH()
+        {
+            Console.Clear();
+            Console.WriteLine("Juventus Youth Club");
+            int c = 1;
+            if (youthclub.Count < 1)
+            {
+                youthclub = GameUtils.getRandomPlayersYOUNGList(15);
+            }
+
+            foreach (Player pl in youthclub)
+            {
+                Console.WriteLine(c + ". " + pl.ToString());
+                c++;
+            }
+
+            Console.Write("[1/15]> ");
+            try
+            {
+                int n = int.Parse(Console.ReadLine());
+                Player tmp = youthclub.ElementAt(n - 1);
+                youthclub.Remove(tmp);
+                return tmp;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("wrong number,I choose the first...");
+                int n = 1;
+                return youthclub.ElementAt(n - 1);
+            }
         }
 
         private void SearchForRole()
@@ -219,7 +261,7 @@ namespace SimulazioneCampionato.Utils
                         //Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
-                        report("+ "+cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList",bought);
+                        report("+ "+cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0",bought);
                         money -= off;
                     }
                     else
@@ -266,7 +308,7 @@ namespace SimulazioneCampionato.Utils
             Console.Clear();
             Console.WriteLine("Free Players List");
             int c = 1;
-            List<Player> collection = GameUtils.getRandomPlayersList(20);
+            List<Player> collection = GameUtils.getRandomPlayersOLDList(20);
             foreach (Player pl in collection)
             {
                 Console.WriteLine(c+". "+pl.ToString());
@@ -306,7 +348,7 @@ namespace SimulazioneCampionato.Utils
                 double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
                 Console.WriteLine("\t " + t.TeamName + " offer " + off + " M euro for ");
                 Console.WriteLine("\t" + pl.ToString());
-                Console.WriteLine("\n*******\nTeam: "+teamplayerperrole+"\nModule: "+moduleplayerperrole);
+                Console.WriteLine("\n*******\nTeam:  "+teamplayerperrole+"\nModule: "+moduleplayerperrole);
                 Console.Write("Do you accept? [y/n] > ");
                 string ans = Console.ReadLine();
                 if (ans == "y")
@@ -493,7 +535,7 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("\n********MarketPlace*****\n");
             Console.WriteLine("\t" + plt.TeamName + " balance: " + Math.Round(money,2) + " M Euro");
             Console.WriteLine("day "+currentround+" / "+rounds);
-            Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team \n 5. Show Market History for this Year\n\t q to exit MarketPlace");
+            Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team \n 5. Show Market History for this Year\n 6. Youth Club\n\t q to exit MarketPlace");
             Console.WriteLine("\n\nTeam\n");
             Console.WriteLine(plt.ToStringFull());
             string[] m = Module.getRoles().ToArray();

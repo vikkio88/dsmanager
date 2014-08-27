@@ -381,5 +381,45 @@ namespace DsManager.Models
 
             return ret;
         }
+
+        public static List<Player> getRandomPlayersOLDList(int n = 1)
+        {
+            List<Player> list = new List<Player>();
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            for (int i = 0; i < n; i++)
+            {
+                if (rnd.getInt(100) > 20)
+                {
+                    list.Add(new Player(rnd.getName(), rnd.getSurname(), rnd.getInt(28,38), rnd.getAvgSkill(), rnd.getRole()));
+                }
+                else
+                {
+                    list.Add(new Player(rnd.getName("Spain"), rnd.getSurname("Spain"), rnd.getInt(28, 38), rnd.getAvgSkill(), rnd.getRole(), "Spagnolo"));
+                }
+                System.Threading.Thread.Sleep(5);
+            }
+
+            return list;
+        }
+
+        public static List<Player> getRandomPlayersYOUNGList(int n)
+        {
+            List<Player> list = new List<Player>();
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            for (int i = 0; i < n; i++)
+            {
+                if (rnd.getInt(100) > 20)
+                {
+                    list.Add(new Player(rnd.getName(), rnd.getSurname(), rnd.getInt(15, 20), rnd.getInt(40, 78), rnd.getRole()));
+                }
+                else
+                {
+                    list.Add(new Player(rnd.getName("Spain"), rnd.getSurname("Spain"), rnd.getInt(15, 20), rnd.getInt(40, 78), rnd.getRole(), "Spagnolo"));
+                }
+                System.Threading.Thread.Sleep(5);
+            }
+
+            return list;
+        }
     }
 }
