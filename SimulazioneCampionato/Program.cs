@@ -117,8 +117,9 @@ namespace SimulazioneCampionato
                 Console.WriteLine(c+". "+t.TeamName);
                 c++;
             }
-            Console.Write("[1/"+(c-1)+"]> ");
-            c = int.Parse(Console.ReadLine());
+           /* Console.Write("[1/"+(c-1)+"]> ");
+            c = int.Parse(Console.ReadLine());*/
+            c = MyConsole.AskForInt(l.NumbOfTeam);
             showTeam(c);
         }
 

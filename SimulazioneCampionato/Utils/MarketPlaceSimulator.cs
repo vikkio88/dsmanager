@@ -117,6 +117,13 @@ namespace SimulazioneCampionato.Utils
                 RandomOffer();
                 currentround++;
             }
+            else if (cmd == "5")
+            {
+                Console.Clear();
+                printReport();
+                EnterToContinue();
+
+            }
             else
             {
                 printMenu();
@@ -486,21 +493,23 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("\n********MarketPlace*****\n");
             Console.WriteLine("\t" + plt.TeamName + " balance: " + Math.Round(money,2) + " M Euro");
             Console.WriteLine("day "+currentround+" / "+rounds);
-            Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team\n\t q to exit MarketPlace");
+            Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team \n 5. Show Market History for this Year\n\t q to exit MarketPlace");
+            Console.WriteLine("\n\nTeam\n");
             Console.WriteLine(plt.ToStringFull());
             string[] m = Module.getRoles().ToArray();
-            Console.WriteLine("Players in Team per role");
+            Console.WriteLine("\nPlayers in Team per role");
             int[] n1 = Module.playersForRolesinTeam(plt);
             int length = n1.Count();
+            teamplayerperrole = "";
             for (int i = 0; i < length; i++)
             {
                Console.Write(m[i] + ": " + n1[i].ToString() + " ");
-               if (!reportstringready)
-               {
+              // if (!reportstringready)
+              // {
                    teamplayerperrole += m[i] + ": " + n1[i].ToString() + " ";
-               }
+               //}
             }
-                Console.WriteLine("\n***Your coach want to play with: "+plt.coach.FavouriteModule.ToString()+"\n you need those players: ");
+                Console.WriteLine("\n***Coach Module: "+plt.coach.FavouriteModule.ToString()+"\n you need those players: ");
                 int[] n = plt.coach.FavouriteModule.playerForRolesForModule();
                 
                 int length1 = n.Count();
@@ -532,7 +541,7 @@ namespace SimulazioneCampionato.Utils
         {
             if (bought.Count > 0 || sold.Count > 0) 
             { 
-                Console.WriteLine("\nMarket Final Report");
+                Console.WriteLine("\nMarket Report");
                 Console.WriteLine(" ***Incoming Players");
                 foreach (string item in bought)
                 {
