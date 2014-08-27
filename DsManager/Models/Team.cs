@@ -204,7 +204,7 @@ namespace DsManager.Models
                     result += player.ToString() +"\n";
                 }
             result += "media: " + Avg.ToString();// +"\n";
-            result += " media valore: " + getAvgVal().ToString() + "M €";
+            result += " media valore: " + getAvgVal().ToString() + "M euro";
             return result;
         }
 

@@ -422,7 +422,7 @@ namespace SimulazioneCampionato.Utils
                 n = 1;
             }
 
-            return cteam.getPlayer(n - 1);
+            return cteam.players.ElementAt(n - 1);
         }
 
         private Team chooseTeam()
