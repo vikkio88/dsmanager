@@ -125,7 +125,7 @@ namespace SimulazioneCampionato.Utils
                 Console.WriteLine(c+". "+item.Key.ToStringShort()+" avg: "+item.Key.SkillAvg+" val: "+item.Key.Val+" M euro - "+item.Value.TeamName);
                 c++;
             }
-            c = MyConsole.AskForInt(c);
+            c = MyConsole.AskForInt(c-1);
             KeyValuePair<Player,Team> tmp = plperroleLeague.ElementAt(c - 1);
             Console.Clear();
             trytobuy(tmp.Key, tmp.Value);
@@ -153,7 +153,7 @@ namespace SimulazioneCampionato.Utils
                 c++;
             }
             Console.Write("> ");
-            c = MyConsole.AskForInt(c);
+            c = MyConsole.AskForInt(c-1);
             return roles[c - 1];
         }
 
@@ -181,8 +181,8 @@ namespace SimulazioneCampionato.Utils
             Console.Clear();
             Console.WriteLine("Trying to buy " + cpl.ToString() + " from  FreePlayers List");
             double req = Math.Round((cpl.Val * 0.3 + (GameUtils.getWage(0, 5))), 2);
-            Console.WriteLine("\t He asked: " + req + " M Euro\n your offer [money owned: " + money + " M euro] > ");
-            double off = double.Parse(Console.ReadLine());
+            Console.WriteLine("\t He asked: " + req + " M Euro\n your offer [money owned: " + money + " M euro] ");
+            double off = MyConsole.AskForDouble(money);
             if (off < money)
             {
                 Console.WriteLine(off + "M euro ...offert sent..");
@@ -317,7 +317,7 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("Trying to buy "+cpl.ToString()+" from "+ cteam.TeamName);
             double req = Math.Round((cpl.Val + (GameUtils.getWage(0, 5))), 2);
             Console.WriteLine("\t they asked: "+req+" M Euro\n your offer [money owned: "+money+" M euro] > ");
-            double off = double.Parse(Console.ReadLine());
+            double off = MyConsole.AskForDouble(money);
             if (off < money && off>0)
             {
                 Console.WriteLine(off+"M euro ...offert sent..");
@@ -471,7 +471,7 @@ namespace SimulazioneCampionato.Utils
         {
             Console.Clear();
             Console.WriteLine("\n********MarketPlace*****\n");
-            Console.WriteLine("\t" + plt.TeamName + " balance: " + money + " M Euro");
+            Console.WriteLine("\t" + plt.TeamName + " balance: " + Math.Round(money,2) + " M Euro");
             Console.WriteLine("day "+currentround+" / "+rounds);
             Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team\n\t q to exit MarketPlace");
             Console.WriteLine(plt.ToStringFull());

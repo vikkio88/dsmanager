@@ -1,4 +1,5 @@
-﻿using DsManager.Models;
+﻿using ConsoleUtils;
+using DsManager.Models;
 using SimulazioneCampionato.Utils;
 using System;
 using System.Collections.Generic;
@@ -155,8 +156,8 @@ namespace SimulazioneCampionato
         private static void inizializePlayer()
         {
             Console.WriteLine("**************************\n*     DS Simulator 2014   *\n**************************\n");
-            Console.WriteLine("\n\nHello, welcome to DS Simulator 2014, insert your name to start this adventure: ");
-            playername = Console.ReadLine();
+            Console.Write("\n\nHello, welcome to DS Simulator 2014\n\tinsert your full name: ");
+            playername = MyConsole.AskForFullName();
         }
 
         private static List<string> ReadTeamNameFromFile()
