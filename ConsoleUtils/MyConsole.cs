@@ -10,24 +10,34 @@ namespace ConsoleUtils
     {
         public static int AskForInt(int max)
         {
-            int ret;
-            try
-            {
-                ret = int.Parse(Console.ReadLine());
-                if (ret > max)
-                {
-                    throw new Exception("Not a Valid choose!");
-                }
+            bool done = false;
 
-                if (ret < 1)
+            int ret=1;
+            
+            while (!done)
+            {
+                Console.Write("[1/" + max + "] > ");
+                try
                 {
-                    throw new Exception("Not a Valid choose!");
+                    ret = int.Parse(Console.ReadLine());
+                    if (ret > max)
+                    {
+                        throw new Exception("Not a Valid choose!");
+                    }
+
+                    if (ret < 1)
+                    {
+                        throw new Exception("Not a Valid choose!");
+                    }
+                    done = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    done = false;
                 }
             }
-            catch (Exception e)
-            {
-                ret = max;
-            }
+
             return ret;
         }
     }

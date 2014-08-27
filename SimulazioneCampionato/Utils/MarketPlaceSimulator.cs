@@ -53,7 +53,7 @@ namespace SimulazioneCampionato.Utils
             while (cmd != "q" && currentround <= rounds)
             {
                 command(ref cmd);
-                currentround++;
+                
             }
 
             Console.WriteLine("Market Ended!");
@@ -82,6 +82,7 @@ namespace SimulazioneCampionato.Utils
                trytobuy(cpl,cteam);
 
                RandomOffer();
+               currentround++;
 
             }
             else if(cmd =="2")
@@ -90,19 +91,25 @@ namespace SimulazioneCampionato.Utils
                 trytobuy(tmp);
 
                 RandomOffer();
+                currentround++;
             }else if(cmd == "3"){
                 //SEARCHFORROLE
                 SearchForRole();
+                RandomOffer();
+                currentround++;
             }
             else if(cmd == "4")
             {
                 trainTeam();
                 RandomOffer();
+                currentround++;
             }
             else
             {
                 printMenu();
             }
+
+        
         }
 
         private void SearchForRole()
