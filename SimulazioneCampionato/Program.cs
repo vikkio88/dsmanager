@@ -35,11 +35,16 @@ namespace SimulazioneCampionato
             A = MyConsole.AskForInt(2);
             if (A == 1)
             {
-                Console.WriteLine("How many Teams do you want in your League?");
+                Console.WriteLine("How many Teams do you want in your League? [4/18]");
                 int a;
                 try
                 {
                     a = int.Parse(Console.ReadLine());
+                    if (a < 4)
+                    {
+                        throw new Exception("Too enough Teams");
+                    }
+
                     if (a > 18)
                     {
                         throw new Exception("Too Many Teams");

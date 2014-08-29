@@ -264,6 +264,7 @@ namespace SimulazioneCampionato.Utils
 
         private void trainTeam()
         {
+            Console.Clear();
             Random rnd = new Random();
             if (rnd.Next(100) > ((plt.coach.SkillAvg-100)-10)) // adesso é rispetto alla skillavg dell'allenatore
             {
@@ -272,11 +273,11 @@ namespace SimulazioneCampionato.Utils
                 int mod = rnd.Next(1,3);
                 pl.SkillAvg += mod;
                 Console.WriteLine("\t "+pl.ToStringShort()+" +"+mod);
-                GameUtils.wait();
+                GameUtils.wait(50);
                 pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
                 mod = rnd.Next(1, 3);
                 pl.SkillAvg += mod;
-                Console.WriteLine("\t " + pl.ToStringShort() + " ++" + mod);
+                Console.WriteLine("\t " + pl.ToStringShort() + " +" + mod);
             }
             else
             {
