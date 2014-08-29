@@ -90,21 +90,22 @@ namespace DsManager.Models
             //influenza dell'allenatore
             if (coach != null)
             {
-                if (coach.SkillAvg >= tot )
+                if (coach.SkillAvg/double.Parse(tot.ToString()) <= 1 )
                 {
         //            Console.WriteLine("Bonus allenatore: +" + ((coach.SkillAvg - tot) / 2).ToString() );
                     tot += ((coach.SkillAvg - tot) / 2);
                 }
-                else
-                {
-        //            Console.WriteLine("Malus allenatore: " + ((coach.SkillAvg - tot) / 2).ToString());
-                    tot += ((coach.SkillAvg - tot) / 2);
-                }
+        //        else
+        //        {
+        ////            Console.WriteLine("Malus allenatore: " + ((coach.SkillAvg - tot) / 2).ToString());
+        //            tot += ((coach.SkillAvg - tot) / 2);
+        //        }
+
                 Module current = coach.FavouriteModule;
                 if (current.check(this)) 
                 {
         //            Console.WriteLine("Bonus modulo: +5");
-                    tot += 5;
+                    tot += 6;
                 }
                 else
                 {
@@ -118,7 +119,7 @@ namespace DsManager.Models
                 if (current.check(this))
                 {
        //             Console.WriteLine("Bonus modulo: +2");
-                    tot += 2;
+                    tot += 5;
                 }
                 else
                 {
@@ -126,6 +127,9 @@ namespace DsManager.Models
                     tot -= 6;
                 }
             }
+
+
+           
 
             return tot;
         }
