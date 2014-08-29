@@ -17,11 +17,15 @@ namespace SimulazioneCampionato
         static List<string> alboplayer = new List<string>();
         static List<string> boughtplayershistory = new List<string>();
         static List<string> soldplayershistory = new List<string>();
+        static int[] vps = { 0, 0, 0 };
+        static int losecounter = 0;
+        static int drawcounter = 0;
 
         static int anno = 2014;
         static string playername;
         static double money = GameUtils.getRandomMoney();
         static string playerteam;
+        private static bool discorsetto = false;
        // static Team playerteam;
         static void Main(string[] args)
         {
@@ -205,6 +209,9 @@ namespace SimulazioneCampionato
                     GameUtils.wait(50);
                     Console.WriteLine("done");
                     l.printFixtureAt(l.CurrentRound - 1);
+                    
+                    //controllo risultato giocatore
+                    checkPlayerTeamResult(l.getFixtureAt(l.CurrentRound - 1));
                 }
                 catch(Exception e)
                 {
@@ -302,6 +309,67 @@ namespace SimulazioneCampionato
             }
         }
 
+        private static void checkPlayerTeamResult(List<Match> list)
+        {
+            foreach (Match item in list)
+            {
+                if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                {
+                    if (playerteam == item.HomeTeam.TeamName)
+                    {
+                        if (!item.Draw())
+                        {
+                            if (item.Loser().TeamName == playerteam)
+                            {
+                                vps[2] += 1;
+                                losecounter += 1;
+                            }
+                            else
+                            {
+                                vps[0] += 1;
+                                losecounter = 0;
+                                drawcounter = 0;
+                            }
+                        }
+                        else //Pareggio
+                        {
+                            vps[1] += 1;
+                            drawcounter += 1;
+                            losecounter = 0;
+                        }
+
+                    }
+                    else // la squadra del giocatore gioca fuori casa (nel caso volessi contare dentro e fuori casa)
+                    {
+                       
+                        if (!item.Draw())
+                        {
+                            if (item.Loser().TeamName == playerteam)
+                            {
+                                vps[2] += 1;
+                                losecounter += 1;
+                            }
+                            else
+                            {
+                                vps[0] += 1;
+                                losecounter = 0;
+                                drawcounter = 0;
+                            }
+                        }
+                        else //Pareggio
+                        {
+                            vps[1] += 1;
+                            losecounter = 0;
+                            drawcounter += 1;
+                        }
+
+
+                    }
+                }
+            }
+            
+        }
+
         private static void playerReport()
         {
             int pos = l.getPositionbyTeamName(playerteam);
@@ -332,7 +400,11 @@ namespace SimulazioneCampionato
 
             if (yn == "y") 
             {
-                
+                losecounter = 0;
+                drawcounter = 0;
+                discorsetto = false;
+                vps = new int[]{0,0,0};
+
                 saveHistory();
                 GameUtils.AgePlayers(l);
                 EnterToContinue();
@@ -524,12 +596,38 @@ namespace SimulazioneCampionato
 
         private static void printMenu()
         {
+           // losecounter = 3;
+            if (losecounter > 4 && discorsetto)
+            {
+                discorsetto = false;
+            }
+            
+            if (drawcounter > 3)
+            {
+                Console.WriteLine("\n\tAnother draw, really?");
+                Console.WriteLine("\t Your coach is drawing a lot, speak with him");
+                EnterToContinue();
+                SpeakWithCoach(true);
+            }
+
+            if (losecounter > 2 && !discorsetto)
+            {
+                Console.WriteLine("\n\tAnother lost match, really?");
+                Console.WriteLine("\t Your coach lost more than 3 matches in a row, speak with him");
+                EnterToContinue();
+                SpeakWithCoach();
+
+            }
+
             Console.WriteLine("****************\n      Main Menu\n****************");
             Console.WriteLine("Season "+(anno-1)+"/"+anno);
             Console.WriteLine("\t "+playername+" ds of: "+playerteam);
             Console.WriteLine("\t balance: "+money+" M Euro");
             Console.WriteLine("\t Team position: "+l.getPositionbyTeamName(playerteam)+" / "+l.NumbOfTeam);
+            Console.WriteLine("\t W: {0} D: {1} L: {2}",vps[0],vps[1],vps[2]);
+            if (losecounter > 1) Console.WriteLine("\t consecutive lost matches: "+losecounter);
             Console.WriteLine("\t Round: "+l.CurrentRound+" / "+(l.NumbOfTeam-1));
+            
             if (l.CurrentRound != (l.NumbOfTeam - 1))
             {
                 Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
@@ -538,6 +636,54 @@ namespace SimulazioneCampionato
             {
                 Console.WriteLine(" 1. Season Report\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
             }
+
+      
+        }
+
+        private static void SpeakWithCoach(bool draw=false)
+        {
+           // throw new NotImplementedException();
+            Team t = l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam));
+            string coachN = t.coach.CoachName;
+            Console.WriteLine(coachN+": Hello, mr "+playername+", did you want to see me?");
+            Console.WriteLine("\t 1. Ask him more\n\t 2. Fire Him!");
+            int c = MyConsole.AskForInt(2);
+            int prob = Convert.ToInt32(GameUtils.getWage(0,100));
+            if (c == 1)
+            {
+                if (prob > 50)
+                {
+                    t.coach.SkillAvg += 5;
+                    Console.WriteLine(coachN+": I will improve, promise!");
+                    discorsetto = true;
+                }
+                else
+                {
+                    t.coach.SkillAvg -= 5;
+                    Console.WriteLine(coachN + ": Dont Talk with me like that! I am a professional Coach!");
+                    discorsetto = true;
+                }
+            }
+            else if (c == 2)
+            {
+                FireCoachW(t);
+            }
+
+            if (draw)
+            {
+                discorsetto = false;
+            }
+            EnterToContinue();
+            execCmd("");
+    
+        }
+
+        private static void FireCoachW(Team plt)
+        {
+            //throw new NotImplementedException();
+            Coach c = GameUtils.getRandomCoach();
+            Console.WriteLine("You fired your Coach\nThe president choose to hire \n" + c.ToString() + "\n as new coach");
+            plt.setCoach(c);
         }
 
        private static string UppercaseFirst(string s)

@@ -241,7 +241,14 @@ namespace DsManager.Models
         {
             foreach (Match item in fixture.ElementAt(n).matches)
             {
-                Console.WriteLine(item.ToString());
+                if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                {
+                    Console.WriteLine(" "+item.ToString()+" <-");
+                }
+                else
+                {
+                    Console.WriteLine(item.ToString());
+                }
             }
         }
 
@@ -310,6 +317,12 @@ namespace DsManager.Models
             }
 
             return scorersstring;
+        }
+
+        public List<Match> getFixtureAt(int n)
+        {
+            return fixture.ElementAt(n).matches;
+            
         }
     }
     public struct TeamGoals
