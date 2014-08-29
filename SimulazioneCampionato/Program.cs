@@ -654,6 +654,7 @@ namespace SimulazioneCampionato
                 if (prob > 50)
                 {
                     t.coach.SkillAvg += 5;
+                    if (t.coach.SkillAvg > 100) t.coach.SkillAvg = 100;
                     Console.WriteLine(coachN+": I will improve, promise!");
                     discorsetto = true;
                 }
@@ -681,6 +682,8 @@ namespace SimulazioneCampionato
         private static void FireCoachW(Team plt)
         {
             //throw new NotImplementedException();
+            losecounter = 0;
+            drawcounter = 0;
             Coach c = GameUtils.getRandomCoach();
             Console.WriteLine("You fired your Coach\nThe president choose to hire \n" + c.ToString() + "\n as new coach");
             plt.setCoach(c);
