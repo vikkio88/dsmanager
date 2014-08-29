@@ -74,15 +74,36 @@ namespace DsManager.Models
             }
         }
 
-        public string getTableString()
+        public string getTableString(bool highplt=false)
         {
             string res = "";
 
             int c = 1;
-            foreach (KeyValuePair<Team, int> pair in table)
+            if (highplt)
             {
-                res += c.ToString()+". "+pair.Key.TeamName + " --- " + pair.Value+"\n";
-                c++;
+                foreach (KeyValuePair<Team, int> pair in table)
+                {
+
+                    if (pair.Key.isplayers)
+                    {
+                        res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "  <--\n";
+                    }
+                    else
+                    {
+                        res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "\n";
+                    }
+                    c++;
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<Team, int> pair in table)
+                {
+
+                   res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "\n";
+                   c++;
+                }
+
             }
 
 

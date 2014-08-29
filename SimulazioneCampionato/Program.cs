@@ -208,7 +208,8 @@ namespace SimulazioneCampionato
             if (cmd == "2")
             {
                 Console.Clear();
-                Console.WriteLine(l.getTableString());
+                Console.WriteLine("League Table");
+                Console.WriteLine(l.getTableString(true));
             }
             else if (cmd == "1")
             {
@@ -216,15 +217,16 @@ namespace SimulazioneCampionato
                 
                 try
                 {
-
+                    
                     l.simulateRound();
                     Console.Write("simulating round " + ((l.CurrentRound)) + " ...");
                     GameUtils.wait(50);
                     Console.WriteLine("done");
+                    Console.WriteLine("\nResults\n");
                     l.printFixtureAt(l.CurrentRound - 1);
                     
                     //controllo risultato giocatore
-                    checkPlayerTeamResult(l.getFixtureAt(l.CurrentRound - 1));
+                    checkPlayerTeamResult(l.getFixtureAt(l.CurrentRound - 1));//,true); Possibilita di stampare report risultato per squadra
                 }
                 catch(Exception e)
                 {
@@ -307,7 +309,7 @@ namespace SimulazioneCampionato
                     {
                         goals = 0;
                     }
-                    Console.WriteLine(pl.ToStringShort()+" ---- goals: "+goals);
+                    Console.WriteLine(pl.ToString()+" -goals: "+goals);
                 }
 
 
@@ -322,7 +324,7 @@ namespace SimulazioneCampionato
             }
         }
 
-        private static void checkPlayerTeamResult(List<Match> list)
+        private static void checkPlayerTeamResult(List<Match> list,bool showthem = false)
         {
             foreach (Match item in list)
             {
@@ -413,12 +415,20 @@ namespace SimulazioneCampionato
 
             if (yn == "y") 
             {
+                Console.Clear();
+                Console.WriteLine(anno+"  -> "+(anno+1));
+                
+                
                 losecounter = 0;
                 drawcounter = 0;
                 discorsetto = false;
                 vps = new int[]{0,0,0};
 
                 saveHistory();
+
+                anno += 1;
+
+                Console.WriteLine("Player retired this year");
                 GameUtils.AgePlayers(l);
                 EnterToContinue();
                 Console.WriteLine("Other teams's Coach valutation...");
@@ -604,7 +614,7 @@ namespace SimulazioneCampionato
         private static void saveHistory()
         {
             albo.Add(anno + " " + l.getTeamByTablePosition(1).TeamName + "\n\tVincitore Marcatori: " + l.getStringScorerByScorerPosition(1));
-            anno += 1;
+            
         }
 
         private static void printMenu()

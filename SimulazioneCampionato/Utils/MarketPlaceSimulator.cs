@@ -92,7 +92,7 @@ namespace SimulazioneCampionato.Utils
         {
             if (cmd == "1")
             {
-                if (money > 0)
+                if (money >= 1)
                 {
                     Console.Clear();
                     printTeams();
@@ -116,7 +116,7 @@ namespace SimulazioneCampionato.Utils
             }
             else if(cmd =="2")
             {
-                if (money > 0)
+                if (money >+ 1)
                 {
                     Player tmp = printandChooseRandomPlayers();
                     trytobuy(tmp);
@@ -132,7 +132,7 @@ namespace SimulazioneCampionato.Utils
                 currentround++;
             }else if(cmd == "3"){
                  
-                if (money > 0)
+                if (money >+ 1)
                  {
                 //SEARCHFORROLE
                     SearchForRole();
@@ -162,7 +162,7 @@ namespace SimulazioneCampionato.Utils
             }
             else if (cmd == "6")
             {
-                if (money > 0)
+                if (money >+ 1)
                 {
                 Player tmp = printandChooseRandomPlayersYOUTH();
                 trytobuy(tmp);
@@ -265,16 +265,16 @@ namespace SimulazioneCampionato.Utils
         private void trainTeam()
         {
             Random rnd = new Random();
-            if (rnd.Next(100) > (plt.coach.SkillAvg-100)) // adesso é rispetto alla skillavg dell'allenatore
+            if (rnd.Next(100) > ((plt.coach.SkillAvg-100)-10)) // adesso é rispetto alla skillavg dell'allenatore
             {
                 Console.WriteLine("Training successfull");
                 Player pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
-                int mod = rnd.Next(1,5);
+                int mod = rnd.Next(1,3);
                 pl.SkillAvg += mod;
-                Console.WriteLine("\t "+pl.ToStringShort()+" ++"+mod);
+                Console.WriteLine("\t "+pl.ToStringShort()+" +"+mod);
                 GameUtils.wait();
                 pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
-                mod = rnd.Next(1, 5);
+                mod = rnd.Next(1, 3);
                 pl.SkillAvg += mod;
                 Console.WriteLine("\t " + pl.ToStringShort() + " ++" + mod);
             }
@@ -579,9 +579,10 @@ namespace SimulazioneCampionato.Utils
 
         private void printMenu()
         {
+            money = Math.Round(money, 2);
             Console.Clear();
             Console.WriteLine("\n********MarketPlace*****\n");
-            Console.WriteLine("\t" + plt.TeamName + " balance: " + Math.Round(money,2) + " M Euro");
+            Console.WriteLine("\t" + plt.TeamName + " balance: " + money + " M Euro");
             Console.WriteLine("day "+currentround+" / "+rounds);
             Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team \n 5. Show Market History for this Year\n 6. Youth Club\n\t q to exit MarketPlace");
             Console.WriteLine("\n\nTeam\n");
