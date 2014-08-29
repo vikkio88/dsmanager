@@ -1,0 +1,13 @@
+Zejko:Brkic:26:76:PT:Serbo
+Cesso:Danilo:28:78:DC:Brasiliano
+Emmanuel:Badu:23:75:CC:Ghanese
+Antonio:Di Natale:36:82:AC:Italiano
+Alexis:Zapata:22:71:AC:Colombiano
+Maurizio:Domizzi:32:70:DC:Italiano
+Nicola:Belmonte:23:68:DD:Italiano
+Albert:Riera:34:71:CD:Spagnolo
+Simone:Scuffet:21:75:PT:Italiano
+Luis:Muriel:27:82:AD:Colombiano
+Giovanni:Pasquale:32:79:DS:Italiano
+Giampiero:Pinzi:34:75:CC:Italiano
+Ivan:Piris:26:67:CS:Paraguaiano

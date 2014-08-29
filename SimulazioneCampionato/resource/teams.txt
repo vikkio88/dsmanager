@@ -8,3 +8,5 @@ parma
 chievo
 lazio
 empoli
+udinese
+cagliari

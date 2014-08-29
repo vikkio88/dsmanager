@@ -59,17 +59,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chievo.txt" />
-    <Content Include="empoli.txt" />
-    <Content Include="fiorentina.txt" />
-    <Content Include="inter.txt" />
-    <Content Include="juventus.txt" />
-    <Content Include="lazio.txt" />
-    <Content Include="milan.txt" />
-    <Content Include="napoli.txt" />
-    <Content Include="parma.txt" />
-    <Content Include="roma.txt" />
-    <Content Include="teams.txt" />
+    <Content Include="resource\cagliari.txt" />
+    <Content Include="resource\chievo.txt" />
+    <Content Include="resource\empoli.txt" />
+    <Content Include="resource\fiorentina.txt" />
+    <Content Include="resource\inter.txt" />
+    <Content Include="resource\juventus.txt" />
+    <Content Include="resource\lazio.txt" />
+    <Content Include="resource\milan.txt" />
+    <Content Include="resource\napoli.txt" />
+    <Content Include="resource\parma.txt" />
+    <Content Include="resource\roma.txt" />
+    <Content Include="resource\teams.txt" />
+    <Content Include="resource\udinese.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
