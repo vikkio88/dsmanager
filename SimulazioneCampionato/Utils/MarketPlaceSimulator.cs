@@ -92,30 +92,58 @@ namespace SimulazioneCampionato.Utils
         {
             if (cmd == "1")
             {
-               Console.Clear();
-               printTeams();
-               Console.Write("Choose the team > ");
-               Team cteam = chooseTeam();
+                if (money > 0)
+                {
+                    Console.Clear();
+                    printTeams();
+                    Console.Write("Choose the team > ");
+                    Team cteam = chooseTeam();
 
 
-               Player cpl = printPlayers(cteam);
+                    Player cpl = printPlayers(cteam);
 
-               trytobuy(cpl,cteam);
-
+                    trytobuy(cpl, cteam);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You dont have enough money!\n");
+                    EnterToContinue();
+                }
                RandomOffer();
                currentround++;
 
             }
             else if(cmd =="2")
             {
-                Player tmp = printandChooseRandomPlayers();
-                trytobuy(tmp);
+                if (money > 0)
+                {
+                    Player tmp = printandChooseRandomPlayers();
+                    trytobuy(tmp);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You dont have enough money!\n");
+                    EnterToContinue();
+                }
 
                 RandomOffer();
                 currentround++;
             }else if(cmd == "3"){
+                 
+                if (money > 0)
+                 {
                 //SEARCHFORROLE
-                SearchForRole();
+                    SearchForRole();
+                 }
+                 else
+                 {
+                     Console.Clear();
+                     Console.WriteLine("You dont have enough money!\n");
+                     EnterToContinue();
+                 }
+
                 RandomOffer();
                 currentround++;
             }
@@ -134,8 +162,17 @@ namespace SimulazioneCampionato.Utils
             }
             else if (cmd == "6")
             {
+                if (money > 0)
+                {
                 Player tmp = printandChooseRandomPlayersYOUTH();
                 trytobuy(tmp);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You dont have enough money!\n");
+                    EnterToContinue();
+                }
 
                 RandomOffer();
                 currentround++;

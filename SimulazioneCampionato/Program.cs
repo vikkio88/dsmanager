@@ -169,7 +169,7 @@ namespace SimulazioneCampionato
 
         private static List<string> ReadTeamNameFromFile()
         {
-            System.IO.StreamReader file = new System.IO.StreamReader() ;
+            System.IO.StreamReader file = null ;
             try
             {
                 file = new System.IO.StreamReader("teams.txt");
@@ -203,6 +203,7 @@ namespace SimulazioneCampionato
 
         private static void execCmd(string cmd)
         {
+
             //  1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Info \n 5. Get Info About Team\n 6. Print Fixture at Round x
             if (cmd == "2")
             {
