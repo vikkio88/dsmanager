@@ -77,9 +77,15 @@ namespace SimulazioneCampionato.Utils
 
         private void command(ref string cmd)
         {
+            checkMoney();
             printMenu();
             cmd = Console.ReadLine();
             execCmd(cmd);
+        }
+
+        private void checkMoney()
+        {
+            if (money < 0) money = 0;
         }
 
         private void execCmd(string cmd)

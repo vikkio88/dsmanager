@@ -30,10 +30,10 @@ namespace SimulazioneCampionato
         static void Main(string[] args)
         {
             inizializePlayer();
-            string A = "1";
-            Console.WriteLine("Generate a random League(1) or Use a File(2)?[1/2]");
-            A = Console.ReadLine();
-            if (A == "1")
+            int A = 1;
+            Console.WriteLine("Generate a random League(1) or Use a File(2)?");
+            A = MyConsole.AskForInt(2);
+            if (A == 1)
             {
                 Console.WriteLine("How many Teams do you want in your League?");
                 int a;
@@ -48,7 +48,7 @@ namespace SimulazioneCampionato
                     if (a % 2 != 0)
                     {
                         //throw new Exception("Must be a pair number of Teams");
-                        a -= 1;
+                        a += 1;
                     }
 
                     if (a <= 0)
@@ -169,7 +169,18 @@ namespace SimulazioneCampionato
 
         private static List<string> ReadTeamNameFromFile()
         {
-            System.IO.StreamReader file = new System.IO.StreamReader("teams.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader() ;
+            try
+            {
+                file = new System.IO.StreamReader("teams.txt");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("impossible to find teams.txt\n Exiting...");
+                EnterToContinue();
+                Environment.Exit(1);
+            }
+
             List<string> list = new List<string>();
             string line;
             
@@ -184,6 +195,7 @@ namespace SimulazioneCampionato
 
         private static void command(ref string cmd)
         {
+            checkCoachworksofar();
             printMenu();
             cmd = Console.ReadLine();
             execCmd(cmd);
@@ -597,27 +609,7 @@ namespace SimulazioneCampionato
         private static void printMenu()
         {
            // losecounter = 3;
-            if (losecounter > 4 && discorsetto)
-            {
-                discorsetto = false;
-            }
             
-            if (drawcounter > 3)
-            {
-                Console.WriteLine("\n\tAnother draw, really?");
-                Console.WriteLine("\t Your coach is drawing a lot, speak with him");
-                EnterToContinue();
-                SpeakWithCoach(true);
-            }
-
-            if (losecounter > 2 && !discorsetto)
-            {
-                Console.WriteLine("\n\tAnother lost match, really?");
-                Console.WriteLine("\t Your coach lost more than 3 matches in a row, speak with him");
-                EnterToContinue();
-                SpeakWithCoach();
-
-            }
 
             Console.WriteLine("****************\n      Main Menu\n****************");
             Console.WriteLine("Season "+(anno-1)+"/"+anno);
@@ -638,6 +630,31 @@ namespace SimulazioneCampionato
             }
 
       
+        }
+
+        private static void checkCoachworksofar()
+        {
+            if (losecounter > 4 && discorsetto)
+            {
+                discorsetto = false;
+            }
+
+            if (drawcounter > 3)
+            {
+                Console.WriteLine("\n\tAnother draw, really?");
+                Console.WriteLine("\t Your coach is drawing a lot, speak with him");
+                EnterToContinue();
+                SpeakWithCoach(true);
+            }
+
+            if (losecounter > 2 && !discorsetto)
+            {
+                Console.WriteLine("\n\tAnother lost match, really?");
+                Console.WriteLine("\t Your coach lost more than 3 matches in a row, speak with him");
+                EnterToContinue();
+                SpeakWithCoach();
+
+            }
         }
 
         private static void SpeakWithCoach(bool draw=false)
