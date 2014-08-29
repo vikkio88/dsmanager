@@ -188,7 +188,7 @@ namespace SimulazioneCampionato.Utils
         private Player printandChooseRandomPlayersYOUTH()
         {
             Console.Clear();
-            Console.WriteLine("Juventus Youth Club");
+            Console.WriteLine(plt.TeamName+" Youth Club");
             int c = 1;
             if (youthclub.Count < 1)
             {
