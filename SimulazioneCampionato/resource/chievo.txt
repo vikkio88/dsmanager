@@ -9,3 +9,8 @@ Michele:Canini:29:74:DC:Italiano
 Boukary:Drame:29:72:DC:Senegalese
 Nicolas:Frey:30:71:DD:Francese
 Michele:Agazzi:30:76:PT:Italiano
+Bostjan:Cesar:32:73:DC:Serbo
+Cristiano:Biraghi:21:64:DS:Italiano
+Mariano:Izco:31:73:CC:Argentino
+Valter:Birsa:28:67:AS:Serbo
+Maxi:Lopez:30:74:Argentino

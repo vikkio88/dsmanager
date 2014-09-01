@@ -9,3 +9,6 @@ Neigel:De Jong:30:79:CC:Olandese
 Michael:Essien:32:81:CC:Ghanese
 Stephan:El Shaarawy:22:81:AC:Italiano
 Mario:Balotelli:24:84:AC:Italiano
+Jeremy:Menez:27:77:AS:Francese
+Alex:Da Costa:32:81:DC:Brasiliano
+Fernando:Torres:30:82:AC:Spagnolo

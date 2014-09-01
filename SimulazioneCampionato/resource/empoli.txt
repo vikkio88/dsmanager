@@ -7,6 +7,8 @@ Massimo:Maccarone:34:71:AC:Italiano
 Franco:Signorelli:24:67:CD:Colombiano
 Mirko:Eramo:23:65:CS:Italiano
 Francesco:Pratali:36:62:CC:Italiano
-Levan:Mchedlidze:26:69:AC:Georgiano
+Levan:Mchedlidze:24:69:AC:Georgiano
 Mario:Rui:26:63:CS:Portoghese
 Ronaldo Pompeu:Da Silva:23:69:CC:Brasiliano
+Francesco:Tavano:35:70:AC:Italiano
+Irakli:Shekiladze:22:55:AC:Georgiano

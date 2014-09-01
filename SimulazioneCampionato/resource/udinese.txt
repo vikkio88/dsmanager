@@ -11,3 +11,5 @@ Luis:Muriel:27:82:AD:Colombiano
 Giovanni:Pasquale:32:79:DS:Italiano
 Giampiero:Pinzi:34:75:CC:Italiano
 Ivan:Piris:26:67:CS:Paraguaiano
+Andrea:Coda:29:74:DC:Italiano
+Panagiotis:Kone:27:75:AD:Greco
