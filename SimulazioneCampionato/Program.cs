@@ -21,6 +21,8 @@ namespace SimulazioneCampionato
         static int losecounter = 0;
         static int drawcounter = 0;
 
+       
+
         static int anno = 2014;
         static string playername;
         static double money = GameUtils.getRandomMoney();

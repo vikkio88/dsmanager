@@ -266,7 +266,7 @@ namespace SimulazioneCampionato.Utils
         {
             Console.Clear();
             Random rnd = new Random();
-            if (rnd.Next(100) > ((plt.coach.SkillAvg-100)-10)) // adesso é rispetto alla skillavg dell'allenatore
+            if (rnd.Next(100) > ((plt.coach.SkillAvg-100)-20)) // adesso é rispetto alla skillavg dell'allenatore
             {
                 Console.WriteLine("Training successfull");
                 Player pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
