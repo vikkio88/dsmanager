@@ -201,20 +201,13 @@ namespace SimulazioneCampionato.Utils
                 c++;
             }
 
-            Console.Write("[1/15]> ");
-            try
-            {
-                int n = int.Parse(Console.ReadLine());
-                Player tmp = youthclub.ElementAt(n - 1);
+            Console.Write("[1/"+youthclub.Count+"]> ");
+            c = MyConsole.AskForInt(youthclub.Count);
+         
+                Player tmp = youthclub.ElementAt(c - 1);
                 youthclub.Remove(tmp);
                 return tmp;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("wrong number,I choose the first...");
-                int n = 1;
-                return youthclub.ElementAt(n - 1);
-            }
+           
         }
 
         private void SearchForRole()
