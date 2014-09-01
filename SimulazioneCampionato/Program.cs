@@ -321,6 +321,10 @@ namespace SimulazioneCampionato
 
 
             }
+            else if (cmd == "7")
+            {
+                SpeakWithCoach(true);
+            }
             else if (cmd == "")
             {
                 Console.Clear();
@@ -405,7 +409,7 @@ namespace SimulazioneCampionato
             else if (pos == l.NumbOfTeam) 
             {
                 Console.WriteLine("Your Team was last this year...");
-                alboplayer.Add(anno + " " + l.NumbOfTeam + " position - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+                alboplayer.Add(anno + " " + l.NumbOfTeam + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else
             {
@@ -640,11 +644,11 @@ namespace SimulazioneCampionato
             
             if (l.CurrentRound != (l.NumbOfTeam - 1))
             {
-                Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+                Console.WriteLine(" 1. Simulate Round\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n 7. Speak with your Coach\n\n\t q to quit");
             }
             else
             {
-                Console.WriteLine(" 1. Season Report\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n\n\t q to quit");
+                Console.WriteLine(" 1. Season Report\n 2. Print Table\n 3. Print Scorers\n 4. Get Team Scorer \n 5. Get Info About Team\n 6. Print Fixture at Round x\n 7. Speak with your Coach\n\n\t q to quit");
             }
 
       
@@ -683,20 +687,41 @@ namespace SimulazioneCampionato
             Console.WriteLine(coachN+": Hello, mr "+playername+", did you want to see me?");
             Console.WriteLine("\t 1. Ask him more\n\t 2. Fire Him!");
             int c = MyConsole.AskForInt(2);
-            int prob = Convert.ToInt32(GameUtils.getWage(0,100));
+            int prob,prob1;
+            if (l.getPositionbyTeamName(playername) > l.NumbOfTeam / 2)
+            {
+                prob1 = 20;
+            }
+            else
+            {
+               prob1 = 50;
+            }
+             prob = Convert.ToInt32(GameUtils.getWage(0,100));
             if (c == 1)
             {
-                if (prob > 50)
+                if (prob > prob1)
                 {
-                    t.coach.SkillAvg += 5;
+                    t.coach.SkillAvg += 1;
                     if (t.coach.SkillAvg > 100) t.coach.SkillAvg = 100;
                     Console.WriteLine(coachN+": I will improve, promise!");
+                    GameUtils.wait();
+                    if (GameUtils.getWage(0, 100) > 20)
+                    {
+                        Console.WriteLine(coachN+": I think we need to change module");
+                        GameUtils.wait(1000);
+                        Console.WriteLine(coachN+": ...Let me think...");
+                        GameUtils.wait(2000);
+                        t.coach.FavouriteModule = GameUtils.getRandomCoach().FavouriteModule;
+                        Console.WriteLine(coachN+": The module now will be: "+t.coach.FavouriteModuleString);
+                        Console.WriteLine(coachN+": We will see now...");
+                    }
                     discorsetto = true;
                 }
                 else
                 {
                     t.coach.SkillAvg -= 5;
                     Console.WriteLine(coachN + ": Dont Talk with me like that! I am a professional Coach!");
+                    Console.WriteLine(coachN + ": I know what I am doing!");
                     discorsetto = true;
                 }
             }
