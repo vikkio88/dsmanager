@@ -345,6 +345,11 @@ namespace DsManager.Models
             return fixture.ElementAt(n).matches;
             
         }
+
+        public Team getTeambyTeamName(string p)
+        {
+            return getTeamByTablePosition(getPositionbyTeamName(p));
+        }
     }
     public struct TeamGoals
     {

@@ -20,6 +20,7 @@ namespace SimulazioneCampionato
         static int[] vps = { 0, 0, 0 };
         static int losecounter = 0;
         static int drawcounter = 0;
+       // static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
 
        
 
@@ -442,6 +443,11 @@ namespace SimulazioneCampionato
                 Console.WriteLine("Player retired this year");
                 GameUtils.AgePlayers(l);
                 EnterToContinue();
+
+                //Console.WriteLine("Player returned after loan year");
+                //returnFromLoan();
+                //EnterToContinue();
+
                 Console.WriteLine("Other teams's Coach valutation...");
                 GameUtils.CheckCoachWork(l);
                 Console.WriteLine("\n\n*****************\n\n");
@@ -468,6 +474,18 @@ namespace SimulazioneCampionato
             }
 
         }
+
+        //private static void returnFromLoan()
+        //{
+        //    foreach (KeyValuePair<Player,string> plonloan in loaned)
+        //    {
+        //        Team tmpT = l.getTeambyTeamName(plonloan.Value);
+        //        l.getTeambyTeamName(playerteam).addPlayer(tmpT.popPlayer(plonloan.Key));
+        //        Console.WriteLine("from "+plonloan.Value+": "+plonloan.Key.ToString());
+        //    }
+
+        //    loaned = new Dictionary<Player, string>();
+        //}
 
         private static void quit()
         {
@@ -530,7 +548,7 @@ namespace SimulazioneCampionato
             mrk.init();
             money = mrk.callbackMoney();
             addMarketHistory(mrk.callbackbought(), mrk.callbacksold());
-           
+          //  loaned = mrk.callbackLoaned();
             mrk.printReport();
 
         }
@@ -690,7 +708,7 @@ namespace SimulazioneCampionato
             int prob,prob1;
             if (l.getPositionbyTeamName(playername) > l.NumbOfTeam / 2)
             {
-                prob1 = 20;
+                prob1 = 80;
             }
             else
             {

@@ -23,6 +23,7 @@ namespace SimulazioneCampionato.Utils
         string teamplayerperrole = string.Empty;
         string moduleplayerperrole = string.Empty;
         bool reportstringready = false;
+        static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
         
         public MarketPlaceSimulator(League le, double m)
         {
@@ -387,24 +388,51 @@ namespace SimulazioneCampionato.Utils
             {
                 Team t = otherst.ElementAt(rnd.Next(otherst.Count));
                 Player pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
-                double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
-                Console.WriteLine("\t " + t.TeamName + " offer " + off + " M euro for ");
-                Console.WriteLine("\t" + pl.ToString());
-                Console.WriteLine("\n*******\nTeam:  "+teamplayerperrole+"\nModule: "+moduleplayerperrole);
-                Console.Write("Do you accept? [y/n] > ");
-                string ans = Console.ReadLine();
-                if (ans == "y")
-                {
-                    Player tmp = plt.popPlayer(pl);
-                    t.addPlayer(tmp);
-                    money += off;
-                    Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
-                    report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName,sold);
-                }
-                else
-                {
-                    Console.WriteLine("Offer refused...");
-                }
+                //if (pl.Age > 21)
+                //{
+                    double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
+                    Console.WriteLine("\t " + t.TeamName + " offer " + off + " M euro for ");
+                    Console.WriteLine("\t" + pl.ToString());
+                    Console.WriteLine("\n*******\nTeam:  " + teamplayerperrole + "\nModule: " + moduleplayerperrole);
+                    Console.Write("Do you accept? [y/n] > ");
+                    string ans = Console.ReadLine();
+                    if (ans == "y")
+                    {
+                        Player tmp = plt.popPlayer(pl);
+                        t.addPlayer(tmp);
+                        money += off;
+                        Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
+                        report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName, sold);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Offer refused...");
+                    }
+                //}
+                //else //prestito
+                //{
+                //    Console.WriteLine("\t " + t.TeamName + " want to loan");
+                //    Console.WriteLine("\t" + pl.ToString() + "\n\tfor the next year");
+                //    Console.WriteLine("\n*******\nTeam:  " + teamplayerperrole + "\nModule: " + moduleplayerperrole);
+                //    Console.Write("Do you accept? [y/n] > ");
+                //    string ans = Console.ReadLine();
+                //    if (ans == "y")
+                //    {
+                //        Player tmp = plt.popPlayer(pl);
+                //        loaned.Add(tmp, t.TeamName);
+                //        t.addPlayer(tmp);
+                //       // money += off;
+                //        Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
+                //        report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - on loan to " + t.TeamName, sold);
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine("Offer refused...");
+                //    }
+
+
+
+                //}
             }
             else
             {
@@ -640,5 +668,11 @@ namespace SimulazioneCampionato.Utils
             }
         }
 
+
+        public Dictionary<Player, string> callbackLoaned()
+        {
+            //throw new NotImplementedException();
+            return loaned;
+        }
     }
 }
