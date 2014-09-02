@@ -421,14 +421,14 @@ namespace SimulazioneCampionato.Utils
                 //        Player tmp = plt.popPlayer(pl);
                 //        loaned.Add(tmp, t.TeamName);
                 //        t.addPlayer(tmp);
-                //       // money += off;
+                //        // money += off;
                 //        Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
                 //        report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - on loan to " + t.TeamName, sold);
                 //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Offer refused...");
-                //    }
+                    //else
+                    //{
+                    //    Console.WriteLine("Offer refused...");
+                    //}
 
 
 
