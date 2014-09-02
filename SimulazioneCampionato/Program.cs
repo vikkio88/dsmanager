@@ -405,7 +405,7 @@ namespace SimulazioneCampionato
                 double price = GameUtils.getWage(5, 15);
                 Console.WriteLine("Your Team won the League this year!\nthe price is "+price+" M Euro");
                 money += price;
-                alboplayer.Add(anno + " league champion - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+                alboplayer.Add(anno + " league champion - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else if (pos == l.NumbOfTeam) 
             {
@@ -415,7 +415,7 @@ namespace SimulazioneCampionato
             else
             {
                 Console.WriteLine("Your Team arrived " + pos + " / "+l.NumbOfTeam);
-                alboplayer.Add(anno + " " + pos + " position - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+                alboplayer.Add(anno + " " + pos + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
         }
 
@@ -642,7 +642,7 @@ namespace SimulazioneCampionato
 
         private static void saveHistory()
         {
-            albo.Add(anno + " " + l.getTeamByTablePosition(1).TeamName + "\n\tVincitore Marcatori: " + l.getStringScorerByScorerPosition(1));
+            albo.Add(anno + " " + l.getTeamByTablePosition(1).TeamName + " p:"+l.getPointByPosition(1)+"\n\tVincitore Marcatori: " + l.getStringScorerByScorerPosition(1));
             
         }
 

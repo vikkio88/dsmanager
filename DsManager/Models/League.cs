@@ -74,6 +74,11 @@ namespace DsManager.Models
             }
         }
 
+        public int getPointByPosition(int pos)
+        {
+            return table.ElementAt(pos - 1).Value;
+        }
+
         public string getTableString(bool highplt=false)
         {
             string res = "";

@@ -23,7 +23,7 @@ namespace SimulazioneCampionato.Utils
         string teamplayerperrole = string.Empty;
         string moduleplayerperrole = string.Empty;
         bool reportstringready = false;
-        static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
+        //static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
         
         public MarketPlaceSimulator(League le, double m)
         {
@@ -166,7 +166,7 @@ namespace SimulazioneCampionato.Utils
                 if (money >+ 1)
                 {
                 Player tmp = printandChooseRandomPlayersYOUTH();
-                trytobuy(tmp);
+                trytobuy(tmp,true);
                 }
                 else
                 {
@@ -202,7 +202,7 @@ namespace SimulazioneCampionato.Utils
                 c++;
             }
 
-            Console.Write("[1/"+youthclub.Count+"]> ");
+            //Console.Write("[1/"+youthclub.Count+"]> ");
             c = MyConsole.AskForInt(youthclub.Count);
          
                 Player tmp = youthclub.ElementAt(c - 1);
@@ -281,7 +281,7 @@ namespace SimulazioneCampionato.Utils
             
         }
 
-        private void trytobuy(Player cpl)
+        private void trytobuy(Player cpl,bool fromyouth = false)
         {
             Console.Clear();
             Console.WriteLine("Trying to buy " + cpl.ToString() + " from  FreePlayers List");
@@ -304,7 +304,15 @@ namespace SimulazioneCampionato.Utils
                         //Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
-                        report("+ "+cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0",bought);
+                        if (!fromyouth)
+                        {
+                            report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0", bought);
+                        }
+                        else
+                        {
+                            report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from YouthClub", bought);
+                        }
+
                         money -= off;
                     }
                     else
@@ -320,7 +328,14 @@ namespace SimulazioneCampionato.Utils
                        // Player tmp = cteam.popPlayer(cpl);
                         plt.addPlayer(cpl);
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
-                        report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from FreeList",bought);
+                        if (!fromyouth)
+                        {
+                            report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0", bought);
+                        }
+                        else
+                        {
+                            report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from YouthClub", bought);
+                        }
                         money -= off;
                     }
                     else
@@ -609,6 +624,7 @@ namespace SimulazioneCampionato.Utils
             Console.WriteLine("\n 1. Search for Player for Team League \n 2. View Free Player \n 3. Search for role in League \n 4. Train your Team \n 5. Show Market History for this Year\n 6. Youth Club\n\t q to exit MarketPlace");
             Console.WriteLine("\n\nTeam\n");
             Console.WriteLine(plt.ToStringFull());
+            Console.WriteLine("Age Average: "+plt.getAvgAge());
             string[] m = Module.getRoles().ToArray();
             Console.WriteLine("\nPlayers in Team per role");
             int[] n1 = Module.playersForRolesinTeam(plt);
@@ -669,10 +685,10 @@ namespace SimulazioneCampionato.Utils
         }
 
 
-        public Dictionary<Player, string> callbackLoaned()
-        {
-            //throw new NotImplementedException();
-            return loaned;
-        }
+        //public Dictionary<Player, string> callbackLoaned()
+        //{
+        //    //throw new NotImplementedException();
+        //    return loaned;
+        //}
     }
 }

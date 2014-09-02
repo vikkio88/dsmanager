@@ -15,6 +15,9 @@ namespace DsManager.Models
         private int goalAway;
         bool played = false;
         MatchResult result;
+        //modules = { "4-4-2","4-3-3","4-5-1","4-2-4","3-5-2","3-4-3","3-3-4","5-4-1","5-3-2"};
+        List<string> offensiveMod = new List<string>(){ "4-2-4", "3-3-4", "3-4-3" };
+        List<string> defensiveMod = new List<string>() { "5-3-2", "5-4-1", "4-5-1" };
 
         public Team HomeTeam
         {
@@ -213,6 +216,68 @@ namespace DsManager.Models
 
             //Influenza Campione
             //EVENTUALMENTE se ci fosse un giocatore sulla 95ina potremmo dargli un goal bonus
+
+            GameUtils.wait();
+            rnd = new RandomFiller.RandomFiller();
+            //influenza modulo: piú difensori meno goal subiti e meno fatti, piú attaccanti piú goal fatti e subiti
+            if (AwayTeam.coach != null)
+            {
+                if (offensiveMod.IndexOf(awayTeam.coach.FavouriteModuleString) != -1) //modulo offensivo
+                {
+                    if (rnd.getInt(100) > 50) //teoricamente sarebbe meglio fare media attacco
+                    {
+                        goalAway += 1;
+                    }
+
+                    GameUtils.wait();
+                    //goal malus per squadra offensiva
+                    if (rnd.getInt(100) > 50) //teoricamente sarebbe meglio fare media difesa
+                    {
+                        goalHome += 1;
+                    }
+
+                }
+                else if (defensiveMod.IndexOf(AwayTeam.coach.FavouriteModuleString) != -1)//modulo difensivo
+                {
+                    if (rnd.getInt(100) > 50) //teoricamente sarebbe meglio fare media difesa
+                    {
+                        goalHome -= 1;
+                        if (goalHome < 0) goalHome = 0;
+                    }
+
+                }
+            }
+
+            if (HomeTeam.coach != null)
+            {
+                if (offensiveMod.IndexOf(homeTeam.coach.FavouriteModuleString) != -1) //modulo offensivo
+                {
+                    //goal bonus con squadra offensiva
+                    if (rnd.getInt(100) > 50) //teoricamente sarebbe meglio fare media attacco
+                    {
+                        goalHome += 1;
+                    }
+
+                    GameUtils.wait();
+                    //goal malus per squadra offensiva
+                    if (rnd.getInt(100) > 50) //teoricamente sarebbe meglio fare media difesa
+                    {
+                        goalAway += 1;
+                    }
+
+                }
+                else if (defensiveMod.IndexOf(homeTeam.coach.FavouriteModuleString) != -1)//modulo difensivo
+                {
+                    if (rnd.getInt(100) > 50) //teoricamente sarebbe meglio fare media difesa
+                    {
+                        goalAway -= 1;
+                        if (goalAway < 0) goalAway = 0;
+                    }
+
+
+                }
+            }
+            
 
 
 
