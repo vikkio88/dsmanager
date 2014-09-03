@@ -202,6 +202,8 @@ namespace SimulazioneCampionato.Utils
                 c++;
             }
 
+            printPlayerPerRoleAndMoneyInfo();
+
             //Console.Write("[1/"+youthclub.Count+"]> ");
             c = MyConsole.AskForInt(youthclub.Count);
          
@@ -221,9 +223,12 @@ namespace SimulazioneCampionato.Utils
             int c = 1;
             foreach (KeyValuePair<Player,Team> item in plperroleLeague)
             {
-                Console.WriteLine(c+". "+item.Key.ToStringShort()+" avg: "+item.Key.SkillAvg+" val: "+item.Key.Val+" M euro - "+item.Value.TeamName);
+                Console.WriteLine(c + ". " + item.Key.ToStringShort() + " age: " + item.Key.Age + " avg: " + item.Key.SkillAvg + " val: " + item.Key.Val + " M euro - " + item.Value.TeamName);
                 c++;
             }
+
+            printPlayerPerRoleAndMoneyInfo();
+
             c = MyConsole.AskForInt(c-1);
             KeyValuePair<Player,Team> tmp = plperroleLeague.ElementAt(c - 1);
             Console.Clear();
@@ -372,6 +377,8 @@ namespace SimulazioneCampionato.Utils
                 Console.WriteLine(c+". "+pl.ToString());
                 c++;
             }
+
+            printPlayerPerRoleAndMoneyInfo();
 
             Console.Write("[1/20]> ");
             try
@@ -547,6 +554,23 @@ namespace SimulazioneCampionato.Utils
 
             return cteam.getPlayer(n - 1);
         }
+        private void printPlayerPerRoleAndMoneyInfo()
+        {
+            string[] m = Module.getRoles().ToArray();
+            int[] n1 = Module.playersForRolesinTeam(plt);
+            int length = n1.Count();
+            Console.Write("\n\tYour Team Info\n\t");
+            teamplayerperrole = "";
+            for (int i = 0; i < length; i++)
+            {
+                Console.Write(m[i] + ": " + n1[i].ToString() + " ");
+                // if (!reportstringready)
+                // {
+                teamplayerperrole += m[i] + ": " + n1[i].ToString() + " ";
+                //}
+            }
+            Console.WriteLine("\n\tMoney: "+money+" M euro");
+        }
 
         private Player printPlayers(Team cteam)
         {
@@ -557,6 +581,9 @@ namespace SimulazioneCampionato.Utils
                 c++;
             }
             int n;
+
+            printPlayerPerRoleAndMoneyInfo();
+
             Console.Write("Choose the player > ");
             try
             {
