@@ -23,6 +23,14 @@ namespace SimulazioneCampionato.Utils
         string teamplayerperrole = string.Empty;
         string moduleplayerperrole = string.Empty;
         bool reportstringready = false;
+        
+        string recordbought = "";
+        double recordboughtpr = 0.0;
+
+        string recordsold = "";
+        double recordsoldpr = 0.0;
+
+
         //static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
         
         public MarketPlaceSimulator(League le, double m)
@@ -311,11 +319,14 @@ namespace SimulazioneCampionato.Utils
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
                         if (!fromyouth)
                         {
+                            
                             report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0", bought);
+                            checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0", off);
                         }
                         else
                         {
                             report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from YouthClub", bought);
+                            checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from YouthClub", off);
                         }
 
                         money -= off;
@@ -335,11 +346,13 @@ namespace SimulazioneCampionato.Utils
                         Console.WriteLine("\t you hired " + cpl.ToString() + " ");
                         if (!fromyouth)
                         {
+                            checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0", off);
                             report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, Parametro 0", bought);
                         }
                         else
                         {
                             report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from YouthClub", bought);
+                            checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from YouthClub", off);
                         }
                         money -= off;
                     }
@@ -361,6 +374,23 @@ namespace SimulazioneCampionato.Utils
             EnterToContinue();
         }
 
+        private void checkrecordbought(string p, double off)
+        {
+            if (recordboughtpr < off)
+            {
+                recordbought = p;
+                recordboughtpr = off;
+            }
+        }
+
+        private void checkrecordsold(string p, double off)
+        {
+            if (recordsoldpr < off)
+            {
+                recordsold = p;
+                recordsoldpr = off;
+            }
+        }
         private void report(string p,List<string> list)
         {
             list.Add(p);
@@ -412,7 +442,7 @@ namespace SimulazioneCampionato.Utils
                 Player pl = plt.getPlayer(rnd.Next(plt.NumbOfPlayers));
                 //if (pl.Age > 21)
                 //{
-                    double off = Math.Round(pl.Val + GameUtils.getWage(0, 4));
+                    double off = Math.Round(pl.Val + GameUtils.getWage(0, 8));
                     Console.WriteLine("\t " + t.TeamName + " offer " + off + " M euro for ");
                     Console.WriteLine("\t" + pl.ToString());
                     Console.WriteLine("\n*******\nTeam:  " + teamplayerperrole + "\nModule: " + moduleplayerperrole);
@@ -425,6 +455,7 @@ namespace SimulazioneCampionato.Utils
                         money += off;
                         Console.WriteLine("\t" + tmp.ToStringShort() + " sold to " + t.TeamName);
                         report("- " + tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName, sold);
+                        checkrecordsold(tmp.ToStringShort() + " - val: " + tmp.Val + " - off: " + off + " M euro, to " + t.TeamName, off);
                     }
                     else
                     {
@@ -487,6 +518,7 @@ namespace SimulazioneCampionato.Utils
                     plt.addPlayer(tmp);
                     Console.WriteLine("\t you hired " + tmp.ToString() + " ");
                     report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from "+cteam.TeamName,bought);
+                    checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName, off);
                     money -= off;
                 }
                 else if (off >= req)
@@ -498,6 +530,7 @@ namespace SimulazioneCampionato.Utils
                         plt.addPlayer(tmp);
                         Console.WriteLine("\t you hired "+tmp.ToString()+" ");
                         report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName,bought);
+                        checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName, off);
                         money -= off;
                     }
                     else
@@ -514,6 +547,7 @@ namespace SimulazioneCampionato.Utils
                         plt.addPlayer(tmp);
                         Console.WriteLine("\t you hired " + tmp.ToString() + " ");
                         report("+ " + cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName,bought);
+                        checkrecordbought(cpl.ToStringShort() + " - val: " + cpl.Val + " - off: " + off + " M euro, from " + cteam.TeamName, off);
                         money -= off;
                     }
                     else
@@ -717,5 +751,10 @@ namespace SimulazioneCampionato.Utils
         //    //throw new NotImplementedException();
         //    return loaned;
         //}
+
+        internal string[] callbackrecords()
+        {
+            return new string[] { recordbought, recordsold };
+        }
     }
 }

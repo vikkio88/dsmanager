@@ -17,6 +17,7 @@ namespace SimulazioneCampionato
         static List<string> alboplayer = new List<string>();
         static List<string> boughtplayershistory = new List<string>();
         static List<string> soldplayershistory = new List<string>();
+        static List<string> recordhistory = new List<string>();
         static int[] vps = { 0, 0, 0 };
         static int losecounter = 0;
         static int drawcounter = 0;
@@ -492,8 +493,20 @@ namespace SimulazioneCampionato
             saveHistory();
             printAlbo();
             printAlboPlayer();
+            printMarketRecords();
             printMarketHistory();
             Environment.Exit(0);
+        }
+
+        private static void printMarketRecords()
+        {
+            Console.Clear();
+            Console.WriteLine("Market Records\n");
+            foreach (string item in recordhistory)
+            {
+                Console.WriteLine("\n"+item);
+            }
+            Console.ReadLine();
         }
 
         private static void printMarketHistory()
@@ -548,9 +561,16 @@ namespace SimulazioneCampionato
             mrk.init();
             money = mrk.callbackMoney();
             addMarketHistory(mrk.callbackbought(), mrk.callbacksold());
+            AddMarketRecord(mrk.callbackrecords());
+
            // loaned = mrk.callbackLoaned();
             mrk.printReport();
 
+        }
+
+        private static void AddMarketRecord(string[] record)
+        {
+            recordhistory.Add(anno + "\nbought: " + record[0] + "\nsold: " + record[1]);
         }
 
         private static void addMarketHistory(List<string> bought, List<string> sold)

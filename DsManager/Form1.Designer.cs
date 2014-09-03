@@ -176,6 +176,7 @@ namespace DsManager
             this.valDataGridViewTextBoxColumn1.DataPropertyName = "Val";
             this.valDataGridViewTextBoxColumn1.HeaderText = "Valore M€";
             this.valDataGridViewTextBoxColumn1.Name = "valDataGridViewTextBoxColumn1";
+            this.valDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // playerBindingSource1
             // 

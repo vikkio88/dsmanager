@@ -71,6 +71,8 @@ namespace DsManager
             label3.Text = a.ToString();
         }
 
+ 
+
 
         
 
