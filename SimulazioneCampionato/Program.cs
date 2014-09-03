@@ -13,6 +13,12 @@ namespace SimulazioneCampionato
     class Program
     {
         static League l;
+
+        //utility per ChampionsLeague
+        static League champ;
+        static bool doingchampL = false;
+        //Champions League
+
         static List<string> albo = new List<string>();
         static List<string> alboplayer = new List<string>();
         static List<string> boughtplayershistory = new List<string>();
@@ -405,16 +411,24 @@ namespace SimulazioneCampionato
             {
                 double price = GameUtils.getWage(5, 15);
                 Console.WriteLine("Your Team won the League this year!\nthe price is "+price+" M Euro");
+
+                Console.WriteLine("\n\tYou team is qualified the Champions League for the next Year\n");
+                doingchampL = true;
+
+
+
                 money += price;
                 alboplayer.Add(anno + " league champion - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else if (pos == l.NumbOfTeam) 
             {
+                doingchampL = false;
                 Console.WriteLine("Your Team was last this year...");
                 alboplayer.Add(anno + " " + l.NumbOfTeam + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else
             {
+                doingchampL = false;
                 Console.WriteLine("Your Team arrived " + pos + " / "+l.NumbOfTeam);
                 alboplayer.Add(anno + " " + pos + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
