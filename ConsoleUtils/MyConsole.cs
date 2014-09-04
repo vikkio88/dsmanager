@@ -9,6 +9,49 @@ namespace ConsoleUtils
 {
     public static class MyConsole
     {
+        public static bool AskForYorN(bool blankmeansno = true, bool verbose =false)
+        {
+            
+            bool done = false;
+            Console.Write("[y/n]> ");
+
+            if (blankmeansno)
+            {
+                while (!done)
+                {
+                    string ret = Console.ReadLine();
+                    if (ret == "y" || ret == "Y")
+                    {
+                        if (verbose) Console.WriteLine("Yes");
+                        return true;
+                    }
+                    else
+                    {
+                        if (verbose) Console.WriteLine("No");
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                while (!done)
+                {
+                    string ret = Console.ReadLine();
+                    if (ret == "y" || ret == "Y")
+                    {
+                        if (verbose) Console.WriteLine("Yes");
+                        return true;
+                    }
+                    else if( ret == "n" || ret == "N")
+                    {
+                        if (verbose) Console.WriteLine("No");
+                        return false;
+                    }
+
+                }
+            }
+            return false;
+        }
 
         public static string AskForFullName()
         {

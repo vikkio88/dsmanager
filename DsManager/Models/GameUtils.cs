@@ -421,5 +421,16 @@ namespace DsManager.Models
 
             return list;
         }
+
+
+        public static bool getProbability(int perc = 100)
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            if(rnd.getInt(0,100)>(100-perc)){
+                return true;
+            }
+
+            return false;
+        }
     }
 }

@@ -211,9 +211,104 @@ namespace SimulazioneCampionato
         private static void command(ref string cmd)
         {
             checkCoachworksofar();
+            interview();
             printMenu();
             cmd = Console.ReadLine();
             execCmd(cmd);
+        }
+
+        private static void interview()
+        {
+            if (l.CurrentRound > 1)
+            {
+                if (GameUtils.getProbability(20))
+                {
+                    interviewQA();
+                }
+            }
+        }
+
+        private static void interviewQA()
+        {
+            bool buono = false;
+            string jname = GameUtils.getRandomCoach().CoachName+" "+GameUtils.getRandomCoach().CoachSurname;
+            Console.WriteLine("Interview\n");
+            if (vps[0] > vps[2])
+            {
+                buono = true;
+            }
+
+            Console.WriteLine(jname + ": Hello, Tuttosport newspaper here, I would like to ask you some questions");
+            Console.WriteLine("\t 1. Ok sure, go on\n\t 2. Nope, bye");
+            int c = MyConsole.AskForInt(2);
+
+            if (c == 1)
+            {
+                if (buono)
+                {
+                    Console.WriteLine(jname+": Ok thx, so... your team is going well, do you think they can do even better?");
+                    if (MyConsole.AskForYorN(false,true))
+                    {
+                        if (GameUtils.getProbability(50))
+                        {
+                            l.getTeambyTeamName(playerteam).coach.SkillAvg += 1;
+                            Console.WriteLine("\tYour Coach is motivated by your interview");
+                        }
+                        else
+                        {
+                            l.getTeambyTeamName(playerteam).coach.SkillAvg -= 1;
+                            Console.WriteLine("\tYour Coach feels under pressure after your interview");
+                        }
+                    }
+                    else
+                    {
+                        if (GameUtils.getProbability(50))
+                        {
+                            l.getTeambyTeamName(playerteam).coach.SkillAvg += 1;
+                            Console.WriteLine("\tYour Coach is motivated by your interview");
+                        }
+
+                    }
+
+                }
+                else //Andamento negativo
+                {
+
+                    Console.WriteLine(jname + ": Ok thx, so... your team is going not so well, do you think they can do better?");
+                    if (MyConsole.AskForYorN(false, true))
+                    {
+                        if (GameUtils.getProbability(50))
+                        {
+                            l.getTeambyTeamName(playerteam).coach.SkillAvg += 2;
+                            Console.WriteLine("\tYour Coach is motivated by your interview");
+                        }
+                        else
+                        {
+                            l.getTeambyTeamName(playerteam).coach.SkillAvg -= 5;
+                            Console.WriteLine("\tYour Coach feels under pressure after your interview");
+                        }
+                    }
+                    else
+                    {
+                        if (GameUtils.getProbability(50))
+                        {
+                            l.getTeambyTeamName(playerteam).coach.SkillAvg -= 5;
+                            Console.WriteLine("\tYour Coach feels under pressure after your interview");
+                        }
+
+                    }
+
+
+                }
+
+                Console.WriteLine(jname+": Thank you for this interview, goodbye");
+            }
+            else
+            {
+                Console.WriteLine(jname+": Well, thanks the same...");
+            }
+
+            EnterToContinue();
         }
 
         private static void execCmd(string cmd)
