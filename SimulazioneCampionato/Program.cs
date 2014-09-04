@@ -238,7 +238,7 @@ namespace SimulazioneCampionato
                 buono = true;
             }
 
-            Console.WriteLine(jname + ": Hello, Tuttosport newspaper here, I would like to ask you some questions");
+            Console.WriteLine(jname + ": Hello, "+GameUtils.getRandomNewsPaperName()+" newspaper here, I would like to ask you some questions");
             Console.WriteLine("\t 1. Ok sure, go on\n\t 2. Nope, bye");
             int c = MyConsole.AskForInt(2);
 

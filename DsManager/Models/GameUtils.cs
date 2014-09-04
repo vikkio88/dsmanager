@@ -432,5 +432,12 @@ namespace DsManager.Models
 
             return false;
         }
+
+        public static string getRandomNewsPaperName()
+        {
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            string[] newspapers = { "TuttoSport", "Corriere dello Sport", "Gazzetta dello Sport", "SportItalia News", "Gazzetta Sportiva" };
+            return newspapers[rnd.getInt(newspapers.Count())];
+        }
     }
 }
