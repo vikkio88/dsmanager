@@ -301,7 +301,7 @@ namespace SimulazioneCampionato.Utils
             double req = Math.Round((cpl.Val * 0.3 + (GameUtils.getWage(0, 5))), 2);
             Console.WriteLine("\t He asked: " + req + " M Euro\n your offer [money owned: " + money + " M euro] ");
             double off = MyConsole.AskForDouble(money);
-            if (off < money)
+            if (off <= money)
             {
                 Console.WriteLine(off + "M euro ...offert sent..");
                 GameUtils.wait(1000);
@@ -503,7 +503,7 @@ namespace SimulazioneCampionato.Utils
             double req = Math.Round((cpl.Val + (GameUtils.getWage(0, 5))), 2);
             Console.WriteLine("\t they asked: "+req+" M Euro\n your offer [money owned: "+money+" M euro] > ");
             double off = MyConsole.AskForDouble(money);
-            if (off < money && off>0)
+            if (off <= money && off>0)
             {
                 Console.WriteLine(off+"M euro ...offert sent..");
                 GameUtils.wait(1000);

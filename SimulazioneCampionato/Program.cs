@@ -210,8 +210,7 @@ namespace SimulazioneCampionato
 
         private static void command(ref string cmd)
         {
-            checkCoachworksofar();
-            interview();
+          
             printMenu();
             cmd = Console.ReadLine();
             execCmd(cmd);
@@ -337,6 +336,10 @@ namespace SimulazioneCampionato
                     
                     //controllo risultato giocatore
                     checkPlayerTeamResult(l.getFixtureAt(l.CurrentRound - 1));//,true); Possibilita di stampare report risultato per squadra
+
+                    checkCoachworksofar();
+                    interview();
+
                 }
                 catch(Exception e)
                 {

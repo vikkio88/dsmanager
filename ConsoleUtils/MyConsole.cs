@@ -13,12 +13,13 @@ namespace ConsoleUtils
         {
             
             bool done = false;
-            Console.Write("[y/n]> ");
+            
 
             if (blankmeansno)
             {
                 while (!done)
                 {
+                    Console.Write("[y/n]> ");
                     string ret = Console.ReadLine();
                     if (ret == "y" || ret == "Y")
                     {
@@ -36,6 +37,7 @@ namespace ConsoleUtils
             {
                 while (!done)
                 {
+                    Console.Write("[y/n]> ");
                     string ret = Console.ReadLine();
                     if (ret == "y" || ret == "Y")
                     {
@@ -47,6 +49,7 @@ namespace ConsoleUtils
                         if (verbose) Console.WriteLine("No");
                         return false;
                     }
+                    Console.WriteLine("Not a valid Answer...\n");
 
                 }
             }
@@ -85,7 +88,7 @@ namespace ConsoleUtils
                 Console.Write("[1/" + max + "] > ");
                 try
                 {
-                    ret = int.Parse(Console.ReadLine());
+                    ret = double.Parse(Console.ReadLine());
                     if (ret > max)
                     {
                         throw new Exception("Not a Valid choose!");
