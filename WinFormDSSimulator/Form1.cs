@@ -439,6 +439,12 @@ namespace WinFormDSSimulator
             otef.Show();
         }
 
+        private void btnLeagueStat_Click(object sender, EventArgs e)
+        {
+            LeagueStatisticForm lsf = new LeagueStatisticForm();
+            lsf.Show();
+        }
+
 
 
 

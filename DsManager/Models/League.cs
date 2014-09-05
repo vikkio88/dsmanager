@@ -168,6 +168,25 @@ namespace DsManager.Models
 
             return scorersstring;
         }
+        public string getScorerTable(string playerteam)
+        {
+            string scorersstring = "";
+            int c = 1;
+            foreach (KeyValuePair<Player, TeamGoals> pair in scorers)
+            {
+                if (pair.Value.TeamName != playerteam)
+                {
+                    scorersstring += c + ". " + pair.Key.PlayerName + " " + pair.Key.PlayerSurname + " - " + pair.Value.TeamName + " - " + pair.Value.goals + "\r\n";
+                }
+                else
+                {
+                    scorersstring += c + ". " + pair.Key.PlayerName + " " + pair.Key.PlayerSurname + " - " + pair.Value.TeamName + " - " + pair.Value.goals + " <-- \r\n";
+                }
+                c++;
+            }
+
+            return scorersstring;
+        }
 
         private void refreshTable(List<Match> results)
         {

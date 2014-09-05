@@ -374,6 +374,7 @@
             this.btnLeagueStat.TabIndex = 12;
             this.btnLeagueStat.Text = "League Statistics";
             this.btnLeagueStat.UseVisualStyleBackColor = true;
+            this.btnLeagueStat.Click += new System.EventHandler(this.btnLeagueStat_Click);
             // 
             // btnSpeakWithCoach
             // 
