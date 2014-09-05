@@ -355,6 +355,30 @@ namespace DsManager.Models
         {
             return getTeamByTablePosition(getPositionbyTeamName(p));
         }
+        public string getStringFixture()
+        {
+            string ret = "";
+            int c=1;
+            foreach (Round r in fixture)
+            {
+                ret += "Round " + c + "\r\n";
+                foreach (Match item in r.matches)
+                {
+                    if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                    {
+                        ret += ("  " + item.ToString(false) + " <--\r\n");
+                    }
+                    else
+                    {
+                        ret += (item.ToString(false) + "\r\n");
+                    }
+                }
+                ret += "\r\n";
+                c++;
+            }
+
+            return ret;
+        }
 
         public string getStringFixtureAt(int n)
         {

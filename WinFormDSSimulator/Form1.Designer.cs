@@ -347,6 +347,7 @@
             this.btnFixture.TabIndex = 10;
             this.btnFixture.Text = "Fixture";
             this.btnFixture.UseVisualStyleBackColor = true;
+            this.btnFixture.Click += new System.EventHandler(this.btnFixture_Click);
             // 
             // btnOtherTeams
             // 

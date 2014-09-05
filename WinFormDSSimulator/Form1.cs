@@ -411,6 +411,14 @@ namespace WinFormDSSimulator
             }
         }
 
+        private void btnFixture_Click(object sender, EventArgs e)
+        {
+            //Program.toDefine();
+            FixtureForm fxt = new FixtureForm();
+
+            fxt.Show();
+        }
+
 
 
 
