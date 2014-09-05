@@ -53,6 +53,14 @@
             this.txtNextRound = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPlayerTeamInfo = new System.Windows.Forms.TextBox();
+            this.txtTable = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnMyTeamInfo = new System.Windows.Forms.Button();
+            this.btnFixture = new System.Windows.Forms.Button();
+            this.btnOtherTeams = new System.Windows.Forms.Button();
+            this.btnLeagueStat = new System.Windows.Forms.Button();
+            this.btnSpeakWithCoach = new System.Windows.Forms.Button();
+            this.btnMarket = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNewGame.SuspendLayout();
             this.pnlMainMenuGame.SuspendLayout();
@@ -134,6 +142,14 @@
             // 
             // pnlMainMenuGame
             // 
+            this.pnlMainMenuGame.Controls.Add(this.btnMarket);
+            this.pnlMainMenuGame.Controls.Add(this.btnSpeakWithCoach);
+            this.pnlMainMenuGame.Controls.Add(this.btnLeagueStat);
+            this.pnlMainMenuGame.Controls.Add(this.btnOtherTeams);
+            this.pnlMainMenuGame.Controls.Add(this.btnFixture);
+            this.pnlMainMenuGame.Controls.Add(this.btnMyTeamInfo);
+            this.pnlMainMenuGame.Controls.Add(this.txtTable);
+            this.pnlMainMenuGame.Controls.Add(this.label4);
             this.pnlMainMenuGame.Controls.Add(this.txtPlayerTeamInfo);
             this.pnlMainMenuGame.Controls.Add(this.label3);
             this.pnlMainMenuGame.Controls.Add(this.txtNextRound);
@@ -142,7 +158,7 @@
             this.pnlMainMenuGame.Controls.Add(this.splitter2);
             this.pnlMainMenuGame.Location = new System.Drawing.Point(0, 0);
             this.pnlMainMenuGame.Name = "pnlMainMenuGame";
-            this.pnlMainMenuGame.Size = new System.Drawing.Size(679, 382);
+            this.pnlMainMenuGame.Size = new System.Drawing.Size(679, 404);
             this.pnlMainMenuGame.TabIndex = 8;
             this.pnlMainMenuGame.Visible = false;
             this.pnlMainMenuGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainMenuGame_Paint);
@@ -151,7 +167,7 @@
             // 
             this.splitter2.Location = new System.Drawing.Point(0, 0);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 382);
+            this.splitter2.Size = new System.Drawing.Size(3, 404);
             this.splitter2.TabIndex = 0;
             this.splitter2.TabStop = false;
             // 
@@ -258,6 +274,7 @@
             this.btnNextRound.TabIndex = 2;
             this.btnNextRound.Text = "Play Next Round";
             this.btnNextRound.UseVisualStyleBackColor = true;
+            this.btnNextRound.Click += new System.EventHandler(this.btnNextRound_Click);
             // 
             // label2
             // 
@@ -294,6 +311,78 @@
             this.txtPlayerTeamInfo.Name = "txtPlayerTeamInfo";
             this.txtPlayerTeamInfo.Size = new System.Drawing.Size(213, 108);
             this.txtPlayerTeamInfo.TabIndex = 6;
+            // 
+            // txtTable
+            // 
+            this.txtTable.Enabled = false;
+            this.txtTable.Location = new System.Drawing.Point(196, 144);
+            this.txtTable.Multiline = true;
+            this.txtTable.Name = "txtTable";
+            this.txtTable.Size = new System.Drawing.Size(213, 272);
+            this.txtTable.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(196, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Table";
+            // 
+            // btnMyTeamInfo
+            // 
+            this.btnMyTeamInfo.Location = new System.Drawing.Point(6, 60);
+            this.btnMyTeamInfo.Name = "btnMyTeamInfo";
+            this.btnMyTeamInfo.Size = new System.Drawing.Size(126, 50);
+            this.btnMyTeamInfo.TabIndex = 9;
+            this.btnMyTeamInfo.Text = "My Team Info";
+            this.btnMyTeamInfo.UseVisualStyleBackColor = true;
+            // 
+            // btnFixture
+            // 
+            this.btnFixture.Location = new System.Drawing.Point(6, 116);
+            this.btnFixture.Name = "btnFixture";
+            this.btnFixture.Size = new System.Drawing.Size(126, 50);
+            this.btnFixture.TabIndex = 10;
+            this.btnFixture.Text = "Fixture";
+            this.btnFixture.UseVisualStyleBackColor = true;
+            // 
+            // btnOtherTeams
+            // 
+            this.btnOtherTeams.Location = new System.Drawing.Point(3, 303);
+            this.btnOtherTeams.Name = "btnOtherTeams";
+            this.btnOtherTeams.Size = new System.Drawing.Size(126, 50);
+            this.btnOtherTeams.TabIndex = 11;
+            this.btnOtherTeams.Text = "Other Teams";
+            this.btnOtherTeams.UseVisualStyleBackColor = true;
+            // 
+            // btnLeagueStat
+            // 
+            this.btnLeagueStat.Location = new System.Drawing.Point(3, 247);
+            this.btnLeagueStat.Name = "btnLeagueStat";
+            this.btnLeagueStat.Size = new System.Drawing.Size(126, 50);
+            this.btnLeagueStat.TabIndex = 12;
+            this.btnLeagueStat.Text = "League Statistics";
+            this.btnLeagueStat.UseVisualStyleBackColor = true;
+            // 
+            // btnSpeakWithCoach
+            // 
+            this.btnSpeakWithCoach.Location = new System.Drawing.Point(536, 332);
+            this.btnSpeakWithCoach.Name = "btnSpeakWithCoach";
+            this.btnSpeakWithCoach.Size = new System.Drawing.Size(126, 50);
+            this.btnSpeakWithCoach.TabIndex = 13;
+            this.btnSpeakWithCoach.Text = "Speak with the Coach";
+            this.btnSpeakWithCoach.UseVisualStyleBackColor = true;
+            // 
+            // btnMarket
+            // 
+            this.btnMarket.Location = new System.Drawing.Point(536, 267);
+            this.btnMarket.Name = "btnMarket";
+            this.btnMarket.Size = new System.Drawing.Size(126, 50);
+            this.btnMarket.TabIndex = 14;
+            this.btnMarket.Text = "Market";
+            this.btnMarket.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -346,6 +435,14 @@
         private System.Windows.Forms.TextBox txtNextRound;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNextRound;
+        private System.Windows.Forms.TextBox txtTable;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnMarket;
+        private System.Windows.Forms.Button btnSpeakWithCoach;
+        private System.Windows.Forms.Button btnLeagueStat;
+        private System.Windows.Forms.Button btnOtherTeams;
+        private System.Windows.Forms.Button btnFixture;
+        private System.Windows.Forms.Button btnMyTeamInfo;
     }
 }
 

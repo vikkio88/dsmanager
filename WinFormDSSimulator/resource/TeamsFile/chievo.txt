@@ -1,0 +1,16 @@
+Alberto:Paloschi:24:78:AC:Italiano
+Sergio:Pellissier:35:77:AC:Italiano
+Cyril:Thereau:31:78:AC:Francese
+Perparim:Hatemaj:28:75:CC:Finlandese
+Luca:Rigoni:30:73:CC:Italiano
+Simone:Bentivoglio:29:69:CC:Italiano
+Dario:Dainelli:35:75:DC:Italiano
+Michele:Canini:29:74:DC:Italiano
+Boukary:Drame:29:72:DC:Senegalese
+Nicolas:Frey:30:71:DD:Francese
+Michele:Agazzi:30:76:PT:Italiano
+Bostjan:Cesar:32:73:DC:Serbo
+Cristiano:Biraghi:21:64:DS:Italiano
+Mariano:Izco:31:73:CC:Argentino
+Valter:Birsa:28:67:AS:Serbo
+Maxi:Lopez:30:74:Argentino

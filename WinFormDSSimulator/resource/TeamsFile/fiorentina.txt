@@ -1,0 +1,10 @@
+Mario:Gomez:29:86:AC:Tedesco
+Giuseppe:Rossi:27:81:AC:Italiano
+Borja:Valero:29:82:CC:Spagnolo
+Cessio:Joaquin:33:82:CD:Spagnolo
+Juan:Cuadrado:26:81:CD:Colombiano
+Alberto:Acquilani:30:80:CC:Italiano
+Gonzalo:Rodriguez:30:80:DC:Argentino
+Facundo:Roncaglia:27:79:DC:Argentino
+Stefan:Savic:23:76:DC:Montenegrino
+Cessio:Neto:25:73:PT:Brasiliano

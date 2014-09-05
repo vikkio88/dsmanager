@@ -91,11 +91,11 @@ namespace DsManager.Models
 
                     if (pair.Key.isplayers)
                     {
-                        res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "  <--\n";
+                        res += c.ToString() + ". " + pair.Key.TeamName + " ... " + pair.Value + "  <-- \r\n";
                     }
                     else
                     {
-                        res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "\n";
+                        res += c.ToString() + ". " + pair.Key.TeamName + " ... " + pair.Value + " \r\n";
                     }
                     c++;
                 }
@@ -105,7 +105,7 @@ namespace DsManager.Models
                 foreach (KeyValuePair<Team, int> pair in table)
                 {
 
-                   res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "\n";
+                   res += c.ToString() + ". " + pair.Key.TeamName + " --- " + pair.Value + "\r\n";
                    c++;
                 }
 
@@ -359,16 +359,23 @@ namespace DsManager.Models
         public string getStringFixtureAt(int n)
         {
             string ret = "";
-            foreach (Match item in fixture.ElementAt(n).matches)
+            try
             {
-                if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                foreach (Match item in fixture.ElementAt(n).matches)
                 {
-                    ret+=(" " + item.ToString() + " <-\r\n");
+                    if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                    {
+                        ret += ("  " + item.ToString(false) + " <--\r\n");
+                    }
+                    else
+                    {
+                        ret += (item.ToString(false) + "\r\n");
+                    }
                 }
-                else
-                {
-                    ret+=(item.ToString()+"\r\n");
-                }
+            }
+            catch (Exception)
+            {
+                ret = "No More Match in this Season!";
             }
 
             return ret;

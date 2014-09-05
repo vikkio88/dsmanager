@@ -1,0 +1,15 @@
+Rodrigo:Palacio:32:82:AC:Argentino
+Mauro:Icardi:21:75:AC:Argentino
+Ricardo:Alvarez:26:77:CD:Argentino
+Yuto:Nagatomo:28:77:CS:Giapponese
+Fredy:Guarin:28:81:CC:Colombiano
+Zdravko:Kuzmanovic:27:85:CC:Serbo
+Andrea:Ranocchia:26:79:DC:Italiano
+Juan:Jesus:23:78:DC:Brasiliano
+El Divino:Jonathan:28:71:DD:Brasiliano
+Samir:Handanovic:30:84:PT:Serbo
+Nemanja:Vidic:32:87:DC:Serbo
+Ibrahima:Mbaye:19:62:CS:Senegalese
+Danilo:D Ambrosio:25:71:DS:Italiano
+Gary:Medel:27:73:CC:Cileno
+Andreson:Hernanes:29:83:AS:Brasiliano

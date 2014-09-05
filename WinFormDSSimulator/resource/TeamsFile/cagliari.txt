@@ -1,0 +1,13 @@
+Simone:Colombi:23:67:PT:Italiana
+Nicola:Murru:20:67:DS:Italiana
+Lorenzo:Crisetig:19:67:CC:Italiana
+Daniele:Conti:35:78:CC:Italiana
+Samuele:Longo:26:71:CS:Italiana
+Daniele:Dessena:27:73:CD:Italiana
+Luca:Rossettini:29:69:DD:Italiana
+Andrea:Cossu:29:80:CS:Italiana
+Victor:Ibarbo:24:78:AC:Colombiano
+Albin:Ekdal:24:73:CC:Bosniaco
+Marco:Sau:26:70:AS:Italiano
+Marco:Capuano:22:67:DS:Italiano
+Diego:Farias:24:70:AC:Brasiliano

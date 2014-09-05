@@ -303,7 +303,7 @@ namespace DsManager.Models
             return 0;
         }
 
-        public override string ToString()
+        public string ToString(bool verbose=true)
         {
             if (played)
             {
@@ -311,7 +311,14 @@ namespace DsManager.Models
             }
             else
             {
-                return HomeTeam.TeamName+" - "+AwayTeam.TeamName+" Match not played yet";
+                if (verbose)
+                {
+                    return HomeTeam.TeamName + " - " + AwayTeam.TeamName + " Match not played yet";
+                }
+                else
+                {
+                    return HomeTeam.TeamName + " - " + AwayTeam.TeamName + " ";
+                }
             }
         }
 

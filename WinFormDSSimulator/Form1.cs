@@ -31,6 +31,7 @@ namespace WinFormDSSimulator
         public static int[] vps = { 0, 0, 0 };
         public static int losecounter = 0;
         public static int drawcounter = 0;
+        public static bool finished = false;
         //static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
 
 
@@ -40,6 +41,8 @@ namespace WinFormDSSimulator
         public static double money = GameUtils.getRandomMoney();
         public static string playerteam;
         public static bool discorsetto = false;
+
+        
         #endregion
 
 
@@ -152,6 +155,7 @@ namespace WinFormDSSimulator
             {
                 playername = txtPlayerName.Text;
                 playerteam = lstTeams.SelectedItem.ToString();
+                l.getTeambyTeamName(playerteam).isplayers = true;
                 MessageBox.Show("Your Team budget for this years is " + money + " M €");
                 pnlMainMenuGame.Visible = true;
             }
@@ -159,7 +163,69 @@ namespace WinFormDSSimulator
         }
 #endregion
 
+      #region MatchPlayerUtils
+        private static void checkPlayerTeamResult(List<Match> list, bool showthem = false)
+        {
+            foreach (Match item in list)
+            {
+                if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                {
+                    if (playerteam == item.HomeTeam.TeamName)
+                    {
+                        if (!item.Draw())
+                        {
+                            if (item.Loser().TeamName == playerteam)
+                            {
+                                vps[2] += 1;
+                                losecounter += 1;
+                            }
+                            else
+                            {
+                                vps[0] += 1;
+                                losecounter = 0;
+                                drawcounter = 0;
+                            }
+                        }
+                        else //Pareggio
+                        {
+                            vps[1] += 1;
+                            drawcounter += 1;
+                            losecounter = 0;
+                        }
 
+                    }
+                    else // la squadra del giocatore gioca fuori casa (nel caso volessi contare dentro e fuori casa)
+                    {
+
+                        if (!item.Draw())
+                        {
+                            if (item.Loser().TeamName == playerteam)
+                            {
+                                vps[2] += 1;
+                                losecounter += 1;
+                            }
+                            else
+                            {
+                                vps[0] += 1;
+                                losecounter = 0;
+                                drawcounter = 0;
+                            }
+                        }
+                        else //Pareggio
+                        {
+                            vps[1] += 1;
+                            losecounter = 0;
+                            drawcounter += 1;
+                        }
+
+
+                    }
+                }
+            }
+
+        }
+
+        #endregion  
 
 
         #region InitializationsUtils
@@ -266,6 +332,12 @@ namespace WinFormDSSimulator
         {
             FillTeamInfo();
             FillNextRound();
+            FillTableText();
+        }
+
+        private void FillTableText()
+        {
+            txtTable.Text = l.getTableString(true);
         }
 
         private void FillTeamInfo()
@@ -285,6 +357,59 @@ namespace WinFormDSSimulator
             txtNextRound.Text = l.getStringFixtureAt(l.CurrentRound);
         }
         #endregion
+
+        private void btnNextRound_Click(object sender, EventArgs e)
+        {
+            StreamMessageInStatus("Playing round " + (l.CurrentRound + 1));
+
+            l.simulateRound();
+            checkPlayerTeamResult(l.getFixtureAt(l.CurrentRound-1));
+
+            MessageBox.Show(l.getStringFixtureAt(l.CurrentRound - 1),"Results");
+
+
+
+            if (l.CurrentRound == (l.NumbOfTeam - 1))
+            {
+                SeasonOver();
+            }
+
+            StreamMessageInStatus("Completed");
+
+        }
+
+        private void SeasonOver()
+        {
+            finished = true;
+            btnNextRound.Enabled = false;
+            playerReport();
+        }
+
+        private void playerReport()
+        {
+            int pos = l.getPositionbyTeamName(playerteam);
+            if (pos == 1)
+            {
+                double price = GameUtils.getWage(5, 15);
+                MessageBox.Show("Your Team won the League this year!\nthe price is " + price + " M Euro");
+
+  
+                money += price;
+                alboplayer.Add(anno + " league champion - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+            }
+            else if (pos == l.NumbOfTeam)
+            {
+                //doingchampL = false;
+                MessageBox.Show("Your Team was last this year...");
+                alboplayer.Add(anno + " " + l.NumbOfTeam + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+            }
+            else
+            {
+               // doingchampL = false;
+                MessageBox.Show("Your Team arrived " + pos + " / " + l.NumbOfTeam);
+                alboplayer.Add(anno + " " + pos + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
+            }
+        }
 
 
 

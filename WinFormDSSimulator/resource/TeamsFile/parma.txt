@@ -1,0 +1,11 @@
+Gabriel:Paletta:28:84:DC:Italiano
+Do Nascimento:Amauri:34:76:AC:Brasiliano
+Antonio:Cassano:32:81:AC:Italiano
+Jonathan:Biabiany:26:80:CD:Francese
+Walter:Gargano:30:77:CC:Uruguaiano
+Marco:Parolo:29:74:CC:Italiano
+Marco:Marchionni:34:73:CD:Italiano
+Ezequiel:Schelotto:25:70:CD:Italiano
+Alessandro:Rosi:27:73:DD:Italiano
+Fabiano:Santacroce:28:71:DC:Italiano
+Antonio:Mirante:31:77:PT:Italiano
