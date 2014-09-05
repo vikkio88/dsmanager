@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -72,22 +73,33 @@ namespace WinFormDSSimulator
             pnlNewGame.Visible = true;
         }
 
+
+
         private void btnGenerateRandomTeams_Click(object sender, EventArgs e)
         {
-            DisableGenerators();
-            int numb = 0;
-            if (cboNumb.SelectedIndex != -1)
-            {
-                numb = int.Parse(cboNumb.SelectedItem.ToString());
-            }
-            else
-            {
-                numb = int.Parse(cboNumb.Text);
-            }
+           
+           StreamMessageInStatus("Generating  Random Teams...");
+           DisableGenerators();
+
+           int numb = 0;
+           if (cboNumb.SelectedIndex != -1)
+           {
+               numb = int.Parse(cboNumb.SelectedItem.ToString());
+           }
+           else
+           {
+               numb = int.Parse(cboNumb.Text);
+           }
+
+           
+          
+  
+            
             
             l = new League(GameUtils.getRandomTeamsList(numb));
             l.generateFixture();
 
+            StreamMessageInStatus("Completed");
             TeamListToListBox(l.leagueTeams, lstTeams);
 
 
@@ -104,10 +116,11 @@ namespace WinFormDSSimulator
 
         private void btnGenerateTeamsFromFiles_Click(object sender, EventArgs e)
         {
-            Console.Write("Reading configuration file...");
+            DisableGenerators();
+           lblStatus.Text = "Reading configuration file...";
             List<string> teamNameList = ReadTeamNameFromFile();
             List<Team> teamList = new List<Team>();
-            Console.WriteLine("done!\n\nReading Teams...");
+            StreamMessageInStatus("done!\n\nReading Teams...");
             foreach (string team in teamNameList)
             {
                 Console.WriteLine("Reading " + team + " ...");
@@ -124,6 +137,25 @@ namespace WinFormDSSimulator
             l = new League(teamList);
             l.generateFixture();
             Console.WriteLine("done!");
+            StreamMessageInStatus("Completed");
+            TeamListToListBox(l.leagueTeams, lstTeams);
+        }
+
+        private void btnChooseTeam_Click(object sender, EventArgs e)
+        {
+            if (txtPlayerName.Text == string.Empty)
+            {
+                MessageBox.Show("Must insert your Name");
+                return;
+            }
+            else
+            {
+                playername = txtPlayerName.Text;
+                playerteam = lstTeams.SelectedItem.ToString();
+                MessageBox.Show("Your Team budget for this years is " + money + " M €");
+                pnlMainMenuGame.Visible = true;
+            }
+
         }
 #endregion
 
@@ -131,6 +163,7 @@ namespace WinFormDSSimulator
 
 
         #region InitializationsUtils
+
         private static List<string> ReadTeamNameFromFile()
         {
             System.IO.StreamReader file = null;
@@ -170,6 +203,28 @@ namespace WinFormDSSimulator
             btnGenerateTeamsFromFiles.Enabled = false;
             btnGenerateRandomTeams.Enabled = false;
             cboNumb.Enabled = false;
+            btnChooseTeam.Enabled = true;
+        }
+
+        private void StreamMessageInStatus(string message)
+        {
+            lblStatus.Text = message;
+            if (message == "Completed")
+            {
+                cleanStatus(2000);
+            }
+        }
+
+        private void cleanStatus(int interval)
+        {
+            timerUtils.Interval = interval;
+            timerUtils.Start();
+        }
+
+        private void EraseStatus()
+        {
+            lblStatus.Text = "";
+            timerUtils.Stop();
         }
         #endregion
 
@@ -200,6 +255,42 @@ namespace WinFormDSSimulator
             lb.DataSource = teamnames;
         }
         #endregion
+
+        private void timerUtils_Tick(object sender, EventArgs e)
+        {
+            EraseStatus();
+        }
+
+        #region PnlMainMenuGame
+        private void pnlMainMenuGame_Paint(object sender, PaintEventArgs e)
+        {
+            FillTeamInfo();
+            FillNextRound();
+        }
+
+        private void FillTeamInfo()
+        {
+            txtPlayerTeamInfo.Text = "";
+            txtPlayerTeamInfo.Text += "Season " + (anno - 1) + "/" + anno
+                                        + "\r\n\t " + playername + " ds of: " + playerteam
+            + "\r\n\t balance: " + money + " M Euro"
+            + "\r\n\t Team position: " + l.getPositionbyTeamName(playerteam) + " / " + l.NumbOfTeam
+            + string.Format("\r\n\t W: {0} D: {1} L: {2}", vps[0], vps[1], vps[2]);
+            if (losecounter > 1) txtPlayerTeamInfo.Text += "\r\n\t consecutive lost matches: " + losecounter;
+            txtPlayerTeamInfo.Text += "\r\n\t Round: " + l.CurrentRound + " / " + (l.NumbOfTeam - 1);
+        }
+
+        private void FillNextRound()
+        {
+            txtNextRound.Text = l.getStringFixtureAt(l.CurrentRound);
+        }
+        #endregion
+
+
+
+
+
+
 
 
     }

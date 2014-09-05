@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.btnNewGame = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -35,15 +36,26 @@
             this.btnExitGame = new System.Windows.Forms.Button();
             this.btnRecords = new System.Windows.Forms.Button();
             this.pnlNewGame = new System.Windows.Forms.Panel();
+            this.pnlMainMenuGame = new System.Windows.Forms.Panel();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.btnChooseTeam = new System.Windows.Forms.Button();
+            this.txtTeamInfo = new System.Windows.Forms.TextBox();
             this.cboNumb = new System.Windows.Forms.ComboBox();
             this.btnGenerateTeamsFromFiles = new System.Windows.Forms.Button();
             this.btnGenerateRandomTeams = new System.Windows.Forms.Button();
             this.lstTeams = new System.Windows.Forms.ListBox();
             this.txtPlayerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTeamInfo = new System.Windows.Forms.TextBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.timerUtils = new System.Windows.Forms.Timer(this.components);
+            this.btnNextRound = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNextRound = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPlayerTeamInfo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNewGame.SuspendLayout();
+            this.pnlMainMenuGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitter1
@@ -105,6 +117,8 @@
             // 
             // pnlNewGame
             // 
+            this.pnlNewGame.Controls.Add(this.pnlMainMenuGame);
+            this.pnlNewGame.Controls.Add(this.btnChooseTeam);
             this.pnlNewGame.Controls.Add(this.txtTeamInfo);
             this.pnlNewGame.Controls.Add(this.cboNumb);
             this.pnlNewGame.Controls.Add(this.btnGenerateTeamsFromFiles);
@@ -112,11 +126,54 @@
             this.pnlNewGame.Controls.Add(this.lstTeams);
             this.pnlNewGame.Controls.Add(this.txtPlayerName);
             this.pnlNewGame.Controls.Add(this.label1);
-            this.pnlNewGame.Location = new System.Drawing.Point(0, 1);
+            this.pnlNewGame.Location = new System.Drawing.Point(1, 1);
             this.pnlNewGame.Name = "pnlNewGame";
-            this.pnlNewGame.Size = new System.Drawing.Size(789, 413);
+            this.pnlNewGame.Size = new System.Drawing.Size(679, 382);
             this.pnlNewGame.TabIndex = 6;
             this.pnlNewGame.Visible = false;
+            // 
+            // pnlMainMenuGame
+            // 
+            this.pnlMainMenuGame.Controls.Add(this.txtPlayerTeamInfo);
+            this.pnlMainMenuGame.Controls.Add(this.label3);
+            this.pnlMainMenuGame.Controls.Add(this.txtNextRound);
+            this.pnlMainMenuGame.Controls.Add(this.label2);
+            this.pnlMainMenuGame.Controls.Add(this.btnNextRound);
+            this.pnlMainMenuGame.Controls.Add(this.splitter2);
+            this.pnlMainMenuGame.Location = new System.Drawing.Point(0, 0);
+            this.pnlMainMenuGame.Name = "pnlMainMenuGame";
+            this.pnlMainMenuGame.Size = new System.Drawing.Size(679, 382);
+            this.pnlMainMenuGame.TabIndex = 8;
+            this.pnlMainMenuGame.Visible = false;
+            this.pnlMainMenuGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainMenuGame_Paint);
+            // 
+            // splitter2
+            // 
+            this.splitter2.Location = new System.Drawing.Point(0, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 382);
+            this.splitter2.TabIndex = 0;
+            this.splitter2.TabStop = false;
+            // 
+            // btnChooseTeam
+            // 
+            this.btnChooseTeam.Enabled = false;
+            this.btnChooseTeam.Location = new System.Drawing.Point(536, 323);
+            this.btnChooseTeam.Name = "btnChooseTeam";
+            this.btnChooseTeam.Size = new System.Drawing.Size(92, 51);
+            this.btnChooseTeam.TabIndex = 7;
+            this.btnChooseTeam.Text = "Choose Team";
+            this.btnChooseTeam.UseVisualStyleBackColor = true;
+            this.btnChooseTeam.Click += new System.EventHandler(this.btnChooseTeam_Click);
+            // 
+            // txtTeamInfo
+            // 
+            this.txtTeamInfo.Enabled = false;
+            this.txtTeamInfo.Location = new System.Drawing.Point(148, 72);
+            this.txtTeamInfo.Multiline = true;
+            this.txtTeamInfo.Name = "txtTeamInfo";
+            this.txtTeamInfo.Size = new System.Drawing.Size(355, 303);
+            this.txtTeamInfo.TabIndex = 6;
             // 
             // cboNumb
             // 
@@ -180,21 +237,71 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Player Name";
             // 
-            // txtTeamInfo
+            // lblStatus
             // 
-            this.txtTeamInfo.Enabled = false;
-            this.txtTeamInfo.Location = new System.Drawing.Point(148, 72);
-            this.txtTeamInfo.Multiline = true;
-            this.txtTeamInfo.Name = "txtTeamInfo";
-            this.txtTeamInfo.Size = new System.Drawing.Size(355, 303);
-            this.txtTeamInfo.TabIndex = 6;
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(8, 386);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 31);
+            this.lblStatus.TabIndex = 7;
+            // 
+            // timerUtils
+            // 
+            this.timerUtils.Tick += new System.EventHandler(this.timerUtils_Tick);
+            // 
+            // btnNextRound
+            // 
+            this.btnNextRound.Location = new System.Drawing.Point(3, 4);
+            this.btnNextRound.Name = "btnNextRound";
+            this.btnNextRound.Size = new System.Drawing.Size(169, 50);
+            this.btnNextRound.TabIndex = 2;
+            this.btnNextRound.Text = "Play Next Round";
+            this.btnNextRound.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(416, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Next Round";
+            // 
+            // txtNextRound
+            // 
+            this.txtNextRound.Enabled = false;
+            this.txtNextRound.Location = new System.Drawing.Point(422, 25);
+            this.txtNextRound.Multiline = true;
+            this.txtNextRound.Name = "txtNextRound";
+            this.txtNextRound.Size = new System.Drawing.Size(249, 116);
+            this.txtNextRound.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(196, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Team Info";
+            // 
+            // txtPlayerTeamInfo
+            // 
+            this.txtPlayerTeamInfo.Enabled = false;
+            this.txtPlayerTeamInfo.Location = new System.Drawing.Point(196, 30);
+            this.txtPlayerTeamInfo.Multiline = true;
+            this.txtPlayerTeamInfo.Name = "txtPlayerTeamInfo";
+            this.txtPlayerTeamInfo.Size = new System.Drawing.Size(213, 108);
+            this.txtPlayerTeamInfo.TabIndex = 6;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 417);
+            this.ClientSize = new System.Drawing.Size(686, 417);
             this.Controls.Add(this.pnlNewGame);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnRecords);
             this.Controls.Add(this.btnExitGame);
             this.Controls.Add(this.btnLoadGame);
@@ -206,7 +313,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlNewGame.ResumeLayout(false);
             this.pnlNewGame.PerformLayout();
+            this.pnlMainMenuGame.ResumeLayout(false);
+            this.pnlMainMenuGame.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -226,6 +336,16 @@
         private System.Windows.Forms.TextBox txtPlayerName;
         private System.Windows.Forms.ComboBox cboNumb;
         private System.Windows.Forms.TextBox txtTeamInfo;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Timer timerUtils;
+        private System.Windows.Forms.Button btnChooseTeam;
+        private System.Windows.Forms.Panel pnlMainMenuGame;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.TextBox txtPlayerTeamInfo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtNextRound;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnNextRound;
     }
 }
 

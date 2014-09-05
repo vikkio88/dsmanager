@@ -355,6 +355,24 @@ namespace DsManager.Models
         {
             return getTeamByTablePosition(getPositionbyTeamName(p));
         }
+
+        public string getStringFixtureAt(int n)
+        {
+            string ret = "";
+            foreach (Match item in fixture.ElementAt(n).matches)
+            {
+                if (item.AwayTeam.isplayers || item.HomeTeam.isplayers)
+                {
+                    ret+=(" " + item.ToString() + " <-\r\n");
+                }
+                else
+                {
+                    ret+=(item.ToString()+"\r\n");
+                }
+            }
+
+            return ret;
+        }
     }
     public struct TeamGoals
     {

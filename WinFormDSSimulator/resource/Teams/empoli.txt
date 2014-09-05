@@ -1,0 +1,14 @@
+Matteo:Biggeri:18:55:PT:Italiano
+Vincent:Laurini:32:58:DC:Francese
+Luca:Martinelli:29:67:DD:Italiano
+Pietro:Accardi:31:77:DS:Italiano
+Mirko:Valdifiori:32:54:CC:Italiano
+Massimo:Maccarone:34:71:AC:Italiano
+Franco:Signorelli:24:67:CD:Colombiano
+Mirko:Eramo:23:65:CS:Italiano
+Francesco:Pratali:36:62:CC:Italiano
+Levan:Mchedlidze:24:69:AC:Georgiano
+Mario:Rui:26:63:CS:Portoghese
+Ronaldo Pompeu:Da Silva:23:69:CC:Brasiliano
+Francesco:Tavano:35:70:AC:Italiano
+Irakli:Shekiladze:22:55:AC:Georgiano

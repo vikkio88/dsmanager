@@ -1,0 +1,10 @@
+Francesco:Totti:38:82:AC:Italiano
+Cesso:Gervinho:27:79:AS:Ivoriano
+Juan Manuel:Iturbe:21:74:AD:Argentino
+Daniele:De Rossi:31:84:CC:Italiano
+Kevin:Strootman:24:80:CC:Olandese
+Miralem:Pjanic:24:80:CD:Bosniaco
+Alessandro:Florenzi:23:74:AD:Italiano
+Medhi:Benatia:27:82:DC:Marocchino
+Cessio:Maicon:33:78:DD:Brasiliano
+Leandro:Castan:28:78:DC:Brasiliano

@@ -87,6 +87,21 @@
   <ItemGroup>
     <None Include="resource\images\splash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="resource\Teams\cagliari.txt" />
+    <Content Include="resource\Teams\chievo.txt" />
+    <Content Include="resource\Teams\empoli.txt" />
+    <Content Include="resource\Teams\fiorentina.txt" />
+    <Content Include="resource\Teams\inter.txt" />
+    <Content Include="resource\Teams\juventus.txt" />
+    <Content Include="resource\Teams\lazio.txt" />
+    <Content Include="resource\Teams\milan.txt" />
+    <Content Include="resource\Teams\napoli.txt" />
+    <Content Include="resource\Teams\parma.txt" />
+    <Content Include="resource\Teams\roma.txt" />
+    <Content Include="resource\Teams\teams.txt" />
+    <Content Include="resource\Teams\udinese.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
