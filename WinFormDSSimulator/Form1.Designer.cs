@@ -63,6 +63,7 @@
             this.btnMarket = new System.Windows.Forms.Button();
             this.txtLastMatch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnPressConference = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNewGame.SuspendLayout();
             this.pnlMainMenuGame.SuspendLayout();
@@ -144,6 +145,7 @@
             // 
             // pnlMainMenuGame
             // 
+            this.pnlMainMenuGame.Controls.Add(this.btnPressConference);
             this.pnlMainMenuGame.Controls.Add(this.txtLastMatch);
             this.pnlMainMenuGame.Controls.Add(this.label5);
             this.pnlMainMenuGame.Controls.Add(this.btnMarket);
@@ -362,6 +364,7 @@
             this.btnOtherTeams.TabIndex = 11;
             this.btnOtherTeams.Text = "Other Teams";
             this.btnOtherTeams.UseVisualStyleBackColor = true;
+            this.btnOtherTeams.Click += new System.EventHandler(this.btnOtherTeams_Click);
             // 
             // btnLeagueStat
             // 
@@ -408,6 +411,15 @@
             this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Last Match";
+            // 
+            // btnPressConference
+            // 
+            this.btnPressConference.Location = new System.Drawing.Point(424, 303);
+            this.btnPressConference.Name = "btnPressConference";
+            this.btnPressConference.Size = new System.Drawing.Size(112, 50);
+            this.btnPressConference.TabIndex = 17;
+            this.btnPressConference.Text = "Press Conference";
+            this.btnPressConference.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -470,6 +482,7 @@
         private System.Windows.Forms.Button btnMyTeamInfo;
         private System.Windows.Forms.TextBox txtLastMatch;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnPressConference;
     }
 }
 

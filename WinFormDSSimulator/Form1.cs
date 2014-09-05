@@ -312,7 +312,7 @@ namespace WinFormDSSimulator
         #endregion
 
         #region AdapterFunctions
-        private void TeamListToListBox(List<Team> tl, ListBox lb)
+        public void TeamListToListBox(List<Team> tl, ListBox lb)
         {
 
             List<string> teamnames = new List<string>();
@@ -405,7 +405,7 @@ namespace WinFormDSSimulator
             if (pos == 1)
             {
                 double price = GameUtils.getWage(5, 15);
-                MessageBox.Show("Your Team won the League this year!\nthe price is " + price + " M Euro");
+                MessageBox.Show("Your Team won the League this year!\nthe price is " + price + " M Euro","Season is over");
 
   
                 money += price;
@@ -414,13 +414,13 @@ namespace WinFormDSSimulator
             else if (pos == l.NumbOfTeam)
             {
                 //doingchampL = false;
-                MessageBox.Show("Your Team was last this year...");
+                MessageBox.Show("Your Team was last this year...","Season is over");
                 alboplayer.Add(anno + " " + l.NumbOfTeam + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " - coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
             else
             {
                // doingchampL = false;
-                MessageBox.Show("Your Team arrived " + pos + " / " + l.NumbOfTeam);
+                MessageBox.Show("Your Team arrived " + pos + " / " + l.NumbOfTeam,"Season is over");
                 alboplayer.Add(anno + " " + pos + " position - W: " + vps[0] + " D: " + vps[1] + " L: " + vps[2] + " coach: " + l.getTeamByTablePosition(l.getPositionbyTeamName(playerteam)).coach.ToStringShort());
             }
         }
@@ -431,6 +431,12 @@ namespace WinFormDSSimulator
             FixtureForm fxt = new FixtureForm();
 
             fxt.Show();
+        }
+
+        private void btnOtherTeams_Click(object sender, EventArgs e)
+        {
+            OtherTeamExplorerForm otef = new OtherTeamExplorerForm();
+            otef.Show();
         }
 
 
