@@ -201,12 +201,12 @@ namespace DsManager.Models
 
         public string ToStringFull()
         {
-            string result = TeamName+" \n";
-            if (coach != null) result += "all: " + coach.ToString()+"\n";
+            string result = TeamName + " \r\n";
+            if (coach != null) result += "all: " + coach.ToString() + "\r\n";
             
                 foreach (Player player in players)
                 {
-                    result += player.ToString() +"\n";
+                    result += player.ToString() + "\r\n";
                 }
             result += "media: " + Avg.ToString();// +"\n";
             result += " media valore: " + getAvgVal().ToString() + "M euro";

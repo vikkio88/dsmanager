@@ -12,30 +12,33 @@ namespace SimulazioneCampionato
     
     class Program
     {
-        static League l;
+        #region GameObjects
+        public static League l;
 
         //utility per ChampionsLeague
-        static League champ;
-        static bool doingchampL = false;
+        public static League champ;
+        public static bool doingchampL = false;
         //Champions League
 
-        static List<string> albo = new List<string>();
-        static List<string> alboplayer = new List<string>();
-        static List<string> boughtplayershistory = new List<string>();
-        static List<string> soldplayershistory = new List<string>();
-        static List<string> recordhistory = new List<string>();
-        static int[] vps = { 0, 0, 0 };
-        static int losecounter = 0;
-        static int drawcounter = 0;
+        public static List<string> albo = new List<string>();
+        public static List<string> alboplayer = new List<string>();
+        public static List<string> boughtplayershistory = new List<string>();
+        public static List<string> soldplayershistory = new List<string>();
+        public static List<string> recordhistory = new List<string>();
+        public static int[] vps = { 0, 0, 0 };
+        public static int losecounter = 0;
+        public static int drawcounter = 0;
         //static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
 
-       
 
-        static int anno = 2014;
-        static string playername;
-        static double money = GameUtils.getRandomMoney();
-        static string playerteam;
-        private static bool discorsetto = false;
+
+        public static int anno = 2014;
+        public static string playername;
+        public static double money = GameUtils.getRandomMoney();
+        public static string playerteam;
+        public static bool discorsetto = false;
+        #endregion
+
        // static Team playerteam;
         static void Main(string[] args)
         {
