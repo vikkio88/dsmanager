@@ -31,6 +31,9 @@ namespace WinFormDSSimulator
         public static int[] vps = { 0, 0, 0 };
         public static int losecounter = 0;
         public static int drawcounter = 0;
+
+
+        public static int matchrendered = 0;
         public static bool finished = false;
         //static Dictionary<Player, string> loaned = new Dictionary<Player, string>();
 
@@ -333,10 +336,21 @@ namespace WinFormDSSimulator
             FillTeamInfo();
             FillNextRound();
             FillTableText();
+            FillLastMatch();
+        }
+
+        private void FillLastMatch()
+        {
+            if (l.CurrentRound > matchrendered)
+            {
+                txtLastMatch.Text = l.getLastMatchbyTeamName(playerteam);
+                matchrendered = l.CurrentRound;
+            }
         }
 
         private void FillTableText()
         {
+           
             txtTable.Text = l.getTableString(true);
         }
 

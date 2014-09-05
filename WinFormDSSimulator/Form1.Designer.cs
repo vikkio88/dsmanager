@@ -61,6 +61,8 @@
             this.btnLeagueStat = new System.Windows.Forms.Button();
             this.btnSpeakWithCoach = new System.Windows.Forms.Button();
             this.btnMarket = new System.Windows.Forms.Button();
+            this.txtLastMatch = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNewGame.SuspendLayout();
             this.pnlMainMenuGame.SuspendLayout();
@@ -142,6 +144,8 @@
             // 
             // pnlMainMenuGame
             // 
+            this.pnlMainMenuGame.Controls.Add(this.txtLastMatch);
+            this.pnlMainMenuGame.Controls.Add(this.label5);
             this.pnlMainMenuGame.Controls.Add(this.btnMarket);
             this.pnlMainMenuGame.Controls.Add(this.btnSpeakWithCoach);
             this.pnlMainMenuGame.Controls.Add(this.btnLeagueStat);
@@ -314,17 +318,18 @@
             // 
             // txtTable
             // 
-            this.txtTable.Enabled = false;
-            this.txtTable.Location = new System.Drawing.Point(196, 144);
+            this.txtTable.Location = new System.Drawing.Point(199, 166);
             this.txtTable.Multiline = true;
             this.txtTable.Name = "txtTable";
-            this.txtTable.Size = new System.Drawing.Size(213, 272);
+            this.txtTable.ReadOnly = true;
+            this.txtTable.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtTable.Size = new System.Drawing.Size(213, 209);
             this.txtTable.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(196, 124);
+            this.label4.Location = new System.Drawing.Point(199, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 7;
@@ -369,21 +374,40 @@
             // 
             // btnSpeakWithCoach
             // 
-            this.btnSpeakWithCoach.Location = new System.Drawing.Point(536, 332);
+            this.btnSpeakWithCoach.Location = new System.Drawing.Point(555, 303);
             this.btnSpeakWithCoach.Name = "btnSpeakWithCoach";
-            this.btnSpeakWithCoach.Size = new System.Drawing.Size(126, 50);
+            this.btnSpeakWithCoach.Size = new System.Drawing.Size(114, 50);
             this.btnSpeakWithCoach.TabIndex = 13;
             this.btnSpeakWithCoach.Text = "Speak with the Coach";
             this.btnSpeakWithCoach.UseVisualStyleBackColor = true;
             // 
             // btnMarket
             // 
-            this.btnMarket.Location = new System.Drawing.Point(536, 267);
+            this.btnMarket.Location = new System.Drawing.Point(557, 235);
             this.btnMarket.Name = "btnMarket";
-            this.btnMarket.Size = new System.Drawing.Size(126, 50);
+            this.btnMarket.Size = new System.Drawing.Size(112, 50);
             this.btnMarket.TabIndex = 14;
             this.btnMarket.Text = "Market";
             this.btnMarket.UseVisualStyleBackColor = true;
+            // 
+            // txtLastMatch
+            // 
+            this.txtLastMatch.Enabled = false;
+            this.txtLastMatch.Location = new System.Drawing.Point(424, 166);
+            this.txtLastMatch.Multiline = true;
+            this.txtLastMatch.Name = "txtLastMatch";
+            this.txtLastMatch.Size = new System.Drawing.Size(249, 52);
+            this.txtLastMatch.TabIndex = 16;
+            this.txtLastMatch.Text = "No Match Played";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(418, 151);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Last Match";
             // 
             // MainForm
             // 
@@ -444,6 +468,8 @@
         private System.Windows.Forms.Button btnOtherTeams;
         private System.Windows.Forms.Button btnFixture;
         private System.Windows.Forms.Button btnMyTeamInfo;
+        private System.Windows.Forms.TextBox txtLastMatch;
+        private System.Windows.Forms.Label label5;
     }
 }
 

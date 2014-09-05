@@ -22,24 +22,24 @@ namespace DsManager.Models
         }
         public override string ToString()
         {
-            string res = string.Format("{0} - {1}",this.goalHome.ToString(),this.goalAway.ToString());
+            string res = string.Format("{0} - {1}\r\n",this.goalHome.ToString(),this.goalAway.ToString());
             if (goalAway != 0 || goalHome != 0)
             {
-                res += "\n*********\nMarcatori\n";
+                res += "\r\n*********\r\nScorer\r\n";
                 if (goalHome != 0)
                 {
-                    res += "*********\nSquadra Casa\n";
+                    res += "*********\r\nHome Team\r\n";
                     foreach (Player player in scorerHome)
                     {
-                        res += player.ToString() + "\n";
+                        res += player.ToString() + "\r\n";
                     }
                 }
                 if (goalAway != 0)
                 {
-                    res += "*********\nSquadra Trasferta\n";
+                    res += "*********\r\nAway Team\r\n";
                     foreach (Player player in scorerAway)
                     {
-                        res += player.ToString() + "\n";
+                        res += player.ToString() + "\r\n";
                     }
                 }
             }

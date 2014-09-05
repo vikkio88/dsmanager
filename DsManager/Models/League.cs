@@ -404,6 +404,32 @@ namespace DsManager.Models
 
             return ret;
         }
+
+        public string getLastMatchbyTeamName(string team)
+        {
+            string ret = "";
+            if (CurrentRound != 0)
+            {
+               
+                Round lastRound = fixture.ElementAt(CurrentRound - 1);
+                foreach (Match m in lastRound.matches)
+                {
+                    if (m.AwayTeam.TeamName == team|| m.HomeTeam.TeamName == team)
+                    {
+                        
+                        ret += ("  " + m.ToString() + "\r\n");
+                        return ret;
+                    }
+
+                }
+            }
+            else
+            {
+                ret = "No match played yet!";
+            }
+
+            return ret;
+        }
     }
     public struct TeamGoals
     {
