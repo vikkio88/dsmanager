@@ -37,6 +37,22 @@
             this.btnRecords = new System.Windows.Forms.Button();
             this.pnlNewGame = new System.Windows.Forms.Panel();
             this.pnlMainMenuGame = new System.Windows.Forms.Panel();
+            this.btnPressConference = new System.Windows.Forms.Button();
+            this.txtLastMatch = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnMarket = new System.Windows.Forms.Button();
+            this.btnSpeakWithCoach = new System.Windows.Forms.Button();
+            this.btnLeagueStat = new System.Windows.Forms.Button();
+            this.btnOtherTeams = new System.Windows.Forms.Button();
+            this.btnFixture = new System.Windows.Forms.Button();
+            this.btnMyTeamInfo = new System.Windows.Forms.Button();
+            this.txtTable = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPlayerTeamInfo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNextRound = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnNextRound = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.btnChooseTeam = new System.Windows.Forms.Button();
             this.txtTeamInfo = new System.Windows.Forms.TextBox();
@@ -48,22 +64,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.timerUtils = new System.Windows.Forms.Timer(this.components);
-            this.btnNextRound = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNextRound = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPlayerTeamInfo = new System.Windows.Forms.TextBox();
-            this.txtTable = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnMyTeamInfo = new System.Windows.Forms.Button();
-            this.btnFixture = new System.Windows.Forms.Button();
-            this.btnOtherTeams = new System.Windows.Forms.Button();
-            this.btnLeagueStat = new System.Windows.Forms.Button();
-            this.btnSpeakWithCoach = new System.Windows.Forms.Button();
-            this.btnMarket = new System.Windows.Forms.Button();
-            this.txtLastMatch = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnPressConference = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNewGame.SuspendLayout();
             this.pnlMainMenuGame.SuspendLayout();
@@ -169,6 +169,157 @@
             this.pnlMainMenuGame.Visible = false;
             this.pnlMainMenuGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainMenuGame_Paint);
             // 
+            // btnPressConference
+            // 
+            this.btnPressConference.Location = new System.Drawing.Point(424, 303);
+            this.btnPressConference.Name = "btnPressConference";
+            this.btnPressConference.Size = new System.Drawing.Size(112, 50);
+            this.btnPressConference.TabIndex = 17;
+            this.btnPressConference.Text = "Press Conference";
+            this.btnPressConference.UseVisualStyleBackColor = true;
+            // 
+            // txtLastMatch
+            // 
+            this.txtLastMatch.Enabled = false;
+            this.txtLastMatch.Location = new System.Drawing.Point(424, 166);
+            this.txtLastMatch.Multiline = true;
+            this.txtLastMatch.Name = "txtLastMatch";
+            this.txtLastMatch.Size = new System.Drawing.Size(249, 52);
+            this.txtLastMatch.TabIndex = 16;
+            this.txtLastMatch.Text = "No Match Played";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(418, 151);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Last Match";
+            // 
+            // btnMarket
+            // 
+            this.btnMarket.Location = new System.Drawing.Point(557, 235);
+            this.btnMarket.Name = "btnMarket";
+            this.btnMarket.Size = new System.Drawing.Size(112, 50);
+            this.btnMarket.TabIndex = 14;
+            this.btnMarket.Text = "Market";
+            this.btnMarket.UseVisualStyleBackColor = true;
+            // 
+            // btnSpeakWithCoach
+            // 
+            this.btnSpeakWithCoach.Location = new System.Drawing.Point(555, 303);
+            this.btnSpeakWithCoach.Name = "btnSpeakWithCoach";
+            this.btnSpeakWithCoach.Size = new System.Drawing.Size(114, 50);
+            this.btnSpeakWithCoach.TabIndex = 13;
+            this.btnSpeakWithCoach.Text = "Speak with the Coach";
+            this.btnSpeakWithCoach.UseVisualStyleBackColor = true;
+            // 
+            // btnLeagueStat
+            // 
+            this.btnLeagueStat.Location = new System.Drawing.Point(3, 247);
+            this.btnLeagueStat.Name = "btnLeagueStat";
+            this.btnLeagueStat.Size = new System.Drawing.Size(126, 50);
+            this.btnLeagueStat.TabIndex = 12;
+            this.btnLeagueStat.Text = "League Statistics";
+            this.btnLeagueStat.UseVisualStyleBackColor = true;
+            this.btnLeagueStat.Click += new System.EventHandler(this.btnLeagueStat_Click);
+            // 
+            // btnOtherTeams
+            // 
+            this.btnOtherTeams.Location = new System.Drawing.Point(3, 303);
+            this.btnOtherTeams.Name = "btnOtherTeams";
+            this.btnOtherTeams.Size = new System.Drawing.Size(126, 50);
+            this.btnOtherTeams.TabIndex = 11;
+            this.btnOtherTeams.Text = "Other Teams";
+            this.btnOtherTeams.UseVisualStyleBackColor = true;
+            this.btnOtherTeams.Click += new System.EventHandler(this.btnOtherTeams_Click);
+            // 
+            // btnFixture
+            // 
+            this.btnFixture.Location = new System.Drawing.Point(6, 116);
+            this.btnFixture.Name = "btnFixture";
+            this.btnFixture.Size = new System.Drawing.Size(126, 50);
+            this.btnFixture.TabIndex = 10;
+            this.btnFixture.Text = "Fixture";
+            this.btnFixture.UseVisualStyleBackColor = true;
+            this.btnFixture.Click += new System.EventHandler(this.btnFixture_Click);
+            // 
+            // btnMyTeamInfo
+            // 
+            this.btnMyTeamInfo.Location = new System.Drawing.Point(6, 60);
+            this.btnMyTeamInfo.Name = "btnMyTeamInfo";
+            this.btnMyTeamInfo.Size = new System.Drawing.Size(126, 50);
+            this.btnMyTeamInfo.TabIndex = 9;
+            this.btnMyTeamInfo.Text = "My Team Info";
+            this.btnMyTeamInfo.UseVisualStyleBackColor = true;
+            this.btnMyTeamInfo.Click += new System.EventHandler(this.btnMyTeamInfo_Click);
+            // 
+            // txtTable
+            // 
+            this.txtTable.Location = new System.Drawing.Point(199, 166);
+            this.txtTable.Multiline = true;
+            this.txtTable.Name = "txtTable";
+            this.txtTable.ReadOnly = true;
+            this.txtTable.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtTable.Size = new System.Drawing.Size(213, 209);
+            this.txtTable.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(199, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Table";
+            // 
+            // txtPlayerTeamInfo
+            // 
+            this.txtPlayerTeamInfo.Enabled = false;
+            this.txtPlayerTeamInfo.Location = new System.Drawing.Point(196, 30);
+            this.txtPlayerTeamInfo.Multiline = true;
+            this.txtPlayerTeamInfo.Name = "txtPlayerTeamInfo";
+            this.txtPlayerTeamInfo.Size = new System.Drawing.Size(213, 108);
+            this.txtPlayerTeamInfo.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(196, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Team Info";
+            // 
+            // txtNextRound
+            // 
+            this.txtNextRound.Enabled = false;
+            this.txtNextRound.Location = new System.Drawing.Point(422, 25);
+            this.txtNextRound.Multiline = true;
+            this.txtNextRound.Name = "txtNextRound";
+            this.txtNextRound.Size = new System.Drawing.Size(249, 116);
+            this.txtNextRound.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(416, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Next Round";
+            // 
+            // btnNextRound
+            // 
+            this.btnNextRound.Location = new System.Drawing.Point(3, 4);
+            this.btnNextRound.Name = "btnNextRound";
+            this.btnNextRound.Size = new System.Drawing.Size(169, 50);
+            this.btnNextRound.TabIndex = 2;
+            this.btnNextRound.Text = "Play Next Round";
+            this.btnNextRound.UseVisualStyleBackColor = true;
+            this.btnNextRound.Click += new System.EventHandler(this.btnNextRound_Click);
+            // 
             // splitter2
             // 
             this.splitter2.Location = new System.Drawing.Point(0, 0);
@@ -271,156 +422,6 @@
             // timerUtils
             // 
             this.timerUtils.Tick += new System.EventHandler(this.timerUtils_Tick);
-            // 
-            // btnNextRound
-            // 
-            this.btnNextRound.Location = new System.Drawing.Point(3, 4);
-            this.btnNextRound.Name = "btnNextRound";
-            this.btnNextRound.Size = new System.Drawing.Size(169, 50);
-            this.btnNextRound.TabIndex = 2;
-            this.btnNextRound.Text = "Play Next Round";
-            this.btnNextRound.UseVisualStyleBackColor = true;
-            this.btnNextRound.Click += new System.EventHandler(this.btnNextRound_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(416, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Next Round";
-            // 
-            // txtNextRound
-            // 
-            this.txtNextRound.Enabled = false;
-            this.txtNextRound.Location = new System.Drawing.Point(422, 25);
-            this.txtNextRound.Multiline = true;
-            this.txtNextRound.Name = "txtNextRound";
-            this.txtNextRound.Size = new System.Drawing.Size(249, 116);
-            this.txtNextRound.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Team Info";
-            // 
-            // txtPlayerTeamInfo
-            // 
-            this.txtPlayerTeamInfo.Enabled = false;
-            this.txtPlayerTeamInfo.Location = new System.Drawing.Point(196, 30);
-            this.txtPlayerTeamInfo.Multiline = true;
-            this.txtPlayerTeamInfo.Name = "txtPlayerTeamInfo";
-            this.txtPlayerTeamInfo.Size = new System.Drawing.Size(213, 108);
-            this.txtPlayerTeamInfo.TabIndex = 6;
-            // 
-            // txtTable
-            // 
-            this.txtTable.Location = new System.Drawing.Point(199, 166);
-            this.txtTable.Multiline = true;
-            this.txtTable.Name = "txtTable";
-            this.txtTable.ReadOnly = true;
-            this.txtTable.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTable.Size = new System.Drawing.Size(213, 209);
-            this.txtTable.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(199, 146);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Table";
-            // 
-            // btnMyTeamInfo
-            // 
-            this.btnMyTeamInfo.Location = new System.Drawing.Point(6, 60);
-            this.btnMyTeamInfo.Name = "btnMyTeamInfo";
-            this.btnMyTeamInfo.Size = new System.Drawing.Size(126, 50);
-            this.btnMyTeamInfo.TabIndex = 9;
-            this.btnMyTeamInfo.Text = "My Team Info";
-            this.btnMyTeamInfo.UseVisualStyleBackColor = true;
-            // 
-            // btnFixture
-            // 
-            this.btnFixture.Location = new System.Drawing.Point(6, 116);
-            this.btnFixture.Name = "btnFixture";
-            this.btnFixture.Size = new System.Drawing.Size(126, 50);
-            this.btnFixture.TabIndex = 10;
-            this.btnFixture.Text = "Fixture";
-            this.btnFixture.UseVisualStyleBackColor = true;
-            this.btnFixture.Click += new System.EventHandler(this.btnFixture_Click);
-            // 
-            // btnOtherTeams
-            // 
-            this.btnOtherTeams.Location = new System.Drawing.Point(3, 303);
-            this.btnOtherTeams.Name = "btnOtherTeams";
-            this.btnOtherTeams.Size = new System.Drawing.Size(126, 50);
-            this.btnOtherTeams.TabIndex = 11;
-            this.btnOtherTeams.Text = "Other Teams";
-            this.btnOtherTeams.UseVisualStyleBackColor = true;
-            this.btnOtherTeams.Click += new System.EventHandler(this.btnOtherTeams_Click);
-            // 
-            // btnLeagueStat
-            // 
-            this.btnLeagueStat.Location = new System.Drawing.Point(3, 247);
-            this.btnLeagueStat.Name = "btnLeagueStat";
-            this.btnLeagueStat.Size = new System.Drawing.Size(126, 50);
-            this.btnLeagueStat.TabIndex = 12;
-            this.btnLeagueStat.Text = "League Statistics";
-            this.btnLeagueStat.UseVisualStyleBackColor = true;
-            this.btnLeagueStat.Click += new System.EventHandler(this.btnLeagueStat_Click);
-            // 
-            // btnSpeakWithCoach
-            // 
-            this.btnSpeakWithCoach.Location = new System.Drawing.Point(555, 303);
-            this.btnSpeakWithCoach.Name = "btnSpeakWithCoach";
-            this.btnSpeakWithCoach.Size = new System.Drawing.Size(114, 50);
-            this.btnSpeakWithCoach.TabIndex = 13;
-            this.btnSpeakWithCoach.Text = "Speak with the Coach";
-            this.btnSpeakWithCoach.UseVisualStyleBackColor = true;
-            // 
-            // btnMarket
-            // 
-            this.btnMarket.Location = new System.Drawing.Point(557, 235);
-            this.btnMarket.Name = "btnMarket";
-            this.btnMarket.Size = new System.Drawing.Size(112, 50);
-            this.btnMarket.TabIndex = 14;
-            this.btnMarket.Text = "Market";
-            this.btnMarket.UseVisualStyleBackColor = true;
-            // 
-            // txtLastMatch
-            // 
-            this.txtLastMatch.Enabled = false;
-            this.txtLastMatch.Location = new System.Drawing.Point(424, 166);
-            this.txtLastMatch.Multiline = true;
-            this.txtLastMatch.Name = "txtLastMatch";
-            this.txtLastMatch.Size = new System.Drawing.Size(249, 52);
-            this.txtLastMatch.TabIndex = 16;
-            this.txtLastMatch.Text = "No Match Played";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(418, 151);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Last Match";
-            // 
-            // btnPressConference
-            // 
-            this.btnPressConference.Location = new System.Drawing.Point(424, 303);
-            this.btnPressConference.Name = "btnPressConference";
-            this.btnPressConference.Size = new System.Drawing.Size(112, 50);
-            this.btnPressConference.TabIndex = 17;
-            this.btnPressConference.Text = "Press Conference";
-            this.btnPressConference.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

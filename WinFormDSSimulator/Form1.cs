@@ -445,6 +445,12 @@ namespace WinFormDSSimulator
             lsf.Show();
         }
 
+        private void btnMyTeamInfo_Click(object sender, EventArgs e)
+        {
+            MyTeamForm mtf = new MyTeamForm();
+            mtf.Show();
+        }
+
 
 
 
