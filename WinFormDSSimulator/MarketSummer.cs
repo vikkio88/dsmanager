@@ -178,7 +178,7 @@ namespace WinFormDSSimulator
             }
         }
 
-        private void RoundFinished()
+        public void RoundFinished()
         {
             currentround++;
             refreshinfos();
@@ -205,7 +205,8 @@ namespace WinFormDSSimulator
         {
             TryToSellPlayerForm ttspf = new TryToSellPlayerForm(playersteam.getPlayer(lstPlayers.SelectedIndex));
             ttspf.Show();
-            RoundFinished();
+            //controllare fine di questo processo prima di
+            //RoundFinished();
         }
 
 
