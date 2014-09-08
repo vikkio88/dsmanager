@@ -390,13 +390,24 @@ namespace WinFormDSSimulator
 
             StreamMessageInStatus("Completed");
 
+            //allow you to speak with the coach again
+            discorsetto = false;
+            //
+
         }
 
         private void SeasonOver()
         {
             finished = true;
             btnNextRound.Enabled = false;
+            btnMarket.Enabled = true;
+            btnMarket.Text = "Market/Next Season";
             playerReport();
+        }
+
+        private void NextSeason()
+        {
+
         }
 
         private void playerReport()
@@ -462,9 +473,26 @@ namespace WinFormDSSimulator
 
         private void btnSpeakWithCoach_Click(object sender, EventArgs e)
         {
-            SpeakWithCoachForm swcf = new SpeakWithCoachForm();
+            if (!discorsetto)
+            {
+                SpeakWithCoachForm swcf = new SpeakWithCoachForm();
 
-            swcf.Show();
+                swcf.Show();
+
+                discorsetto = true;
+            }
+            else
+            {
+                MessageBox.Show("You already spoke to your coach in this round", "Information");
+            }
+
+        }
+
+        private void btnMarket_Click(object sender, EventArgs e)
+        {
+            MarketSummer ms = new MarketSummer();
+            ms.Show();
+            NextSeason();
 
         }
 

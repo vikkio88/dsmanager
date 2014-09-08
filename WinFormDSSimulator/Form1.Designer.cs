@@ -200,12 +200,14 @@
             // 
             // btnMarket
             // 
+            this.btnMarket.Enabled = false;
             this.btnMarket.Location = new System.Drawing.Point(557, 235);
             this.btnMarket.Name = "btnMarket";
             this.btnMarket.Size = new System.Drawing.Size(112, 50);
             this.btnMarket.TabIndex = 14;
             this.btnMarket.Text = "Market";
             this.btnMarket.UseVisualStyleBackColor = true;
+            this.btnMarket.Click += new System.EventHandler(this.btnMarket_Click);
             // 
             // btnSpeakWithCoach
             // 

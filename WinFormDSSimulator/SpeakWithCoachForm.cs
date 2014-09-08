@@ -98,6 +98,8 @@ namespace WinFormDSSimulator
 
         private void btnGoodJob_Click(object sender, EventArgs e)
         {
+            nullOtherAction();
+
             txtCoachWords.Text += "\r\n" + MainForm.playername + " : I just wanted to say you that you are doing a good job" + "\r\n";
             if (MainForm.l.CurrentRound > 1)
             {
@@ -119,8 +121,18 @@ namespace WinFormDSSimulator
             }
         }
 
+        private void nullOtherAction()
+        {
+            btnChangeModule.Enabled = false;
+            btnFireCoach.Enabled = false;
+            btnGoodJob.Enabled = false;
+            btnIwantMore.Enabled = false;
+        }
+
         private void btnIwantMore_Click(object sender, EventArgs e)
         {
+            nullOtherAction();
+
             txtCoachWords.Text += "\r\n" + MainForm.playername + " : I need to see more!" + "\r\n";
             if (MainForm.l.CurrentRound > 1)
             {
@@ -145,7 +157,7 @@ namespace WinFormDSSimulator
 
         private void btnChangeModule_Click(object sender, EventArgs e)
         {
-
+            nullOtherAction();
             txtCoachWords.Text += "\r\n" + MainForm.playername + " : I just wanted to suggest you to change module"+"\r\n";
             if (MainForm.l.CurrentRound > 1)
             {
@@ -169,8 +181,10 @@ namespace WinFormDSSimulator
 
         }
 
-        private void btnNevermind_Click(object sender, EventArgs e)
+        private void btnFireCoach_Click(object sender, EventArgs e)
         {
+            nullOtherAction();
+
             double rescissione = GameUtils.getWage(1,3);
             MainForm.money -= rescissione;
             if(MainForm.money<0) MainForm.money = 0;

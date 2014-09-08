@@ -116,7 +116,7 @@
             this.btnFireCoach.TabIndex = 21;
             this.btnFireCoach.Text = "Fire him";
             this.btnFireCoach.UseVisualStyleBackColor = true;
-            this.btnFireCoach.Click += new System.EventHandler(this.btnNevermind_Click);
+            this.btnFireCoach.Click += new System.EventHandler(this.btnFireCoach_Click);
             // 
             // SpeakWithCoachForm
             // 
