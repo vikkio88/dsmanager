@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormDSSimulator.marketDialogForms;
 
 namespace WinFormDSSimulator
 {
@@ -142,7 +143,7 @@ namespace WinFormDSSimulator
                     if (GameUtils.getProbability(70))
                     {
                         temp.Role = cboRole.SelectedItem.ToString();
-                        MessageBox.Show("Now" + temp.ToStringShort() + " will play as " + temp.Role,"Success!");
+                        MessageBox.Show("Now " + temp.ToStringShort() + " will play as " + temp.Role,"Success!");
 
                     }
                     else
@@ -156,7 +157,7 @@ namespace WinFormDSSimulator
                     if (GameUtils.getProbability(30))
                     {
                         temp.Role = cboRole.SelectedItem.ToString();
-                        MessageBox.Show("Now" + temp.ToStringShort() + " will play as " + temp.Role, "Success!");
+                        MessageBox.Show("Now " + temp.ToStringShort() + " will play as " + temp.Role, "Success!");
 
                     }
                     else
@@ -181,12 +182,30 @@ namespace WinFormDSSimulator
         {
             currentround++;
             refreshinfos();
+            if (currentround == 15)
+            {
+                MarketEnded();
+            }
+        }
+
+        private void MarketEnded()
+        {
+            MessageBox.Show("Market Ended!", "Info");
+            this.Close();
         }
 
         private void refreshinfos()
         {
             FillTeamInfo();
             FillLst(playersteam);
+            lblWeeks.Text = "Week " + currentround + "/" + numbofround;
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+            TryToSellPlayerForm ttspf = new TryToSellPlayerForm(playersteam.getPlayer(lstPlayers.SelectedIndex));
+            ttspf.Show();
+            RoundFinished();
         }
 
 

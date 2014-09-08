@@ -48,6 +48,7 @@
             this.btnYouth = new System.Windows.Forms.Button();
             this.btnFreePlayers = new System.Windows.Forms.Button();
             this.btnPlayersInLeague = new System.Windows.Forms.Button();
+            this.lblWeeks = new System.Windows.Forms.Label();
             this.pnlMainMarket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +84,7 @@
             // 
             // pnlMainMarket
             // 
+            this.pnlMainMarket.Controls.Add(this.lblWeeks);
             this.pnlMainMarket.Controls.Add(this.groupBox1);
             this.pnlMainMarket.Controls.Add(this.label3);
             this.pnlMainMarket.Controls.Add(this.label4);
@@ -141,6 +143,7 @@
             this.btnSell.TabIndex = 29;
             this.btnSell.Text = "Sell";
             this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // label3
             // 
@@ -251,6 +254,16 @@
             this.btnPlayersInLeague.Text = "Search For Player in League";
             this.btnPlayersInLeague.UseVisualStyleBackColor = true;
             // 
+            // lblWeeks
+            // 
+            this.lblWeeks.AutoSize = true;
+            this.lblWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeeks.Location = new System.Drawing.Point(427, 374);
+            this.lblWeeks.Name = "lblWeeks";
+            this.lblWeeks.Size = new System.Drawing.Size(152, 31);
+            this.lblWeeks.TabIndex = 33;
+            this.lblWeeks.Text = "Week 1/15";
+            // 
             // MarketSummer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,5 +306,6 @@
         private System.Windows.Forms.Button btnSell;
         private System.Windows.Forms.ComboBox cboRole;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblWeeks;
     }
 }

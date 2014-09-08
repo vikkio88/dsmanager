@@ -62,6 +62,12 @@
     <Compile Include="LeagueStatisticForm.Designer.cs">
       <DependentUpon>LeagueStatisticForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="marketDialogForms\TryToSellPlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="marketDialogForms\TryToSellPlayerForm.Designer.cs">
+      <DependentUpon>TryToSellPlayerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MarketSummer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LeagueStatisticForm.resx">
       <DependentUpon>LeagueStatisticForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="marketDialogForms\TryToSellPlayerForm.resx">
+      <DependentUpon>TryToSellPlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MarketSummer.resx">
       <DependentUpon>MarketSummer.cs</DependentUpon>
