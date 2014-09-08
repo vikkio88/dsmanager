@@ -407,6 +407,15 @@ namespace WinFormDSSimulator
 
         private void NextSeason()
         {
+            l.reset();
+            l.generateFixture();
+            vps = new int[]{0,0,0};
+            discorsetto = false;
+            finished = false;
+            anno += 1;
+
+            btnNextRound.Enabled = true;
+            btnMarket.Enabled = false;
 
         }
 
