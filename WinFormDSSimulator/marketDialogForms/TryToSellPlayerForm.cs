@@ -16,21 +16,41 @@ namespace WinFormDSSimulator.marketDialogForms
         static Player tosell;
         static double off;
         static Team other;
+        static List<string> teamnames = new List<string>();
+        static Team playerteam;
+
+        static int constant = 43; //constant for selling stuff
         public TryToSellPlayerForm(Player p)
         {
             tosell = p;
+            playerteam = MainForm.l.getTeambyTeamName(MainForm.playerteam);
+            
+            foreach (Team t in MainForm.l.leagueTeams)
+            {
+                if (t.isplayers != true)
+                {
+                    teamnames.Add(t.TeamName);
+                }
+            }
+
             InitializeComponent();
         }
 
         private void TryToSellPlayerForm_Load(object sender, EventArgs e)
         {
-            if (GameUtils.getProbability()) // probabilitá di vendere giocatore legata all'etá
+            Random rnd = new Random();
+            double probabilitytosell = constant + (100 - (tosell.Age / 40.0 * 100));
+            if (GameUtils.getProbability(Convert.ToInt32(probabilitytosell))) // probabilitá di vendere giocatore legata all'etá
             {
                 int c = evaluatePlayer(tosell);
                 off = Math.Round((tosell.Val + (tosell.Val * (c / 100.0))),2);
+                other = MainForm.l.getTeambyTeamName(teamnames.ElementAt(rnd.Next(0, teamnames.Count)));
+                txtOffer.Text = other.TeamName + " offer " + off + " M € for this Player";
+
             }
             else
             {
+                txtOffer.Text = "No offers for this Player";
                 btnAccept.Enabled = false;
                 btnReject.Enabled = false;
             }
@@ -54,6 +74,14 @@ namespace WinFormDSSimulator.marketDialogForms
 
         private void btnReject_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            other.addPlayer(playerteam.popPlayer(tosell));
+            MainForm.money += off;
+            MessageBox.Show(tosell.ToStringShort() + " sold to " + other.TeamName + " for " + off + " M €", "Success");
             this.Close();
         }
     }

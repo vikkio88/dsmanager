@@ -33,7 +33,7 @@
             this.txtPlayerInfo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtOffer = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -76,14 +76,14 @@
             this.label1.TabIndex = 33;
             this.label1.Text = "Offer";
             // 
-            // textBox1
+            // txtOffer
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 142);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(372, 42);
-            this.textBox1.TabIndex = 34;
+            this.txtOffer.Location = new System.Drawing.Point(12, 142);
+            this.txtOffer.Multiline = true;
+            this.txtOffer.Name = "txtOffer";
+            this.txtOffer.ReadOnly = true;
+            this.txtOffer.Size = new System.Drawing.Size(372, 42);
+            this.txtOffer.TabIndex = 34;
             // 
             // btnAccept
             // 
@@ -93,6 +93,7 @@
             this.btnAccept.TabIndex = 35;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // btnReject
             // 
@@ -111,7 +112,7 @@
             this.ClientSize = new System.Drawing.Size(396, 270);
             this.Controls.Add(this.btnReject);
             this.Controls.Add(this.btnAccept);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtOffer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
@@ -131,7 +132,7 @@
         private System.Windows.Forms.TextBox txtPlayerInfo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtOffer;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnReject;
     }
