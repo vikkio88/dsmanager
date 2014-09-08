@@ -74,8 +74,20 @@
     <Compile Include="OtherTeamExplorerForm.Designer.cs">
       <DependentUpon>OtherTeamExplorerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PressConferenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PressConferenceForm.Designer.cs">
+      <DependentUpon>PressConferenceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpeakWithCoachForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeakWithCoachForm.Designer.cs">
+      <DependentUpon>SpeakWithCoachForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +103,9 @@
     <EmbeddedResource Include="OtherTeamExplorerForm.resx">
       <DependentUpon>OtherTeamExplorerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PressConferenceForm.resx">
+      <DependentUpon>PressConferenceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -101,6 +116,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SpeakWithCoachForm.resx">
+      <DependentUpon>SpeakWithCoachForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,6 +142,8 @@
     <None Include="resource\images\splash.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resource\images\avatarmanager.jpg" />
+    <Content Include="resource\images\avatarplayer.jpg" />
     <Content Include="resource\Teams\cagliari.txt" />
     <Content Include="resource\Teams\chievo.txt" />
     <Content Include="resource\Teams\empoli.txt" />

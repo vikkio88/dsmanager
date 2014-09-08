@@ -177,6 +177,7 @@
             this.btnPressConference.TabIndex = 17;
             this.btnPressConference.Text = "Press Conference";
             this.btnPressConference.UseVisualStyleBackColor = true;
+            this.btnPressConference.Click += new System.EventHandler(this.btnPressConference_Click);
             // 
             // txtLastMatch
             // 
@@ -214,6 +215,7 @@
             this.btnSpeakWithCoach.TabIndex = 13;
             this.btnSpeakWithCoach.Text = "Speak with the Coach";
             this.btnSpeakWithCoach.UseVisualStyleBackColor = true;
+            this.btnSpeakWithCoach.Click += new System.EventHandler(this.btnSpeakWithCoach_Click);
             // 
             // btnLeagueStat
             // 

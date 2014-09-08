@@ -451,6 +451,23 @@ namespace WinFormDSSimulator
             mtf.Show();
         }
 
+        private void btnPressConference_Click(object sender, EventArgs e)
+        {
+            PressConferenceForm pcf = new PressConferenceForm();
+
+            pcf.Show();
+
+
+        }
+
+        private void btnSpeakWithCoach_Click(object sender, EventArgs e)
+        {
+            SpeakWithCoachForm swcf = new SpeakWithCoachForm();
+
+            swcf.Show();
+
+        }
+
 
 
 
