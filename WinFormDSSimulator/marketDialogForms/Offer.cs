@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WinFormDSSimulator.marketDialogForms
 {
-    public partial class TryToSellPlayerForm : Form
+    public partial class Offer : Form
     {
         static Player tosell;
         static double off;
@@ -19,12 +19,11 @@ namespace WinFormDSSimulator.marketDialogForms
         static List<string> teamnames = new List<string>();
         static Team playerteam;
 
-        static int constant = 43; //constant for selling stuff
-        public TryToSellPlayerForm(Player p)
+        public Offer()
         {
-            tosell = p;
+            Random rnd = new Random();
             playerteam = MainForm.l.getTeambyTeamName(MainForm.playerteam);
-            
+
             foreach (Team t in MainForm.l.leagueTeams)
             {
                 if (t.isplayers != true)
@@ -33,54 +32,29 @@ namespace WinFormDSSimulator.marketDialogForms
                 }
             }
 
+            other = MainForm.l.getTeambyTeamName(teamnames.ElementAt(rnd.Next(teamnames.Count)));
+            tosell = playerteam.getPlayer(rnd.Next(playerteam.NumbOfPlayers));
+
             InitializeComponent();
         }
 
-        private void TryToSellPlayerForm_Load(object sender, EventArgs e)
+        private void Offer_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
 
 
 
-
-            Random rnd = new Random();
-            double probabilitytosell = constant + (100 - (tosell.Age / 40.0 * 100));
-            if (GameUtils.getProbability(Convert.ToInt32(probabilitytosell))) // probabilitá di vendere giocatore legata all'etá
-            {
-                int c = evaluatePlayer(tosell);
-                off = Math.Round((tosell.Val + (tosell.Val * (c / 100.0))),2);
-                other = MainForm.l.getTeambyTeamName(teamnames.ElementAt(rnd.Next(0, teamnames.Count)));
-                txtOffer.Text = other.TeamName + " offer " + off + " M € for this Player";
-
-            }
-            else
-            {
-                txtOffer.Text = "No offers for this Player";
-                btnAccept.Enabled = false;
-                btnReject.Enabled = false;
-            }
-
+            off = tosell.Val;
+            off += GameUtils.getWage(0, 10);
             txtPlayerInfo.Text = tosell.ToString();
-        }
+            txtOffer.Text = other.TeamName + " offer " + off + " M € for this Player";
 
-        private int evaluatePlayer(Player tosell)
-        {
-            double perc = 100;
-           // Console.WriteLine("step1: " + perc);
-            perc -= (100 - tosell.SkillAvg);
-           // Console.WriteLine("onskill: " + perc);
-            perc -= ((tosell.Age / 40.0 * 100));
-           // Console.WriteLine("\tmodifier: " + (tosell.Age / 40.0 * 100));
-            //Console.WriteLine("onage: " + perc);
-
-
-            return Convert.ToInt32(perc);
         }
 
         private void btnReject_Click(object sender, EventArgs e)
         {
             callbackround();
-            
+
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -91,7 +65,7 @@ namespace WinFormDSSimulator.marketDialogForms
 
 
             callbackround();
-           
+
         }
 
         private void callbackround()

@@ -30,6 +30,9 @@ namespace WinFormDSSimulator
 
         private void MarketSummer_Load(object sender, EventArgs e)
         {
+            currentround = 0;
+
+
             string coachreport = GameUtils.CheckCoachWorkString(MainForm.l);
             txtEvents.Text += coachreport + "\r\n";
 
@@ -135,7 +138,7 @@ namespace WinFormDSSimulator
 
         private void btnChangeRole_Click(object sender, EventArgs e)
         {
-            if (cboRole.SelectedItem.ToString() != "")
+            if (cboRole.SelectedIndex != -1)
             {
                 Player temp = playersteam.getPlayer(lstPlayers.SelectedIndex);
                 if (temp.Age < 20)
@@ -167,7 +170,7 @@ namespace WinFormDSSimulator
 
                 }
 
-                RoundFinished();
+                RoundFinished(true);
 
 
             }
@@ -178,13 +181,28 @@ namespace WinFormDSSimulator
             }
         }
 
-        public void RoundFinished()
+        public void RoundFinished(bool addrandomoffer=false)
         {
             currentround++;
             refreshinfos();
+
+            if (addrandomoffer)
+            {
+                RandomOffer();
+            }
+
             if (currentround == 15)
             {
                 MarketEnded();
+            }
+        }
+
+        private void RandomOffer()
+        {
+            if (GameUtils.getProbability(60))
+            {
+                Offer of = new Offer();
+                of.Show();
             }
         }
 

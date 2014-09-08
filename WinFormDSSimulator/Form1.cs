@@ -15,6 +15,7 @@ namespace WinFormDSSimulator
 {
     public partial class MainForm : Form
     {
+        public static MarketSummer ms;
         #region GameObjects
         public static League l;
 
@@ -515,7 +516,7 @@ namespace WinFormDSSimulator
 
         private void btnMarket_Click(object sender, EventArgs e)
         {
-            MarketSummer ms = new MarketSummer();
+            ms = new MarketSummer();
             ms.Show();
             NextSeason();
 
