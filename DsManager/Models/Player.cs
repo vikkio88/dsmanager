@@ -190,7 +190,7 @@ namespace DsManager.Models
         }
         public override string ToString()
         {
-            return string.Format("{0} {1}, etá {3} : media {2}% : ruolo {5} : prezzo {4}M E", PlayerName, PlayerSurname, SkillAvg.ToString(),Age.ToString(),Val.ToString(),Role);
+            return string.Format("{0} {1}, etá: {3}  media: {2}%  ruolo: {5}  prezzo: {4}M euro", PlayerName, PlayerSurname, SkillAvg.ToString(), Age.ToString(), Val.ToString(), Role);
         }
 
 
