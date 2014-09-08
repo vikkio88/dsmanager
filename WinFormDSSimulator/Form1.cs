@@ -333,10 +333,21 @@ namespace WinFormDSSimulator
         #region PnlMainMenuGame
         private void pnlMainMenuGame_Paint(object sender, PaintEventArgs e)
         {
+
             FillTeamInfo();
             FillNextRound();
             FillTableText();
             FillLastMatch();
+
+            showHistoryButton();
+        }
+
+        private void showHistoryButton()
+        {
+            if (anno > 2014)
+            {
+                btnHistory.Visible = true;
+            }
         }
 
         private void FillLastMatch()
@@ -410,12 +421,17 @@ namespace WinFormDSSimulator
             l.reset();
             l.generateFixture();
             vps = new int[]{0,0,0};
+            
+            losecounter = 0;
+            drawcounter = 0;
+
             discorsetto = false;
             finished = false;
             anno += 1;
 
             btnNextRound.Enabled = true;
             btnMarket.Enabled = false;
+            MessageBox.Show("New Season Started!\r\n" + (anno - 1) + "/" + anno);
 
         }
 
@@ -503,6 +519,11 @@ namespace WinFormDSSimulator
             ms.Show();
             NextSeason();
 
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            Program.toDefine();
         }
 
 

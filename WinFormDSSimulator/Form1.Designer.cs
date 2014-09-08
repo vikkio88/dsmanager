@@ -64,6 +64,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.timerUtils = new System.Windows.Forms.Timer(this.components);
+            this.btnHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNewGame.SuspendLayout();
             this.pnlMainMenuGame.SuspendLayout();
@@ -145,6 +146,7 @@
             // 
             // pnlMainMenuGame
             // 
+            this.pnlMainMenuGame.Controls.Add(this.btnHistory);
             this.pnlMainMenuGame.Controls.Add(this.btnPressConference);
             this.pnlMainMenuGame.Controls.Add(this.txtLastMatch);
             this.pnlMainMenuGame.Controls.Add(this.label5);
@@ -427,6 +429,17 @@
             // 
             this.timerUtils.Tick += new System.EventHandler(this.timerUtils_Tick);
             // 
+            // btnHistory
+            // 
+            this.btnHistory.Location = new System.Drawing.Point(438, 241);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(78, 38);
+            this.btnHistory.TabIndex = 18;
+            this.btnHistory.Text = "History";
+            this.btnHistory.UseVisualStyleBackColor = true;
+            this.btnHistory.Visible = false;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +502,7 @@
         private System.Windows.Forms.TextBox txtLastMatch;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnPressConference;
+        private System.Windows.Forms.Button btnHistory;
     }
 }
 

@@ -439,5 +439,175 @@ namespace DsManager.Models
             string[] newspapers = { "TuttoSport", "Corriere dello Sport", "Gazzetta dello Sport", "SportItalia News", "Gazzetta Sportiva" };
             return newspapers[rnd.getInt(newspapers.Count())];
         }
+
+        public static string AgePlayersString(League l)
+        {
+            string ret = "";
+
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            foreach (Team t in l.leagueTeams)
+            {
+                List<Player> toremove = new List<Player>();
+                foreach (Player pl in t.players)
+                {
+                    pl.Age += 1;
+
+                    if (pl.Age > 34)
+                    {
+                        if (rnd.getInt(100) > 50)
+                        {
+                            toremove.Add(pl);
+                        }
+                    }
+                    else
+                    {
+                        if (pl.Age > 31)
+                        {
+                            pl.SkillAvg -= rnd.getInt(0, 3);
+                        }
+                        else
+                        {
+                            pl.SkillAvg += rnd.getInt(0, 3);
+                            if (pl.Age < 19) pl.SkillAvg += rnd.getInt(1, 3);
+                        }
+                    }
+                }
+
+                //rimuovi giocatori
+                foreach (Player torm in toremove)
+                {
+                   ret+=(torm.ToStringShort() + " from team " + t.TeamName + " retired")+"\r\n";
+                    t.rmPlayer(torm);
+                }
+
+            }
+
+            return ret;
+        }
+
+        public static string CalciomercatoRandomString(League l)
+        {
+            string ret = "";
+
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+            List<Team> tlist = l.leagueTeams;
+            List<Player> onmarket = new List<Player>();
+            ret+= ("Player's Market\r\n\r\n");
+            //put some random player on a list
+            foreach (Team t in tlist)
+            {
+                if (t.isplayers) continue;
+                int howmany = rnd.getInt(0, 3);
+                for (int i = 0; i < howmany; i++)
+                {
+                    Player temp = t.popPlayerAt(rnd.getInt(t.NumbOfPlayers));
+                    ret += (t.TeamName + " put " + temp.ToStringShort() + " on the transfer list\r\n");
+                    onmarket.Add(temp);
+                }
+            }
+            ret += ("\r\n******************\r\n");
+            //assign those players to a new team randomly
+            foreach (Player pl in onmarket)
+            {
+                int n = rnd.getInt(1, l.NumbOfTeam);
+                Team temp = l.getTeamByTablePosition(n);
+                while (temp.isplayers)
+                {
+                    n = rnd.getInt(1, l.NumbOfTeam);
+                    temp = l.getTeamByTablePosition(n);
+                    wait();
+                }
+                ret += (temp.TeamName + " bought " + pl.ToStringShort()) + "\r\n";
+                temp.addPlayer(pl);
+            }
+
+            //Balancing Team with Random Players
+            /* int tot = 0;
+             foreach (Team t in tlist)
+             {
+                 tot += t.NumbOfPlayers;
+             }
+             int avg = tot / l.NumbOfTeam;
+             */
+            //balancing on 15 players per team
+            int avg = 14;
+
+            ret += ("\r\n******************\r\n");
+            foreach (Team t in tlist)
+            {
+                //Give a Random Goalkeeper if team does not have one
+                try
+                {
+                    t.getPlayerForRole("PT");
+                }
+                catch (Exception e)
+                {
+                    //if there is not a PT
+                    ret += (t.TeamName + " got new goalkeeper")+"\r\n";
+                    Player tmp = GameUtils.getRandomPlayersPerRole("PT").ElementAt(0);
+                    t.addPlayer(tmp);
+                    ret += ("\t" + tmp.ToStringShort())+"\r\n";
+
+                    wait();
+                }
+                //
+
+                int missingpl = avg - t.NumbOfPlayers;
+                if (missingpl > 0)
+                {
+                    List<Player> rndpl = new List<Player>();
+                    ret += (t.TeamName + " got new players")+"\r\n";
+                    rndpl = getRandomPlayersList(missingpl);
+                    foreach (Player pl in rndpl)
+                    {
+                        ret += ("\t" + pl.ToStringShort())+"\r\n";
+                        t.addPlayer(pl);
+                    }
+                    wait(7);
+                }
+            }
+
+            return ret;
+
+
+            
+        }
+
+        public static string CheckCoachWorkString(League l)
+        {
+            string ret = "";
+            Team last = l.getTeamByTablePosition(l.NumbOfTeam);
+            Team secondLast = l.getTeamByTablePosition(l.NumbOfTeam - 1);
+            RandomFiller.RandomFiller rnd = new RandomFiller.RandomFiller();
+
+            //if is not a player team
+            ret += "Other teams Coach final evaluation\r\n";
+            if (last.isplayers == false)
+            {
+                if (rnd.getInt(100) > 20)
+                {
+                    ret+= (last.TeamName + " fired the coach " + last.getCoach().ToStringShort())+"\r\n";
+                    Coach temp = getRandomCoach();
+                    last.setCoach(temp);
+                    ret+= ("\tThey hired " + temp.ToStringShort())+"\r\n";
+                }
+            }
+
+            wait(50);
+
+            if (secondLast.isplayers == false)
+            {
+                if (rnd.getInt(100) > 60)
+                {
+                   ret+= (secondLast.TeamName + " fired the coach " + secondLast.getCoach().ToStringShort()) + "\r\n";
+                    Coach temp = getRandomCoach();
+                    secondLast.setCoach(temp);
+                    ret+= ("\tThey hired " + temp.ToStringShort())+"\r\n";
+                }
+            }
+
+            return ret;
+            
+        }
     }
 }
