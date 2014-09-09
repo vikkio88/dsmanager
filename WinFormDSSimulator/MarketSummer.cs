@@ -18,8 +18,10 @@ namespace WinFormDSSimulator
         static Team playersteam;
         static int currentround = 1;
         static int numbofround = 15;
+        static List<Player> youth;
         public MarketSummer()
         {
+            youth = GameUtils.getRandomPlayersYOUNGList(15);
             InitializeComponent();
         }
 
@@ -239,7 +241,8 @@ namespace WinFormDSSimulator
 
         private void btnYouth_Click(object sender, EventArgs e)
         {
-
+            YouthClubForm ycf = new YouthClubForm(youth);
+            ycf.Show();
         }
 
         private void btnFreePlayers_Click(object sender, EventArgs e)
