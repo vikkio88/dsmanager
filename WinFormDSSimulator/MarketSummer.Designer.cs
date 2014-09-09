@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnMyTeam = new System.Windows.Forms.Button();
             this.pnlMainMarket = new System.Windows.Forms.Panel();
+            this.btnNextWeek = new System.Windows.Forms.Button();
             this.lblWeeks = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboRole = new System.Windows.Forms.ComboBox();
@@ -49,7 +50,6 @@
             this.btnYouth = new System.Windows.Forms.Button();
             this.btnFreePlayers = new System.Windows.Forms.Button();
             this.btnPlayersInLeague = new System.Windows.Forms.Button();
-            this.btnNextWeek = new System.Windows.Forms.Button();
             this.pnlMainMarket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,17 @@
             this.pnlMainMarket.TabIndex = 16;
             this.pnlMainMarket.Visible = false;
             this.pnlMainMarket.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainMarket_Paint);
+            // 
+            // btnNextWeek
+            // 
+            this.btnNextWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextWeek.Location = new System.Drawing.Point(553, 374);
+            this.btnNextWeek.Name = "btnNextWeek";
+            this.btnNextWeek.Size = new System.Drawing.Size(34, 36);
+            this.btnNextWeek.TabIndex = 34;
+            this.btnNextWeek.Text = ">";
+            this.btnNextWeek.UseVisualStyleBackColor = true;
+            this.btnNextWeek.Click += new System.EventHandler(this.btnNextWeek_Click);
             // 
             // lblWeeks
             // 
@@ -270,17 +281,6 @@
             this.btnPlayersInLeague.Text = "Search For Player in League";
             this.btnPlayersInLeague.UseVisualStyleBackColor = true;
             this.btnPlayersInLeague.Click += new System.EventHandler(this.btnPlayersInLeague_Click);
-            // 
-            // btnNextWeek
-            // 
-            this.btnNextWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextWeek.Location = new System.Drawing.Point(539, 374);
-            this.btnNextWeek.Name = "btnNextWeek";
-            this.btnNextWeek.Size = new System.Drawing.Size(48, 36);
-            this.btnNextWeek.TabIndex = 34;
-            this.btnNextWeek.Text = ">";
-            this.btnNextWeek.UseVisualStyleBackColor = true;
-            this.btnNextWeek.Click += new System.EventHandler(this.btnNextWeek_Click);
             // 
             // MarketSummer
             // 
