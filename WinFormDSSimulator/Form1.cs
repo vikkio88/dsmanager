@@ -467,32 +467,32 @@ namespace WinFormDSSimulator
             //Program.toDefine();
             FixtureForm fxt = new FixtureForm();
 
-            fxt.Show();
+            fxt.ShowDialog();
         }
 
         private void btnOtherTeams_Click(object sender, EventArgs e)
         {
             OtherTeamExplorerForm otef = new OtherTeamExplorerForm();
-            otef.Show();
+            otef.ShowDialog();
         }
 
         private void btnLeagueStat_Click(object sender, EventArgs e)
         {
             LeagueStatisticForm lsf = new LeagueStatisticForm();
-            lsf.Show();
+            lsf.ShowDialog();
         }
 
         private void btnMyTeamInfo_Click(object sender, EventArgs e)
         {
             MyTeamForm mtf = new MyTeamForm();
-            mtf.Show();
+            mtf.ShowDialog();
         }
 
         private void btnPressConference_Click(object sender, EventArgs e)
         {
             PressConferenceForm pcf = new PressConferenceForm();
 
-            pcf.Show();
+            pcf.ShowDialog();
 
 
         }
@@ -503,7 +503,7 @@ namespace WinFormDSSimulator
             {
                 SpeakWithCoachForm swcf = new SpeakWithCoachForm();
 
-                swcf.Show();
+                swcf.ShowDialog();
 
                 discorsetto = true;
             }
