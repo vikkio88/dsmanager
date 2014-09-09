@@ -20,8 +20,11 @@ namespace WinFormDSSimulator
         private void LeagueStatisticForm_Load(object sender, EventArgs e)
         {
             Program.formFixing(this);
+            
 
             txtTable.Text = MainForm.l.getScorerTable(MainForm.playerteam);
+
+            btnQuit.Focus();
         }
 
         private void btnQuit_Click(object sender, EventArgs e)

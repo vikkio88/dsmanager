@@ -47,7 +47,7 @@ namespace WinFormDSSimulator
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

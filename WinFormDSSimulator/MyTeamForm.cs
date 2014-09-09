@@ -29,6 +29,8 @@ namespace WinFormDSSimulator
 
             FillLst(playersteam);
             FillTeamInfo();
+
+            btnQuit.Focus();
         }
 
         private void FillTeamInfo()

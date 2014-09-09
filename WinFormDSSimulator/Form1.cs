@@ -78,7 +78,10 @@ namespace WinFormDSSimulator
         private void btnNewGame_Click(object sender, EventArgs e)
         {
             pnlNewGame.Visible = true;
+            
         }
+
+
 
 
 
@@ -537,6 +540,11 @@ namespace WinFormDSSimulator
         {
             MessageBox.Show("That's a pity, bye mr "+playername+"!", "Exiting?");
             Environment.Exit(0);
+        }
+
+        private void txtPlayerName_TextChanged(object sender, EventArgs e)
+        {
+            txtPlayerName.SelectAll();
         }
 
 

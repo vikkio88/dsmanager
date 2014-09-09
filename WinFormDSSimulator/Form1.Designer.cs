@@ -410,6 +410,7 @@
             this.txtPlayerName.Name = "txtPlayerName";
             this.txtPlayerName.Size = new System.Drawing.Size(191, 20);
             this.txtPlayerName.TabIndex = 1;
+            this.txtPlayerName.Click += new System.EventHandler(this.txtPlayerName_TextChanged);
             // 
             // label1
             // 

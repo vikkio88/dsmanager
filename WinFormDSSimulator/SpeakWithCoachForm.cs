@@ -30,6 +30,8 @@ namespace WinFormDSSimulator
             AddTeamInfo();
             
             txtCoachWords.Text = c.CoachName+" : Hello mr " + MainForm.playername + ", I heard you wanted to talk with me... what is the matter?";
+
+            btnGoodJob.Focus();
         }
 
         public int goingWell()

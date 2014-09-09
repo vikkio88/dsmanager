@@ -24,6 +24,9 @@ namespace WinFormDSSimulator
             Program.formFixing(this);
 
             txtFixture.Text = MainForm.l.getStringFixture();
+
+            //focus on quit
+            btnQuit.Focus();
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
