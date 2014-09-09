@@ -227,6 +227,36 @@ namespace WinFormDSSimulator
             //RoundFinished();
         }
 
+        private void btnNextWeek_Click(object sender, EventArgs e)
+        {
+            RoundFinished(true);
+        }
+
+        private void btnTrain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnYouth_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFreePlayers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlayerRole_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlayersInLeague_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

@@ -32,10 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnMyTeam = new System.Windows.Forms.Button();
             this.pnlMainMarket = new System.Windows.Forms.Panel();
+            this.lblWeeks = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboRole = new System.Windows.Forms.ComboBox();
-            this.btnChangeRole = new System.Windows.Forms.Button();
             this.btnSell = new System.Windows.Forms.Button();
+            this.btnChangeRole = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPlayerInfo = new System.Windows.Forms.TextBox();
@@ -48,7 +49,7 @@
             this.btnYouth = new System.Windows.Forms.Button();
             this.btnFreePlayers = new System.Windows.Forms.Button();
             this.btnPlayersInLeague = new System.Windows.Forms.Button();
-            this.lblWeeks = new System.Windows.Forms.Label();
+            this.btnNextWeek = new System.Windows.Forms.Button();
             this.pnlMainMarket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             // pnlMainMarket
             // 
+            this.pnlMainMarket.Controls.Add(this.btnNextWeek);
             this.pnlMainMarket.Controls.Add(this.lblWeeks);
             this.pnlMainMarket.Controls.Add(this.groupBox1);
             this.pnlMainMarket.Controls.Add(this.label3);
@@ -105,6 +107,16 @@
             this.pnlMainMarket.Visible = false;
             this.pnlMainMarket.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainMarket_Paint);
             // 
+            // lblWeeks
+            // 
+            this.lblWeeks.AutoSize = true;
+            this.lblWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeeks.Location = new System.Drawing.Point(381, 374);
+            this.lblWeeks.Name = "lblWeeks";
+            this.lblWeeks.Size = new System.Drawing.Size(152, 31);
+            this.lblWeeks.TabIndex = 33;
+            this.lblWeeks.Text = "Week 1/15";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cboRole);
@@ -125,16 +137,6 @@
             this.cboRole.Size = new System.Drawing.Size(42, 21);
             this.cboRole.TabIndex = 31;
             // 
-            // btnChangeRole
-            // 
-            this.btnChangeRole.Location = new System.Drawing.Point(6, 19);
-            this.btnChangeRole.Name = "btnChangeRole";
-            this.btnChangeRole.Size = new System.Drawing.Size(112, 50);
-            this.btnChangeRole.TabIndex = 30;
-            this.btnChangeRole.Text = "Change Role";
-            this.btnChangeRole.UseVisualStyleBackColor = true;
-            this.btnChangeRole.Click += new System.EventHandler(this.btnChangeRole_Click);
-            // 
             // btnSell
             // 
             this.btnSell.Location = new System.Drawing.Point(140, 19);
@@ -144,6 +146,16 @@
             this.btnSell.Text = "Sell";
             this.btnSell.UseVisualStyleBackColor = true;
             this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
+            // 
+            // btnChangeRole
+            // 
+            this.btnChangeRole.Location = new System.Drawing.Point(6, 19);
+            this.btnChangeRole.Name = "btnChangeRole";
+            this.btnChangeRole.Size = new System.Drawing.Size(112, 50);
+            this.btnChangeRole.TabIndex = 30;
+            this.btnChangeRole.Text = "Change Role";
+            this.btnChangeRole.UseVisualStyleBackColor = true;
+            this.btnChangeRole.Click += new System.EventHandler(this.btnChangeRole_Click);
             // 
             // label3
             // 
@@ -207,6 +219,7 @@
             this.btnPlayerRole.TabIndex = 22;
             this.btnPlayerRole.Text = "Search Player per Role";
             this.btnPlayerRole.UseVisualStyleBackColor = true;
+            this.btnPlayerRole.Click += new System.EventHandler(this.btnPlayerRole_Click);
             // 
             // btnQuit
             // 
@@ -226,6 +239,7 @@
             this.btnTrain.TabIndex = 20;
             this.btnTrain.Text = "Train Team";
             this.btnTrain.UseVisualStyleBackColor = true;
+            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
             // 
             // btnYouth
             // 
@@ -235,6 +249,7 @@
             this.btnYouth.TabIndex = 19;
             this.btnYouth.Text = "Youth Club";
             this.btnYouth.UseVisualStyleBackColor = true;
+            this.btnYouth.Click += new System.EventHandler(this.btnYouth_Click);
             // 
             // btnFreePlayers
             // 
@@ -244,6 +259,7 @@
             this.btnFreePlayers.TabIndex = 18;
             this.btnFreePlayers.Text = "Free Players";
             this.btnFreePlayers.UseVisualStyleBackColor = true;
+            this.btnFreePlayers.Click += new System.EventHandler(this.btnFreePlayers_Click);
             // 
             // btnPlayersInLeague
             // 
@@ -253,16 +269,18 @@
             this.btnPlayersInLeague.TabIndex = 17;
             this.btnPlayersInLeague.Text = "Search For Player in League";
             this.btnPlayersInLeague.UseVisualStyleBackColor = true;
+            this.btnPlayersInLeague.Click += new System.EventHandler(this.btnPlayersInLeague_Click);
             // 
-            // lblWeeks
+            // btnNextWeek
             // 
-            this.lblWeeks.AutoSize = true;
-            this.lblWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWeeks.Location = new System.Drawing.Point(427, 374);
-            this.lblWeeks.Name = "lblWeeks";
-            this.lblWeeks.Size = new System.Drawing.Size(152, 31);
-            this.lblWeeks.TabIndex = 33;
-            this.lblWeeks.Text = "Week 1/15";
+            this.btnNextWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextWeek.Location = new System.Drawing.Point(539, 374);
+            this.btnNextWeek.Name = "btnNextWeek";
+            this.btnNextWeek.Size = new System.Drawing.Size(48, 36);
+            this.btnNextWeek.TabIndex = 34;
+            this.btnNextWeek.Text = ">";
+            this.btnNextWeek.UseVisualStyleBackColor = true;
+            this.btnNextWeek.Click += new System.EventHandler(this.btnNextWeek_Click);
             // 
             // MarketSummer
             // 
@@ -307,5 +325,6 @@
         private System.Windows.Forms.ComboBox cboRole;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblWeeks;
+        private System.Windows.Forms.Button btnNextWeek;
     }
 }
