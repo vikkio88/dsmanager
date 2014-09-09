@@ -45,6 +45,7 @@ namespace WinFormDSSimulator
         public static double money = GameUtils.getRandomMoney();
         public static string playerteam;
         public static bool discorsetto = false;
+        public static bool pressconf = false;
 
         
         #endregion
@@ -405,8 +406,14 @@ namespace WinFormDSSimulator
 
             StreamMessageInStatus("Completed");
 
+
+
             //allow you to speak with the coach again
             discorsetto = false;
+            //
+
+            //allowyou to make press conference again
+            pressconf = false;
             //
 
         }
@@ -493,9 +500,18 @@ namespace WinFormDSSimulator
 
         private void btnPressConference_Click(object sender, EventArgs e)
         {
-            PressConferenceForm pcf = new PressConferenceForm();
+            if (!pressconf)
+            {
+                PressConferenceForm pcf = new PressConferenceForm();
 
-            pcf.ShowDialog();
+                pcf.ShowDialog();
+
+                pressconf = true;
+            }
+            else
+            {
+                MessageBox.Show("You already did that in this round!", "Information");
+            }
 
 
         }
