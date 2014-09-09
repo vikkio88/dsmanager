@@ -36,6 +36,7 @@
             this.txtOffer = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,11 +106,23 @@
             this.btnReject.UseVisualStyleBackColor = true;
             this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(303, 208);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 50);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Quit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TryToSellPlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 270);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnReject);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.txtOffer);
@@ -135,5 +148,6 @@
         private System.Windows.Forms.TextBox txtOffer;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnReject;
+        private System.Windows.Forms.Button button1;
     }
 }

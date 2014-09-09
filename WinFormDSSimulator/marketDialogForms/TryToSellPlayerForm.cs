@@ -58,6 +58,7 @@ namespace WinFormDSSimulator.marketDialogForms
                 txtOffer.Text = "No offers for this Player";
                 btnAccept.Enabled = false;
                 btnReject.Enabled = false;
+                button1.Visible = true;
             }
 
             txtPlayerInfo.Text = tosell.ToString();
@@ -98,6 +99,11 @@ namespace WinFormDSSimulator.marketDialogForms
         {
             var previousform = Application.OpenForms.OfType<MarketSummer>().Single();
             previousform.RoundFinished();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

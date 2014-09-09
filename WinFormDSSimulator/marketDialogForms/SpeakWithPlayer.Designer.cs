@@ -73,7 +73,7 @@
             this.txtOffer.Multiline = true;
             this.txtOffer.Name = "txtOffer";
             this.txtOffer.ReadOnly = true;
-            this.txtOffer.Size = new System.Drawing.Size(397, 33);
+            this.txtOffer.Size = new System.Drawing.Size(435, 33);
             this.txtOffer.TabIndex = 48;
             // 
             // label1
@@ -188,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 342);
+            this.ClientSize = new System.Drawing.Size(448, 342);
             this.Controls.Add(this.grpNewOffer);
             this.Controls.Add(this.btnChangeOffer);
             this.Controls.Add(this.btnReject);

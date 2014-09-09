@@ -229,7 +229,7 @@ namespace WinFormDSSimulator
         private void btnSell_Click(object sender, EventArgs e)
         {
             TryToSellPlayerForm ttspf = new TryToSellPlayerForm(playersteam.getPlayer(lstPlayers.SelectedIndex));
-            ttspf.Show();
+            ttspf.ShowDialog();
             //controllare fine di questo processo prima di
             //RoundFinished();
         }
