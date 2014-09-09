@@ -62,11 +62,23 @@
     <Compile Include="LeagueStatisticForm.Designer.cs">
       <DependentUpon>LeagueStatisticForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="marketDialogForms\FreePlayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="marketDialogForms\FreePlayersForm.Designer.cs">
+      <DependentUpon>FreePlayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="marketDialogForms\Offer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="marketDialogForms\Offer.Designer.cs">
       <DependentUpon>Offer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="marketDialogForms\SpeakWithPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="marketDialogForms\SpeakWithPlayer.Designer.cs">
+      <DependentUpon>SpeakWithPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="marketDialogForms\TryToSellPlayerForm.cs">
       <SubType>Form</SubType>
@@ -115,8 +127,14 @@
     <EmbeddedResource Include="LeagueStatisticForm.resx">
       <DependentUpon>LeagueStatisticForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="marketDialogForms\FreePlayersForm.resx">
+      <DependentUpon>FreePlayersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="marketDialogForms\Offer.resx">
       <DependentUpon>Offer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="marketDialogForms\SpeakWithPlayer.resx">
+      <DependentUpon>SpeakWithPlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="marketDialogForms\TryToSellPlayerForm.resx">
       <DependentUpon>TryToSellPlayerForm.cs</DependentUpon>

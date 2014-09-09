@@ -244,7 +244,8 @@ namespace WinFormDSSimulator
 
         private void btnFreePlayers_Click(object sender, EventArgs e)
         {
-
+            FreePlayersForm fpf = new FreePlayersForm();
+            fpf.Show();
         }
 
         private void btnPlayerRole_Click(object sender, EventArgs e)

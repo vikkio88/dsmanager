@@ -69,6 +69,33 @@ namespace ModelsTest
 
         }
 
+        [Test]
+        public void TestRichiestagiocatore()
+        {
+            Player playertobuy = GameUtils.getRandomPlayersList().ElementAt(0);
+            Console.WriteLine(playertobuy.ToString());
+            int constant = 45;
+            double probabilitytosell = constant + (100 - (playertobuy.Age / 40.0 * 100));
+            Console.WriteLine("pobtosell: " + (probabilitytosell-constant-10));
+            probabilitytosell -= constant-10;
+            double off = playertobuy.Val * 0.05 + (playertobuy.Val * (probabilitytosell / 560.0));
+            off = Math.Round(off, 2);
+            if (off > 10) off = GameUtils.getWage(8, 10);
+            Console.WriteLine("req: "+off+" M €");
+            double controff = off - GameUtils.getWage(0, 1);
+            controff = off;
+            Console.WriteLine("controff: "+controff+" M €");
+            if (sendControff(controff, off))
+            {
+                Console.WriteLine("\t yep");
+            }
+            else
+            {
+                Console.WriteLine("\t nope");
+            }
+
+        }
+
         private int evaluatePlayer(Player tosell)
         {
             double perc = 100;
@@ -81,6 +108,23 @@ namespace ModelsTest
 
 
             return Convert.ToInt32(perc);
+        }
+
+        private bool sendControff(double controff,double off)
+        {
+            if (controff >= off)
+            {
+                return true;
+            }
+            else
+            {
+                if (GameUtils.getProbability(Convert.ToInt32(controff / off * 100.0)))
+                {
+                    return true;
+                }
+
+                return false;
+            }
         }
     }
 }
