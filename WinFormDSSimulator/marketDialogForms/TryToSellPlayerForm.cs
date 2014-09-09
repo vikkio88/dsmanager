@@ -38,7 +38,7 @@ namespace WinFormDSSimulator.marketDialogForms
 
         private void TryToSellPlayerForm_Load(object sender, EventArgs e)
         {
-            this.ControlBox = false;
+            Program.formFixing(this);
 
 
 

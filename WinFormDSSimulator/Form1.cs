@@ -517,7 +517,7 @@ namespace WinFormDSSimulator
         private void btnMarket_Click(object sender, EventArgs e)
         {
             ms = new MarketSummer();
-            ms.Show();
+            ms.ShowDialog();
             NextSeason();
 
         }
@@ -525,6 +525,17 @@ namespace WinFormDSSimulator
         private void btnHistory_Click(object sender, EventArgs e)
         {
             Program.toDefine();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Program.formFixing(this);
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("That's a pity, bye!", "Exiting?");
+            Environment.Exit(0);
         }
 
 

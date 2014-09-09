@@ -27,12 +27,13 @@ namespace WinFormDSSimulator.marketDialogForms
 
         private void SpeakWithPlayer_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
             
             txtPlayerInfo.Text = playertobuy.ToString();
             
             calculateWageRequest();
 
-            txtOffer.Text = playertobuy.PlayerName + " : Hello mr " + MainForm.playername + ", to join your team I would like to have a wage of " + off + " M €";
+            txtOffer.Text = playertobuy.PlayerName + " :\r\n Hello mr " + MainForm.playername + ", to join your team I would like to have a wage of " + off + " M €";
         }
 
         private void calculateWageRequest()

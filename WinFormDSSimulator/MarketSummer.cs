@@ -32,7 +32,9 @@ namespace WinFormDSSimulator
 
         private void MarketSummer_Load(object sender, EventArgs e)
         {
-            currentround = 0;
+            Program.formFixing(this);
+
+            currentround = 1;
 
 
             string coachreport = GameUtils.CheckCoachWorkString(MainForm.l);
@@ -207,7 +209,7 @@ namespace WinFormDSSimulator
             if (GameUtils.getProbability(60))
             {
                 Offer of = new Offer();
-                of.Show();
+                of.ShowDialog();
             }
         }
 

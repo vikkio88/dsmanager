@@ -65,7 +65,7 @@
             this.txtOffer.Multiline = true;
             this.txtOffer.Name = "txtOffer";
             this.txtOffer.ReadOnly = true;
-            this.txtOffer.Size = new System.Drawing.Size(372, 42);
+            this.txtOffer.Size = new System.Drawing.Size(373, 42);
             this.txtOffer.TabIndex = 41;
             // 
             // label1

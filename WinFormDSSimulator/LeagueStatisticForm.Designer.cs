@@ -30,6 +30,7 @@
         {
             this.txtTable = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTable
@@ -51,11 +52,22 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Scorer Table";
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(195, 346);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(98, 34);
+            this.btnQuit.TabIndex = 23;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // LeagueStatisticForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 352);
+            this.ClientSize = new System.Drawing.Size(305, 389);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.txtTable);
             this.Controls.Add(this.label4);
             this.Name = "LeagueStatisticForm";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.TextBox txtTable;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnQuit;
     }
 }

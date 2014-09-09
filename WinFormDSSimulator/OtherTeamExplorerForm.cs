@@ -20,6 +20,7 @@ namespace WinFormDSSimulator
 
         private void OtherTeamExplorerForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
             TeamListToListBox(MainForm.l.leagueTeams, lstTeams);
         }
 
@@ -42,6 +43,11 @@ namespace WinFormDSSimulator
             }
 
             lb.DataSource = teamnames;
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

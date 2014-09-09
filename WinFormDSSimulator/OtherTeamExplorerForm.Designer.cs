@@ -30,6 +30,7 @@
         {
             this.txtTeamInfo = new System.Windows.Forms.TextBox();
             this.lstTeams = new System.Windows.Forms.ListBox();
+            this.btnQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTeamInfo
@@ -50,11 +51,22 @@
             this.lstTeams.TabIndex = 7;
             this.lstTeams.SelectedIndexChanged += new System.EventHandler(this.ListSelectEvent);
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(412, 321);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(98, 34);
+            this.btnQuit.TabIndex = 23;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // OtherTeamExplorerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 349);
+            this.ClientSize = new System.Drawing.Size(537, 367);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.txtTeamInfo);
             this.Controls.Add(this.lstTeams);
             this.Name = "OtherTeamExplorerForm";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.TextBox txtTeamInfo;
         private System.Windows.Forms.ListBox lstTeams;
+        private System.Windows.Forms.Button btnQuit;
     }
 }

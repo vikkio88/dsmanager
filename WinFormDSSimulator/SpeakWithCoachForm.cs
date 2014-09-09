@@ -22,6 +22,8 @@ namespace WinFormDSSimulator
 
         private void SpeakWithCoachForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
+
             playersteam = MainForm.l.getTeambyTeamName(MainForm.playerteam);
             c = playersteam.coach;
             txtCoachInfo.Text = c.ToString();
@@ -127,6 +129,8 @@ namespace WinFormDSSimulator
             btnFireCoach.Enabled = false;
             btnGoodJob.Enabled = false;
             btnIwantMore.Enabled = false;
+
+            btnQuit.Visible = true;
         }
 
         private void btnIwantMore_Click(object sender, EventArgs e)
@@ -198,6 +202,11 @@ namespace WinFormDSSimulator
            // txtCoachWords.Text += "\r\n *** Presindent hired "+playersteam.coach.ToStringShort()+" as new coach";
 
             
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

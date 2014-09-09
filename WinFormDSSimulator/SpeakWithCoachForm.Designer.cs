@@ -37,6 +37,7 @@
             this.btnIwantMore = new System.Windows.Forms.Button();
             this.btnChangeModule = new System.Windows.Forms.Button();
             this.btnFireCoach = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,11 +119,23 @@
             this.btnFireCoach.UseVisualStyleBackColor = true;
             this.btnFireCoach.Click += new System.EventHandler(this.btnFireCoach_Click);
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(177, 259);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(98, 34);
+            this.btnQuit.TabIndex = 22;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Visible = false;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // SpeakWithCoachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 376);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnFireCoach);
             this.Controls.Add(this.btnChangeModule);
             this.Controls.Add(this.btnIwantMore);
@@ -150,5 +163,6 @@
         private System.Windows.Forms.Button btnIwantMore;
         private System.Windows.Forms.Button btnChangeModule;
         private System.Windows.Forms.Button btnFireCoach;
+        private System.Windows.Forms.Button btnQuit;
     }
 }

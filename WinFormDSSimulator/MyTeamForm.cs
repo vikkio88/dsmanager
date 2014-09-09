@@ -21,6 +21,9 @@ namespace WinFormDSSimulator
 
         private void MyTeamForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
+
+
             this.Text = MainForm.playerteam + " Info";
             playersteam = MainForm.l.getTeambyTeamName(MainForm.playerteam);
 
@@ -82,6 +85,11 @@ namespace WinFormDSSimulator
             }
             
             //txtTeamInfo.Text = MainForm.l.getTeambyTeamName(lstTeams.SelectedItem.ToString()).ToStringFull();
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

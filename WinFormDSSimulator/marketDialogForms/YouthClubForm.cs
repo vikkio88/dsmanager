@@ -24,6 +24,7 @@ namespace WinFormDSSimulator.marketDialogForms
 
         private void YouthClubForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
             this.Text = plteam.TeamName + " Youth Club";
             fillList();
         }

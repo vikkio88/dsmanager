@@ -40,7 +40,7 @@ namespace WinFormDSSimulator.marketDialogForms
 
         private void Offer_Load(object sender, EventArgs e)
         {
-            this.ControlBox = false;
+            Program.formFixing(this);
 
 
 

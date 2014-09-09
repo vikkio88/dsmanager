@@ -16,5 +16,16 @@ namespace WinFormDSSimulator
         {
             InitializeComponent();
         }
+
+        private void PressConferenceForm_Load(object sender, EventArgs e)
+        {
+            Program.formFixing(this);
+
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

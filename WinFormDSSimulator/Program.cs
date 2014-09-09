@@ -46,6 +46,18 @@ namespace WinFormDSSimulator
             Application.Run(new MainForm());
         }
 
+        public static void formFixing(Form f)
+        {
+            f.ControlBox = false;
+            f.FormBorderStyle = FormBorderStyle.FixedDialog;
+            // Set the MaximizeBox to false to remove the maximize box.
+            f.MaximizeBox = false;
+            // Set the MinimizeBox to false to remove the minimize box.
+            f.MinimizeBox = false;
+            // Set the start position of the form to the center of the screen.
+            f.StartPosition = FormStartPosition.CenterScreen; 
+        }
+
         public static void toDefine()
         {
             MessageBox.Show("Feature not included yet!");

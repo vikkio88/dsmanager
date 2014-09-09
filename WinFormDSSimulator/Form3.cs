@@ -21,7 +21,14 @@ namespace WinFormDSSimulator
 
         private void FixtureForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
+
             txtFixture.Text = MainForm.l.getStringFixture();
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

@@ -21,6 +21,8 @@ namespace WinFormDSSimulator.marketDialogForms
 
         private void FreePlayersForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
+
             list = GameUtils.getRandomPlayersOLDList(20);
             AddPlayersToLst();          
         }

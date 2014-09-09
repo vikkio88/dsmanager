@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstPlayers
@@ -90,11 +91,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Player Info";
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(330, 395);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(98, 34);
+            this.btnQuit.TabIndex = 23;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // MyTeamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 438);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -117,5 +129,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnQuit;
     }
 }
