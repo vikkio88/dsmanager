@@ -192,12 +192,12 @@ namespace WinFormDSSimulator
                     if (GameUtils.getProbability(70))
                     {
                         plteam.coach.SkillAvg += 1;
-                        Cons("the Coach, " + plteam.coach + "  is happy about your declaration");
+                        Cons("the Coach, " + plteam.coach.ToStringShort() + "  is happy about your declaration");
                     }
                     else
                     {
                         plteam.coach.SkillAvg -= 1;
-                        Cons("the Coach, " + plteam.coach + " is not happy about your declaration");
+                        Cons("the Coach, " + plteam.coach.ToStringShort() + " is not happy about your declaration");
 
                     }
                 }
@@ -206,12 +206,12 @@ namespace WinFormDSSimulator
                     if (GameUtils.getProbability(40))
                     {
                         plteam.coach.SkillAvg += 3;
-                        Cons("the Coach, " + plteam.coach + "  want to improve team performace after your declaration");
+                        Cons("the Coach, " + plteam.coach.ToStringShort() + "  want to improve team performace after your declaration");
                     }
                     else
                     {
                         plteam.coach.SkillAvg -= 2;
-                        Cons("the Coach, "+plteam.coach + " is not happy about your declaration");
+                        Cons("the Coach, " + plteam.coach.ToStringShort() + " is not happy about your declaration");
 
                     }
 
