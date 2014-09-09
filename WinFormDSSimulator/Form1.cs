@@ -160,7 +160,7 @@ namespace WinFormDSSimulator
                 playername = txtPlayerName.Text;
                 playerteam = lstTeams.SelectedItem.ToString();
                 l.getTeambyTeamName(playerteam).isplayers = true;
-                MessageBox.Show("Your Team budget for this years is " + money + " M €");
+                MessageBox.Show("You choose "+playerteam+"\r\nYour Team budget for this years is " + money + " M €","Information");
                 pnlMainMenuGame.Visible = true;
             }
 
@@ -370,7 +370,7 @@ namespace WinFormDSSimulator
         {
             txtPlayerTeamInfo.Text = "";
             txtPlayerTeamInfo.Text += "Season " + (anno - 1) + "/" + anno
-                                        + "\r\n\t " + playername + " ds of: " + playerteam
+                                        + "\r\n\t " + playername + "\r\nDS of: " + playerteam
             + "\r\n\t balance: " + money + " M Euro"
             + "\r\n\t Team position: " + l.getPositionbyTeamName(playerteam) + " / " + l.NumbOfTeam
             + string.Format("\r\n\t W: {0} D: {1} L: {2}", vps[0], vps[1], vps[2]);
