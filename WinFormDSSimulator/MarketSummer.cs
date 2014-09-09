@@ -187,15 +187,18 @@ namespace WinFormDSSimulator
         {
             currentround++;
             refreshinfos();
-
-            if (addrandomoffer)
-            {
-                RandomOffer();
-            }
+            bool marketfinished = false;
+       
 
             if (currentround == 15)
             {
+                marketfinished = true;
                 MarketEnded();
+            }
+
+            if (addrandomoffer && !marketfinished)
+            {
+                RandomOffer();
             }
         }
 
