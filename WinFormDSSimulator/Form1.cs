@@ -530,11 +530,12 @@ namespace WinFormDSSimulator
         private void MainForm_Load(object sender, EventArgs e)
         {
             Program.formFixing(this);
+            txtPlayerName.Text = GameUtils.getRandomCoach().ToStringShort();
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("That's a pity, bye!", "Exiting?");
+            MessageBox.Show("That's a pity, bye mr "+playername+"!", "Exiting?");
             Environment.Exit(0);
         }
 

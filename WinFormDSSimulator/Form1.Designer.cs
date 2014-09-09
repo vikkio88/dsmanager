@@ -138,6 +138,7 @@
             // 
             // pnlMainMenuGame
             // 
+            this.pnlMainMenuGame.Controls.Add(this.btnQuit);
             this.pnlMainMenuGame.Controls.Add(this.btnHistory);
             this.pnlMainMenuGame.Controls.Add(this.btnPressConference);
             this.pnlMainMenuGame.Controls.Add(this.txtLastMatch);
@@ -443,11 +444,11 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(631, 368);
+            this.btnQuit.Location = new System.Drawing.Point(6, 197);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(39, 34);
+            this.btnQuit.Size = new System.Drawing.Size(64, 21);
             this.btnQuit.TabIndex = 23;
-            this.btnQuit.Text = "Quit";
+            this.btnQuit.Text = "Exit Game";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
@@ -456,7 +457,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 417);
-            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.pnlNewGame);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnRecords);
