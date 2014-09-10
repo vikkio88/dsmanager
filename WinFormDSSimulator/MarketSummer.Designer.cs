@@ -290,10 +290,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 416);
+            this.Controls.Add(this.pnlMainMarket);
             this.Controls.Add(this.btnMyTeam);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEvents);
-            this.Controls.Add(this.pnlMainMarket);
             this.Name = "MarketSummer";
             this.Text = "MarketSummer";
             this.Load += new System.EventHandler(this.MarketSummer_Load);
