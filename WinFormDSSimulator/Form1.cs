@@ -102,6 +102,14 @@ namespace WinFormDSSimulator
                numb = int.Parse(cboNumb.Text);
            }
 
+           if (numb % 2 != 0)
+           {
+               numb = numb + 1;
+           }
+
+
+           if (numb < 4) numb = 4;
+           if (numb > 18) numb = 18;
            
           
   
