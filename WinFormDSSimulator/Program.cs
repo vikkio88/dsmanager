@@ -1,6 +1,7 @@
 ﻿using DsManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,8 +55,9 @@ namespace WinFormDSSimulator
             f.MaximizeBox = false;
             // Set the MinimizeBox to false to remove the minimize box.
             f.MinimizeBox = false;
-            // Set the start position of the form to the center of the screen.
-            f.StartPosition = FormStartPosition.CenterScreen; 
+            // Set the position of the form to the center of the screen.
+            f.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - f.Width) / 2,
+                          (Screen.PrimaryScreen.WorkingArea.Height - f.Height) / 2);
         }
 
         public static void toDefine()
