@@ -48,6 +48,7 @@
             // 
             // txtTeamInfo
             // 
+            this.txtTeamInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTeamInfo.Location = new System.Drawing.Point(3, 33);
             this.txtTeamInfo.Multiline = true;
             this.txtTeamInfo.Name = "txtTeamInfo";
@@ -57,6 +58,7 @@
             // 
             // txtPlayerInfo
             // 
+            this.txtPlayerInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPlayerInfo.Location = new System.Drawing.Point(168, 191);
             this.txtPlayerInfo.Multiline = true;
             this.txtPlayerInfo.Name = "txtPlayerInfo";

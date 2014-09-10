@@ -35,6 +35,7 @@
             // 
             // txtTeamInfo
             // 
+            this.txtTeamInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTeamInfo.Enabled = false;
             this.txtTeamInfo.Location = new System.Drawing.Point(155, 12);
             this.txtTeamInfo.Multiline = true;

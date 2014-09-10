@@ -50,6 +50,7 @@
             // 
             // lstPlayers
             // 
+            this.lstPlayers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lstPlayers.FormattingEnabled = true;
             this.lstPlayers.Location = new System.Drawing.Point(9, 12);
             this.lstPlayers.Name = "lstPlayers";
@@ -88,6 +89,7 @@
             // 
             // txtPlayerInfo
             // 
+            this.txtPlayerInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPlayerInfo.Location = new System.Drawing.Point(119, 302);
             this.txtPlayerInfo.Multiline = true;
             this.txtPlayerInfo.Name = "txtPlayerInfo";

@@ -86,6 +86,7 @@
             // 
             // txtPress
             // 
+            this.txtPress.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPress.Location = new System.Drawing.Point(12, 12);
             this.txtPress.Multiline = true;
             this.txtPress.Name = "txtPress";
@@ -96,6 +97,7 @@
             // 
             // txtCons
             // 
+            this.txtCons.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtCons.Location = new System.Drawing.Point(12, 326);
             this.txtCons.Multiline = true;
             this.txtCons.Name = "txtCons";

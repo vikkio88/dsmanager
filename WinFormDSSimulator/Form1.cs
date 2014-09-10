@@ -538,6 +538,7 @@ namespace WinFormDSSimulator
             ms = new MarketSummer();
             ms.ShowDialog();
             NextSeason();
+            btnNextRound.Focus();
 
         }
 
@@ -554,6 +555,7 @@ namespace WinFormDSSimulator
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
+           
             MessageBox.Show("That's a pity, bye mr "+playername+"!", "Exiting?");
             Environment.Exit(0);
         }

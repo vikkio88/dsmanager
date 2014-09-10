@@ -69,6 +69,7 @@
             // 
             // txtOffer
             // 
+            this.txtOffer.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtOffer.Location = new System.Drawing.Point(10, 145);
             this.txtOffer.Multiline = true;
             this.txtOffer.Name = "txtOffer";
@@ -96,6 +97,7 @@
             // 
             // txtPlayerInfo
             // 
+            this.txtPlayerInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPlayerInfo.Location = new System.Drawing.Point(125, 26);
             this.txtPlayerInfo.Multiline = true;
             this.txtPlayerInfo.Name = "txtPlayerInfo";

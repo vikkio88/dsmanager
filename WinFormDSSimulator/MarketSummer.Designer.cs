@@ -56,6 +56,7 @@
             // 
             // txtEvents
             // 
+            this.txtEvents.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtEvents.Location = new System.Drawing.Point(12, 38);
             this.txtEvents.Multiline = true;
             this.txtEvents.Name = "txtEvents";
@@ -188,6 +189,7 @@
             // 
             // txtPlayerInfo
             // 
+            this.txtPlayerInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPlayerInfo.Location = new System.Drawing.Point(321, 172);
             this.txtPlayerInfo.Multiline = true;
             this.txtPlayerInfo.Name = "txtPlayerInfo";
@@ -215,6 +217,7 @@
             // 
             // txtTeamInfo
             // 
+            this.txtTeamInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTeamInfo.Location = new System.Drawing.Point(165, 23);
             this.txtTeamInfo.Multiline = true;
             this.txtTeamInfo.Name = "txtTeamInfo";
@@ -287,10 +290,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 416);
-            this.Controls.Add(this.pnlMainMarket);
             this.Controls.Add(this.btnMyTeam);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEvents);
+            this.Controls.Add(this.pnlMainMarket);
             this.Name = "MarketSummer";
             this.Text = "MarketSummer";
             this.Load += new System.EventHandler(this.MarketSummer_Load);

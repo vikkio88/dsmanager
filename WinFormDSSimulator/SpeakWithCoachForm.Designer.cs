@@ -62,6 +62,7 @@
             // 
             // txtCoachInfo
             // 
+            this.txtCoachInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtCoachInfo.Location = new System.Drawing.Point(127, 22);
             this.txtCoachInfo.Multiline = true;
             this.txtCoachInfo.Name = "txtCoachInfo";
@@ -71,6 +72,7 @@
             // 
             // txtCoachWords
             // 
+            this.txtCoachWords.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtCoachWords.Location = new System.Drawing.Point(15, 171);
             this.txtCoachWords.Multiline = true;
             this.txtCoachWords.Name = "txtCoachWords";

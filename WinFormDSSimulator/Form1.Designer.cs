@@ -36,6 +36,7 @@
             this.btnRecords = new System.Windows.Forms.Button();
             this.pnlNewGame = new System.Windows.Forms.Panel();
             this.pnlMainMenuGame = new System.Windows.Forms.Panel();
+            this.btnQuit = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
             this.btnPressConference = new System.Windows.Forms.Button();
             this.txtLastMatch = new System.Windows.Forms.TextBox();
@@ -65,7 +66,6 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.timerUtils = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnQuit = new System.Windows.Forms.Button();
             this.pnlNewGame.SuspendLayout();
             this.pnlMainMenuGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -164,6 +164,16 @@
             this.pnlMainMenuGame.Visible = false;
             this.pnlMainMenuGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainMenuGame_Paint);
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(6, 197);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(64, 21);
+            this.btnQuit.TabIndex = 23;
+            this.btnQuit.Text = "Exit Game";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // btnHistory
             // 
             this.btnHistory.Location = new System.Drawing.Point(438, 241);
@@ -187,6 +197,7 @@
             // 
             // txtLastMatch
             // 
+            this.txtLastMatch.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtLastMatch.Enabled = false;
             this.txtLastMatch.Location = new System.Drawing.Point(424, 166);
             this.txtLastMatch.Multiline = true;
@@ -267,6 +278,7 @@
             // 
             // txtTable
             // 
+            this.txtTable.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTable.Location = new System.Drawing.Point(199, 166);
             this.txtTable.Multiline = true;
             this.txtTable.Name = "txtTable";
@@ -286,6 +298,7 @@
             // 
             // txtPlayerTeamInfo
             // 
+            this.txtPlayerTeamInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPlayerTeamInfo.Enabled = false;
             this.txtPlayerTeamInfo.Location = new System.Drawing.Point(196, 30);
             this.txtPlayerTeamInfo.Multiline = true;
@@ -304,6 +317,7 @@
             // 
             // txtNextRound
             // 
+            this.txtNextRound.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtNextRound.Enabled = false;
             this.txtNextRound.Location = new System.Drawing.Point(422, 25);
             this.txtNextRound.Multiline = true;
@@ -442,16 +456,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(503, 337);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnQuit
-            // 
-            this.btnQuit.Location = new System.Drawing.Point(6, 197);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(64, 21);
-            this.btnQuit.TabIndex = 23;
-            this.btnQuit.Text = "Exit Game";
-            this.btnQuit.UseVisualStyleBackColor = true;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
             // MainForm
             // 

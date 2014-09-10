@@ -34,6 +34,7 @@
             // 
             // txtFixture
             // 
+            this.txtFixture.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtFixture.Location = new System.Drawing.Point(12, 12);
             this.txtFixture.Multiline = true;
             this.txtFixture.Name = "txtFixture";

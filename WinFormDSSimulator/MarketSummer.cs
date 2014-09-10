@@ -52,6 +52,7 @@ namespace WinFormDSSimulator
 
             FillTeamInfo();
             FillLst(playersteam);
+            btnMyTeam.Focus();
 
         }
 

@@ -35,6 +35,7 @@
             // 
             // txtTable
             // 
+            this.txtTable.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTable.Location = new System.Drawing.Point(12, 27);
             this.txtTable.Multiline = true;
             this.txtTable.Name = "txtTable";
