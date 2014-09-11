@@ -65,7 +65,7 @@ namespace WinFormDSSimulator
         #region LoggerMethods
         public void SaveChampionsResults()
         {
-            albocampionato.Add(string.Format("{0} - winner: {1} p: {2}\r\n\t2. {3} p: {4}", anno, l.getTeamByTablePosition(1).TeamName, l.getPointByPosition(1), l.getTeamByTablePosition(2).TeamName, l.getPointByPosition(2)));
+            albocampionato.Add(string.Format("{0} - winner: {1} p: {2}\r\n\t2. {3} p: {4}\r\n\t3. {5} p: {6}", anno, l.getTeamByTablePosition(1).TeamName, l.getPointByPosition(1), l.getTeamByTablePosition(2).TeamName, l.getPointByPosition(2), l.getTeamByTablePosition(3).TeamName, l.getPointByPosition(3)));
         }
 
         public void SavePlayerTeamResults()

@@ -24,8 +24,11 @@ namespace WinFormDSSimulator
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
+            Program.formFixing(this);
             fillLeagueHistory();
             fillPlHistory();
+
+            btnQuit.Focus();
 
             
         }
@@ -55,7 +58,7 @@ namespace WinFormDSSimulator
                 txtLeagueHistory.Text += item + "\r\n";
             }
 
-            btnQuit.Focus();
+            
 
             
         }
