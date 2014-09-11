@@ -314,7 +314,7 @@ namespace DsManager.Models
             n -= 1;
             if (scorers.Count != 0)
             {
-                return scorers.ElementAt(n).Key.PlayerName + " " + scorers.ElementAt(n).Key.PlayerSurname + " - " + scorers.ElementAt(n).Value.TeamName + " - " + scorers.ElementAt(n).Value.goals;
+                return scorers.ElementAt(n).Key.PlayerName + " " + scorers.ElementAt(n).Key.PlayerSurname + " - " + scorers.ElementAt(n).Value.TeamName + " - goals: " + scorers.ElementAt(n).Value.goals;
             }
             else
             {

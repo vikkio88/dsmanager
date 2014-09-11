@@ -50,8 +50,33 @@ namespace WinFormDSSimulator
         
         #endregion
 
+        #region LoggerHistoryObjects
+
+        public static List<string> albocampionato = new List<string>();
+        public static List<string> albogiocatore = new List<string>();
+        public static List<string> albocannonieri = new List<string>();
+
+        #endregion
 
 
+        #region LoggerMethods
+        public void SaveChampionsResults()
+        {
+            albocampionato.Add(string.Format("{0} - winner: {1} p: {2}\r\n\t2. {3} p: {4}", anno, l.getTeamByTablePosition(1).TeamName, l.getPointByPosition(1), l.getTeamByTablePosition(2).TeamName, l.getPointByPosition(2)));
+        }
+
+        public void SavePlayerTeamResults()
+        {
+            string banana = string.Format("{0} - final position: {1}/{7}  p: {2}, stats W: {3} D: {4} L: {5}\r\n\t coach: {6}", anno, l.getPositionbyTeamName(playerteam), l.getPointByPosition(l.getPositionbyTeamName(playerteam)), vps[0], vps[1], vps[2], l.getTeambyTeamName(playerteam).coach.ToStringShort(), l.NumbOfTeam);
+            
+            albogiocatore.Add(banana);
+        }
+
+        public void SaveScorerWinner()
+        {
+            albocannonieri.Add(string.Format("{0} - {1}",anno,l.getStringScorerByScorerPosition(1)));
+        }
+        #endregion
 
 
 
@@ -433,6 +458,10 @@ namespace WinFormDSSimulator
             btnMarket.Enabled = true;
             btnMarket.Text = "Market/Next Season";
             playerReport();
+
+            SaveChampionsResults();
+            SavePlayerTeamResults();
+            SaveScorerWinner();
         }
 
         private void NextSeason()
@@ -552,7 +581,9 @@ namespace WinFormDSSimulator
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
-            Program.toDefine();
+            //Program.toDefine();
+            HistoryForm hfm = new HistoryForm();
+            hfm.ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
