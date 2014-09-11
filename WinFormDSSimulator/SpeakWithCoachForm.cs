@@ -45,9 +45,9 @@ namespace WinFormDSSimulator
             int position = MainForm.l.getPositionbyTeamName(playersteam.TeamName);
             int numbofteam = MainForm.l.NumbOfTeam;
 
-            if (!(won > draw && won > lost))
+            if ((!(won > draw && won > lost))|| (draw+lost > won) || (MainForm.losecounter>2))
             {
-                goingwellperc -= 40;
+                goingwellperc -= 45;
             }
             else if (draw > won)
             {
@@ -195,6 +195,11 @@ namespace WinFormDSSimulator
             MainForm.money -= rescissione;
             if(MainForm.money<0) MainForm.money = 0;
             txtCoachWords.Text += "\r\n" + MainForm.playername + " :  I want to inform you that your your services are no longer required by the team, goodbye!";
+            
+            //they track the last firing
+            MainForm.exallen = c.ToStringShort();
+            MainForm.subentrato = true;
+            //
 
            MessageBox.Show("*** you paid " + rescissione + " M € to terminate the contract");
 
@@ -202,6 +207,9 @@ namespace WinFormDSSimulator
             MessageBox.Show("*** Presindent hired "+playersteam.coach.ToStringShort()+" as new coach","Information");
             this.Close();
            // txtCoachWords.Text += "\r\n *** Presindent hired "+playersteam.coach.ToStringShort()+" as new coach";
+            
+
+            
 
             
         }

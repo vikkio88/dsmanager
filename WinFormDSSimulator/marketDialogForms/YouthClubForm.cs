@@ -51,6 +51,7 @@ namespace WinFormDSSimulator.marketDialogForms
         private void btnSpeak_Click(object sender, EventArgs e)
         {
             SpeakWithPlayer swp = new SpeakWithPlayer(youthcl.ElementAt(lstPlayers.SelectedIndex));
+            youthcl.RemoveAt(lstPlayers.SelectedIndex);
             swp.Show();
             this.Close();
         }

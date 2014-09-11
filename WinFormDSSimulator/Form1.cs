@@ -55,6 +55,9 @@ namespace WinFormDSSimulator
         public static List<string> albocampionato = new List<string>();
         public static List<string> albogiocatore = new List<string>();
         public static List<string> albocannonieri = new List<string>();
+        //mi ricorda che l'allenatore é subentrato
+        public static bool subentrato = false;
+        public static string exallen = "";
 
         #endregion
 
@@ -67,9 +70,12 @@ namespace WinFormDSSimulator
 
         public void SavePlayerTeamResults()
         {
-            string banana = string.Format("{0} - final position: {1}/{7}  p: {2}, stats W: {3} D: {4} L: {5}\r\n\t coach: {6}", anno, l.getPositionbyTeamName(playerteam), l.getPointByPosition(l.getPositionbyTeamName(playerteam)), vps[0], vps[1], vps[2], l.getTeambyTeamName(playerteam).coach.ToStringShort(), l.NumbOfTeam);
-            
-            albogiocatore.Add(banana);
+            string stringaplayer = string.Format("{0} - final position: {1}/{7}  p: {2}, stats W: {3} D: {4} L: {5}\r\n\t coach: {6}", anno, l.getPositionbyTeamName(playerteam), l.getPointByPosition(l.getPositionbyTeamName(playerteam)), vps[0], vps[1], vps[2], l.getTeambyTeamName(playerteam).coach.ToStringShort(), l.NumbOfTeam);
+            if (subentrato)
+            {
+                stringaplayer += " \t\r\n* substitute of "+exallen;
+            }
+            albogiocatore.Add(stringaplayer);
         }
 
         public void SaveScorerWinner()
@@ -462,6 +468,9 @@ namespace WinFormDSSimulator
             SaveChampionsResults();
             SavePlayerTeamResults();
             SaveScorerWinner();
+
+
+            btnHistory.Enabled = true;
         }
 
         private void NextSeason()
@@ -475,6 +484,8 @@ namespace WinFormDSSimulator
 
             discorsetto = false;
             finished = false;
+            subentrato = false;
+            exallen = "";
             anno += 1;
 
             btnNextRound.Enabled = true;
